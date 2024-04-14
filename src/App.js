@@ -163,8 +163,8 @@ function App() {
 
   const calculateArmy = () => {
     resetArmy();
-    //calculateOnlyGuardsmen();
-    calculateGuardsmenAndKnights();
+    calculateOnlyGuardsmen();
+    //calculateGuardsmenAndKnights();
   };
 
   const calculateOnlyGuardsmen = () => {
@@ -190,11 +190,17 @@ function App() {
               ) {
                 size[i][j]++;
                 iter = iter + command[i][j];
-                break chunkLoop;
+                break chunkLoop;  
               }
             }
           } else {
-            if (size[i - 1][j] * HP[i - 1][j] > (size[i][j] + 1) * HP[i][j]) {
+            let min = size[i - 1][0]*HP[i - 1][0]
+            for (let k = 1; k <= 2; k++){
+              if(min > size[i - 1][k]*HP[i - 1][k]){
+                min = size[i - 1][k]*HP[i - 1][k]
+              }
+            }
+            if (min > (size[i][j] + 1) * HP[i][j]) {
               size[i][j]++;
               iter = iter + command[i][j];
               break chunkLoop;
