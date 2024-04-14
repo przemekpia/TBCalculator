@@ -3,6 +3,8 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
+  const key = 1.03;
+
   const [W1, setW1] = useState(0);
   const [W2, setW2] = useState(0);
   const [W3, setW3] = useState(0);
@@ -56,35 +58,102 @@ function App() {
   const [BR, setBR] = useState();
 
   const handleZGBInputChange = (event) => {
-    setZGB(event.target.value);
+    setZGB(parseInt(event.target.value));
   };
 
   const handleZGLInputChange = (event) => {
-    setZGL(event.target.value);
+    setZGL(parseInt(event.target.value));
   };
 
   const handleZRBInputChange = (event) => {
-    setZRB(event.target.value);
+    setZRB(parseInt(event.target.value));
   };
 
   const handleZRLInputChange = (event) => {
-    setZRL(event.target.value);
+    setZRL(parseInt(event.target.value));
   };
 
   const handlePInputChange = (event) => {
-    setP(event.target.value);
+    setP(parseInt(event.target.value));
   };
 
   const handleBGInputChange = (event) => {
-    setBG(event.target.value);
+    setBG(parseInt(event.target.value));
   };
 
   const handleBRInputChange = (event) => {
-    setBR(event.target.value);
+    setBR(parseInt(event.target.value));
   };
 
+  const HP = [
+    [150, 150, 300, 0, 150],
+    [270, 270, 540, 0, 270],
+    [480, 480, 960, 0, 480],
+    [870, 870, 1740, 0, 870],
+    [1560, 1560, 3150, 30000, 1560],
+    [2820, 2820, 5700, 57000, 2820],
+    [5100, 5100, 10200, 102000, 5100],
+  ];
+  const command = [
+    [1, 1, 2, 20, 1],
+    [1, 1, 2, 20, 1],
+    [1, 1, 2, 20, 1],
+    [1, 1, 2, 20, 1],
+    [1, 1, 2, 20, 1],
+    [1, 1, 2, 20, 1],
+    [1, 1, 2, 20, 1],
+  ];
+
   const calculateArmy = () => {
+    calculateOnlyGuardsmen();
+  };
+
+  const calculateOnlyGuardsmen = () => {
+    const rows = 7;
+    const columns = 5;
+    let size = Array.from({ length: rows }, () => Array(columns).fill(0));
+    let HPTotal = Array.from({ length: rows }, () => Array(columns).fill(0));
+
+    let lowG = ZGB - 1
+    let highG = ZGL - 1
+
+    console.log(lowG)
+    console.log(highG)
+
+    let iter = 0;
+    while (iter < P) {
+      chunkLoop: for (let i = highG; i >= lowG; i--) {
+        for (let j = 2; j >= 0; j--) {
+          if (i === lowG) {
+            if (j === 0) {
+              size[i][j]++;
+              iter = iter + command[i][j];
+              break chunkLoop;
+            } else {
+              if (size[i][j]*command[i][j] < size[i][j - 1]*command[i][j- 1]) {
+                size[i][j]++;
+                iter = iter + command[i][j];
+                break chunkLoop;
+              }
+            }
+          } else {
+            if (size[i - 1][j] * HP[i - 1][j] > ((size[i][j] + 1) * HP[i][j]) ) {
+              size[i][j]++;
+              iter = iter + command[i][j];
+              break chunkLoop;
+            }
+          }
+        }
+      }
+    }
+    for (let i = 0 ; i < rows; i++) {
+      for (let j = 0 ; j < columns; j++) {
+        HPTotal [i][j] = size [i][j] * HP[i][j]
+      }
+    }
     
+    console.log(size);
+    console.log(HPTotal);
   };
 
   return (
