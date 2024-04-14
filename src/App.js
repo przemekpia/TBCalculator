@@ -5,6 +5,12 @@ import { useState } from "react";
 function App() {
   const key = 1.03;
 
+  const rows = 7;
+  const columns = 6;
+    
+  let size = Array.from({ length: rows }, () => Array(columns).fill(0));
+  let HPTotal = Array.from({ length: rows }, () => Array(columns).fill(0));
+
   const [W1, setW1] = useState(0);
   const [W2, setW2] = useState(0);
   const [W3, setW3] = useState(0);
@@ -104,21 +110,70 @@ function App() {
     [1, 1, 2, 20, 1],
   ];
 
+  const resetArmy = () => {
+    size = Array.from({ length: rows }, () => Array(columns).fill(0));
+    HPTotal = Array.from({ length: rows }, () => Array(columns).fill(0));
+  };
+
+  const setArmy = () => {
+    setW1(size[0][0])
+    setW2(size[1][0])
+    setW3(size[2][0])
+    setW4(size[3][0])
+    setW5(size[4][0])
+    setW6(size[5][0])
+    setW7(size[6][0])
+
+    setŁ1(size[0][1])
+    setŁ2(size[1][1])
+    setŁ3(size[2][1])
+    setŁ4(size[3][1])
+    setŁ5(size[4][1])
+    setŁ6(size[5][1])
+    setŁ7(size[6][1])
+
+    setJ1(size[0][2])
+    setJ2(size[1][2])
+    setJ3(size[2][2])
+    setJ4(size[3][2])
+    setJ5(size[4][2])
+    setJ6(size[5][2])
+    setJ7(size[6][2])
+
+    setG5(size[0][3])
+    setG6(size[1][3])
+    setG7(size[2][3])
+
+    setR1(size[0][4])
+    setR2(size[1][4])
+    setR3(size[2][4])
+    setR4(size[3][4])
+    setR5(size[4][4])
+    setR6(size[5][4])
+    setR7(size[6][4])
+
+    setN1(size[0][5])
+    setN2(size[1][5])
+    setN3(size[2][5])
+    setN4(size[3][5])
+    setN5(size[4][5])
+    setN6(size[5][5])
+    setN7(size[6][5])
+
+  };
+
   const calculateArmy = () => {
+    resetArmy();
     calculateOnlyGuardsmen();
   };
 
-  const calculateOnlyGuardsmen = () => {
-    const rows = 7;
-    const columns = 5;
-    let size = Array.from({ length: rows }, () => Array(columns).fill(0));
-    let HPTotal = Array.from({ length: rows }, () => Array(columns).fill(0));
 
+  const calculateOnlyGuardsmen = () => {
     let lowG = ZGB - 1
     let highG = ZGL - 1
 
-    console.log(lowG)
-    console.log(highG)
+    //console.log(lowG)
+    //console.log(highG)
 
     let iter = 0;
     while (iter < P) {
@@ -152,8 +207,9 @@ function App() {
       }
     }
     
-    console.log(size);
-    console.log(HPTotal);
+    //console.log(size);
+    //console.log(HPTotal);
+    setArmy();
   };
 
   return (
