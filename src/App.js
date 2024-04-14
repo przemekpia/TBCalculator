@@ -184,20 +184,17 @@ function App() {
               iter = iter + command[i][j];
               break chunkLoop;
             } else {
-              if (
-                size[i][j] * command[i][j] <
-                size[i][j - 1] * command[i][j - 1]
-              ) {
+              if ((size[i][j] * command[i][j] < size[i][j - 1] * command[i][j - 1]) && ((iter + command[i][j]) <= P)) {
                 size[i][j]++;
                 iter = iter + command[i][j];
-                break chunkLoop;  
+                break chunkLoop;
               }
             }
           } else {
-            let min = size[i - 1][0]*HP[i - 1][0]
-            for (let k = 1; k <= 2; k++){
-              if(min > size[i - 1][k]*HP[i - 1][k]){
-                min = size[i - 1][k]*HP[i - 1][k]
+            let min = size[i - 1][0] * HP[i - 1][0];
+            for (let k = 1; k <= 2; k++) {
+              if (min > size[i - 1][k] * HP[i - 1][k]) {
+                min = size[i - 1][k] * HP[i - 1][k];
               }
             }
             if (min > (size[i][j] + 1) * HP[i][j]) {
