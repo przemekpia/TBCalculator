@@ -7,7 +7,7 @@ function App() {
 
   const rows = 7;
   const columns = 6;
-    
+
   let size = Array.from({ length: rows }, () => Array(columns).fill(0));
   let HPTotal = Array.from({ length: rows }, () => Array(columns).fill(0));
 
@@ -116,61 +116,60 @@ function App() {
   };
 
   const setArmy = () => {
-    setW1(size[0][0])
-    setW2(size[1][0])
-    setW3(size[2][0])
-    setW4(size[3][0])
-    setW5(size[4][0])
-    setW6(size[5][0])
-    setW7(size[6][0])
+    setW1(size[0][0]);
+    setW2(size[1][0]);
+    setW3(size[2][0]);
+    setW4(size[3][0]);
+    setW5(size[4][0]);
+    setW6(size[5][0]);
+    setW7(size[6][0]);
 
-    setŁ1(size[0][1])
-    setŁ2(size[1][1])
-    setŁ3(size[2][1])
-    setŁ4(size[3][1])
-    setŁ5(size[4][1])
-    setŁ6(size[5][1])
-    setŁ7(size[6][1])
+    setŁ1(size[0][1]);
+    setŁ2(size[1][1]);
+    setŁ3(size[2][1]);
+    setŁ4(size[3][1]);
+    setŁ5(size[4][1]);
+    setŁ6(size[5][1]);
+    setŁ7(size[6][1]);
 
-    setJ1(size[0][2])
-    setJ2(size[1][2])
-    setJ3(size[2][2])
-    setJ4(size[3][2])
-    setJ5(size[4][2])
-    setJ6(size[5][2])
-    setJ7(size[6][2])
+    setJ1(size[0][2]);
+    setJ2(size[1][2]);
+    setJ3(size[2][2]);
+    setJ4(size[3][2]);
+    setJ5(size[4][2]);
+    setJ6(size[5][2]);
+    setJ7(size[6][2]);
 
-    setG5(size[0][3])
-    setG6(size[1][3])
-    setG7(size[2][3])
+    setG5(size[0][3]);
+    setG6(size[1][3]);
+    setG7(size[2][3]);
 
-    setR1(size[0][4])
-    setR2(size[1][4])
-    setR3(size[2][4])
-    setR4(size[3][4])
-    setR5(size[4][4])
-    setR6(size[5][4])
-    setR7(size[6][4])
+    setR1(size[0][4]);
+    setR2(size[1][4]);
+    setR3(size[2][4]);
+    setR4(size[3][4]);
+    setR5(size[4][4]);
+    setR6(size[5][4]);
+    setR7(size[6][4]);
 
-    setN1(size[0][5])
-    setN2(size[1][5])
-    setN3(size[2][5])
-    setN4(size[3][5])
-    setN5(size[4][5])
-    setN6(size[5][5])
-    setN7(size[6][5])
-
+    setN1(size[0][5]);
+    setN2(size[1][5]);
+    setN3(size[2][5]);
+    setN4(size[3][5]);
+    setN5(size[4][5]);
+    setN6(size[5][5]);
+    setN7(size[6][5]);
   };
 
   const calculateArmy = () => {
     resetArmy();
-    calculateOnlyGuardsmen();
+    //calculateOnlyGuardsmen();
+    calculateGuardsmenAndKnights();
   };
 
-
   const calculateOnlyGuardsmen = () => {
-    let lowG = ZGB - 1
-    let highG = ZGL - 1
+    let lowG = ZGB - 1;
+    let highG = ZGL - 1;
 
     //console.log(lowG)
     //console.log(highG)
@@ -185,14 +184,17 @@ function App() {
               iter = iter + command[i][j];
               break chunkLoop;
             } else {
-              if (size[i][j]*command[i][j] < size[i][j - 1]*command[i][j- 1]) {
+              if (
+                size[i][j] * command[i][j] <
+                size[i][j - 1] * command[i][j - 1]
+              ) {
                 size[i][j]++;
                 iter = iter + command[i][j];
                 break chunkLoop;
               }
             }
           } else {
-            if (size[i - 1][j] * HP[i - 1][j] > ((size[i][j] + 1) * HP[i][j]) ) {
+            if (size[i - 1][j] * HP[i - 1][j] > (size[i][j] + 1) * HP[i][j]) {
               size[i][j]++;
               iter = iter + command[i][j];
               break chunkLoop;
@@ -201,14 +203,86 @@ function App() {
         }
       }
     }
-    for (let i = 0 ; i < rows; i++) {
-      for (let j = 0 ; j < columns; j++) {
-        HPTotal [i][j] = size [i][j] * HP[i][j]
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < columns; j++) {
+        HPTotal[i][j] = size[i][j] * HP[i][j];
       }
     }
-    
+
     //console.log(size);
     //console.log(HPTotal);
+    setArmy();
+  };
+
+  const calculateGuardsmenAndKnights = () => {
+    let lowG = ZGB - 1;
+    let highG = ZGL - 1;
+
+    let lowR = ZRB - 1;
+    let highR = ZRL - 1;
+
+    console.log(lowR);
+    console.log(highR);
+
+    const ratio = (BG / 100 + 1) / (BR / 100 + 1);
+
+    let iter = 0;
+    while (iter < P) {
+      chunkLoop: for (let i = highG; i >= lowG; i--) {
+        for (let j = 4; j >= 0; j--) {
+          if (j === 3) {
+          } else {
+            if (j === 4) {
+              if (lowR <= i && i <= highR) {
+                if (size[i][j] * HP[i][j] < size[i][0] * HP[i][0] * ratio) {
+                  size[i][j]++;
+                  iter = iter + command[i][j];
+                  break chunkLoop;
+                }
+              }
+            } else {
+              if (i === lowG) {
+                if (j === 0) {
+                  size[i][j]++;
+                  iter = iter + command[i][j];
+                  break chunkLoop;
+                } else {
+                  if (
+                    size[i][j] * command[i][j] <
+                    size[i][j - 1] * command[i][j - 1]
+                  ) {
+                    size[i][j]++;
+                    iter = iter + command[i][j];
+                    break chunkLoop;
+                  }
+                }
+              } else {
+                if (
+                  size[i - 1][j] * HP[i - 1][j] >
+                  (size[i][j] + 1) * HP[i][j]
+                ) {
+                  size[i][j]++;
+                  iter = iter + command[i][j];
+                  break chunkLoop;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < columns; j++) {
+        if (j === 4) {
+          HPTotal[i][j] = size[i][j] * HP[i][j];
+        } else {
+          HPTotal[i][j] = Math.round(size[i][j] * HP[i][j] * ratio);
+        }
+      }
+    }
+
+    console.log(size);
+    console.log(HPTotal);
     setArmy();
   };
 
