@@ -69,31 +69,66 @@ function App() {
     const [GKG, setGKG] = useState(false);
 
     const handleZGBInputChange = (event) => {
-        setZGB(parseInt(event.target.value));
+        let tmp = parseInt(event.target.value);
+        if (!isNaN(tmp)) {
+            setZGB(tmp);
+        } else {
+            setZGB("");
+        }
     };
 
     const handleZGLInputChange = (event) => {
-        setZGL(parseInt(event.target.value));
+        let tmp = parseInt(event.target.value);
+        if (!isNaN(tmp)) {
+            setZGL(tmp);
+        } else {
+            setZGL("");
+        }
     };
 
     const handleZRBInputChange = (event) => {
-        setZRB(parseInt(event.target.value));
+        let tmp = parseInt(event.target.value);
+        if (!isNaN(tmp)) {
+            setZRB(tmp);
+        } else {
+            setZRB("");
+        }
     };
 
     const handleZRLInputChange = (event) => {
-        setZRL(parseInt(event.target.value));
+        let tmp = parseInt(event.target.value);
+        if (!isNaN(tmp)) {
+            setZRL(tmp);
+        } else {
+            setZRL("");
+        }
     };
 
     const handlePInputChange = (event) => {
-        setP(parseInt(event.target.value));
+        let tmp = parseInt(event.target.value);
+        if (!isNaN(tmp)) {
+            setP(tmp);
+        } else {
+            setP("");
+        }
     };
 
     const handleBGInputChange = (event) => {
-        setBG(parseInt(event.target.value));
+        let tmp = parseInt(event.target.value);
+        if (!isNaN(tmp)) {
+            setBG(tmp);
+        } else {
+            setBG("");
+        }
     };
 
     const handleBRInputChange = (event) => {
-        setBR(parseInt(event.target.value));
+        let tmp = parseInt(event.target.value);
+        if (!isNaN(tmp)) {
+            setBR(tmp);
+        } else {
+            setBR("");
+        }
     };
 
     const handleCheckboxChange = (event) => {
@@ -284,7 +319,7 @@ function App() {
                                             min = size[0][k] * HP[0][k];
                                         }
                                     }
-                                    if (min * ratio > size[0][4] * HP[0][4] ) {
+                                    if (min * ratio > size[0][4] * HP[0][4]) {
                                         size[0][4]++;
                                         iter = iter + command[0][4];
                                         break chunkLoop;
@@ -299,7 +334,10 @@ function App() {
                                             min = size[i - 1][k] * HP[i - 1][k];
                                         }
                                     }
-                                    if (min * ratio > size[i][j] * HP[i][j] * key) {
+                                    if (
+                                        min * ratio >
+                                        size[i][j] * HP[i][j] * key
+                                    ) {
                                         size[i][j]++;
                                         iter = iter + command[i][j];
                                         break chunkLoop;
