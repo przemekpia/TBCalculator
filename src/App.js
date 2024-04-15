@@ -97,7 +97,29 @@ function App() {
     };
 
     const handleCheckboxChange = (event) => {
-      //setBR(parseInt(event.target.value));
+      console.log(event.name)
+      if(event.target.name==="G"){
+        setG(true);
+        setGK(false);
+        setGG(false);
+        setGKG(false);
+      }
+      else if(event.target.name==="GK"){
+        setG(false);
+        setGK(true);
+        setGG(false);
+        setGKG(false);
+      }else if(event.target.name==="GG") {
+        setG(false);
+        setGK(false);
+        setGG(true);
+        setGKG(false);
+      }else{
+        setG(false);
+        setGK(false);
+        setGG(false);
+        setGKG(true);
+      }
   };
 
     const HP = [
@@ -382,7 +404,7 @@ function App() {
                 </table>
             </div>
             <div>
-                <input type="checkbox" checked={G} onChange={handleCheckboxChange}></input> Gwardziści <input type="checkbox" checked={GK} onChange={handleCheckboxChange}></input> Gwardziści + Rycerze <input type="checkbox" checked={GG} onChange={handleCheckboxChange}></input> Gwardziści + Gryfy <input type="checkbox" value={GKG} onChange={handleCheckboxChange}></input> Gwardziści + Rycerze + Gryfy 
+                <input type="checkbox" name="G" checked={G} onChange={handleCheckboxChange}></input> Gwardziści <input type="checkbox" name="GK" checked={GK} onChange={handleCheckboxChange}></input> Gwardziści + Rycerze <input type="checkbox" name="GG" checked={GG} onChange={handleCheckboxChange}></input> Gwardziści + Gryfy <input type="checkbox" name="GKG" checked={GKG} onChange={handleCheckboxChange}></input> Gwardziści + Rycerze + Gryfy 
             </div>
             <div>
                 <button onClick={calculateArmy}>Oblicz</button>
