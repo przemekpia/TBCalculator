@@ -97,30 +97,29 @@ function App() {
     };
 
     const handleCheckboxChange = (event) => {
-      console.log(event.name)
-      if(event.target.name==="G"){
-        setG(true);
-        setGK(false);
-        setGG(false);
-        setGKG(false);
-      }
-      else if(event.target.name==="GK"){
-        setG(false);
-        setGK(true);
-        setGG(false);
-        setGKG(false);
-      }else if(event.target.name==="GG") {
-        setG(false);
-        setGK(false);
-        setGG(true);
-        setGKG(false);
-      }else{
-        setG(false);
-        setGK(false);
-        setGG(false);
-        setGKG(true);
-      }
-  };
+        console.log(event.name);
+        if (event.target.name === "G") {
+            setG(true);
+            setGK(false);
+            setGG(false);
+            setGKG(false);
+        } else if (event.target.name === "GK") {
+            setG(false);
+            setGK(true);
+            setGG(false);
+            setGKG(false);
+        } else if (event.target.name === "GG") {
+            setG(false);
+            setGK(false);
+            setGG(true);
+            setGKG(false);
+        } else {
+            setG(false);
+            setGK(false);
+            setGG(false);
+            setGKG(true);
+        }
+    };
 
     const HP = [
         [150, 150, 300, 0, 150],
@@ -194,8 +193,14 @@ function App() {
 
     const calculateArmy = () => {
         resetArmy();
-        calculateOnlyGuardsmen();
-        //calculateGuardsmenAndKnights();
+        if (G) {
+            calculateOnlyGuardsmen();
+        } else if (GK) {
+            calculateGuardsmenAndKnights();
+        } else if (GG) {
+        } else if (GKG) {
+        } else {
+        }
     };
 
     const calculateOnlyGuardsmen = () => {
@@ -272,13 +277,33 @@ function App() {
                     } else {
                         if (j === 4) {
                             if (lowR <= i && i <= highR) {
-                                if (
-                                    size[i][j] * HP[i][j] <
-                                    size[i][0] * HP[i][0] * ratio
-                                ) {
-                                    size[i][j]++;
-                                    iter = iter + command[i][j];
-                                    break chunkLoop;
+                                if (i === 0) {
+                                    let min = size[0][0] * HP[0][0];
+                                    for (let k = 1; k <= 2; k++) {
+                                        if (min > size[0][k] * HP[0][k]) {
+                                            min = size[0][k] * HP[0][k];
+                                        }
+                                    }
+                                    if (min * ratio > size[0][4] * HP[0][4] ) {
+                                        size[0][4]++;
+                                        iter = iter + command[0][4];
+                                        break chunkLoop;
+                                    }
+                                } else {
+                                    let min = size[i - 1][0] * HP[i - 1][0];
+                                    for (let k = 1; k <= 2; k++) {
+                                        if (
+                                            min >
+                                            size[i - 1][k] * HP[i - 1][k]
+                                        ) {
+                                            min = size[i - 1][k] * HP[i - 1][k];
+                                        }
+                                    }
+                                    if (min * ratio > size[i][j] * HP[i][j] * key) {
+                                        size[i][j]++;
+                                        iter = iter + command[i][j];
+                                        break chunkLoop;
+                                    }
                                 }
                             }
                         } else {
@@ -290,7 +315,9 @@ function App() {
                                 } else {
                                     if (
                                         size[i][j] * command[i][j] <
-                                        size[i][j - 1] * command[i][j - 1]
+                                            size[i][j - 1] *
+                                                command[i][j - 1] &&
+                                        iter + command[i][j] <= P
                                     ) {
                                         size[i][j]++;
                                         iter = iter + command[i][j];
@@ -298,10 +325,13 @@ function App() {
                                     }
                                 }
                             } else {
-                                if (
-                                    size[i - 1][j] * HP[i - 1][j] >
-                                    (size[i][j] + 1) * HP[i][j]
-                                ) {
+                                let min = size[i - 1][0] * HP[i - 1][0];
+                                for (let k = 1; k <= 2; k++) {
+                                    if (min > size[i - 1][k] * HP[i - 1][k]) {
+                                        min = size[i - 1][k] * HP[i - 1][k];
+                                    }
+                                }
+                                if (min > (size[i][j] + 1) * HP[i][j] * key) {
                                     size[i][j]++;
                                     iter = iter + command[i][j];
                                     break chunkLoop;
@@ -404,7 +434,34 @@ function App() {
                 </table>
             </div>
             <div>
-                <input type="checkbox" name="G" checked={G} onChange={handleCheckboxChange}></input> Gwardziści <input type="checkbox" name="GK" checked={GK} onChange={handleCheckboxChange}></input> Gwardziści + Rycerze <input type="checkbox" name="GG" checked={GG} onChange={handleCheckboxChange}></input> Gwardziści + Gryfy <input type="checkbox" name="GKG" checked={GKG} onChange={handleCheckboxChange}></input> Gwardziści + Rycerze + Gryfy 
+                <input
+                    type="checkbox"
+                    name="G"
+                    checked={G}
+                    onChange={handleCheckboxChange}
+                ></input>{" "}
+                Gwardziści{" "}
+                <input
+                    type="checkbox"
+                    name="GK"
+                    checked={GK}
+                    onChange={handleCheckboxChange}
+                ></input>{" "}
+                Gwardziści + Rycerze{" "}
+                <input
+                    type="checkbox"
+                    name="GG"
+                    checked={GG}
+                    onChange={handleCheckboxChange}
+                ></input>{" "}
+                Gwardziści + Gryfy{" "}
+                <input
+                    type="checkbox"
+                    name="GKG"
+                    checked={GKG}
+                    onChange={handleCheckboxChange}
+                ></input>{" "}
+                Gwardziści + Rycerze + Gryfy
             </div>
             <div>
                 <button onClick={calculateArmy}>Oblicz</button>
