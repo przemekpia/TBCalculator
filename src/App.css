@@ -57,11 +57,26 @@ th {
   justify-content: center;
 }
 
+.shortTable {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
 .App {
   background-color: black;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   color: white;
+}
+
+.columnName {
+  width: 45vw;
+}
+.columnNumber {
+  width: 45vw;
 }
 
 @media only screen and (max-width: 768px) {
@@ -82,6 +97,9 @@ th {
   }
   .fullTable {
     display: none;
+  }
+  .shortTable {
+    display: flex;
   }
 }
 
