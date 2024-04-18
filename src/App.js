@@ -432,7 +432,7 @@ function App() {
         <table>
           <tbody>
             <tr>
-              <th style={{width:"40vw"}}>Zakres gwardzistów:</th>
+              <th style={{ width: "40vw" }}>Zakres gwardzistów:</th>
               <th>
                 <input value={ZGB} onChange={handleZGBInputChange}></input>
               </th>
@@ -455,12 +455,14 @@ function App() {
               <th>
                 <input value={ZRL} onChange={handleZRLInputChange}></input>
               </th>
-              </tr>
-              <tr><th>Bonus rycerzy:</th>
+            </tr>
+            <tr>
+              <th>Bonus rycerzy:</th>
               <th>
                 <input value={BR} onChange={handleBRInputChange}></input>
-              </th></tr>
-              
+              </th>
+            </tr>
+
             <tr>
               <th>Pojemnosc:</th>
               <th>
@@ -470,7 +472,7 @@ function App() {
           </tbody>
         </table>
       </div>
-      <div>
+      <div className="checkboxDesktop">
         <input
           type="checkbox"
           name="G"
@@ -499,6 +501,56 @@ function App() {
           onChange={handleCheckboxChange}
         ></input>{" "}
         Gwardziści + Rycerze + Gryfy
+      </div>
+      <div className="checkboxMobile">
+        <table>
+          <tbody>
+            <tr>
+              <th style={{ width: "5vw" }}>
+                <input
+                  type="checkbox"
+                  name="G"
+                  checked={G}
+                  onChange={handleCheckboxChange}
+                ></input>
+              </th>
+              <th style={{ width: "50vw", textAlign: "left"}}>Gwardziści</th>
+            </tr>
+            <tr>
+              <th>
+                <input
+                  type="checkbox"
+                  name="GK"
+                  checked={GK}
+                  onChange={handleCheckboxChange}
+                ></input>
+              </th>
+              <th style={{ width: "50vw", textAlign: "left"}}>Gwardziści + Rycerze</th>
+            </tr>
+            <tr>
+              <th>
+                <input
+                  type="checkbox"
+                  name="GG"
+                  checked={GG}
+                  onChange={handleCheckboxChange}
+                ></input>
+              </th>
+              <th style={{ width: "50vw", textAlign: "left"}}>Gwardziści + Gryfy</th>
+            </tr>
+            <tr>
+              <th>
+                <input
+                  type="checkbox"
+                  name="GKG"
+                  checked={GKG}
+                  onChange={handleCheckboxChange}
+                ></input>
+              </th>
+              <th style={{ width: "50vw", textAlign: "left"}}>Gwardziści + Rycerze + Gryfy</th>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div>
         <button onClick={calculateArmy}>Oblicz</button>

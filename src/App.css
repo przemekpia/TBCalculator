@@ -45,6 +45,12 @@ th {
   justify-content: center;
 }
 
+.checkboxMobile{
+  display: none;
+  align-items: center;
+  justify-content: center; 
+}
+
 .App {
   background-color: black;
   height: 100vh;
@@ -61,6 +67,12 @@ th {
   }
   input {
     width: 20vw;
+  }
+  .checkboxDesktop{
+    display: none;
+  }
+  .checkboxMobile{
+    display: flex;
   }
 }
 
