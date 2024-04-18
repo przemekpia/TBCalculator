@@ -32,8 +32,37 @@ th {
   width: 10vw;
   height: 5vh;
 }
+.inputDesktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15vh;
+}
 
+.inputMobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
 
+.App {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .inputDesktop {
+    display: none;
+  }
+  .inputMobile {
+    display: flex;
+  }
+  input {
+    width: 20vw;
+  }
+}
 
 @keyframes App-logo-spin {
   from {
