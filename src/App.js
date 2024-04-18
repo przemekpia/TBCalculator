@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import ShortTableUnit from "./components/ShortTableUnit";
 
 function App() {
   const key = 1.03;
@@ -679,314 +680,187 @@ function App() {
       <div className="shortTable">
         <table>
           <tbody>
-          {J7 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#cb8700",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Jeździec VII</th>
-                <th className="columnNumber">{J7}</th>
-              </tr>
-            ) : null}
-            {J6 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#d20c0b",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Jeździec VI</th>
-                <th className="columnNumber">{J6}</th>
-              </tr>
-            ) : null}
-            {Ł7 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#cb8700",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Łucznik VII</th>
-                <th className="columnNumber">{Ł7}</th>
-              </tr>
-            ) : null}
-            {W7 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#cb8700",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Włócznik VII</th>
-                <th className="columnNumber">{W7}</th>
-              </tr>
-            ) : null}
-            {R7 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#cb8700",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Rycerz VII</th>
-                <th className="columnNumber">{R7}</th>
-              </tr>
-            ) : null}
-            {J5 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#a43700",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Jeździec V</th>
-                <th className="columnNumber">{J5}</th>
-              </tr>
-            ) : null}
-            {Ł6 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#d20c0b",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Łucznik VI</th>
-                <th className="columnNumber">{Ł6}</th>
-              </tr>
-            ) : null}
-            {W6 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#d20c0b",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Włócznik VI</th>
-                <th className="columnNumber">{W6}</th>
-              </tr>
-            ) : null}
-            {R6 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#d20c0b",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Rycerz VI</th>
-                <th className="columnNumber">{R6}</th>
-              </tr>
-            ) : null}
-            {J4 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#470b85",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Jeździec IV</th>
-                <th className="columnNumber">{J4}</th>
-              </tr>
-            ) : null}
-            {Ł5 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#a43700",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Łucznik V</th>
-                <th className="columnNumber">{Ł5}</th>
-              </tr>
-            ) : null}
-            {W5 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#a43700",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Włócznik V</th>
-                <th className="columnNumber">{W5}</th>
-              </tr>
-            ) : null}
-            {R5 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#a43700",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Rycerz V</th>
-                <th className="columnNumber">{R5}</th>
-              </tr>
-            ) : null}
-            {J3 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#005b8f",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Jeździec III</th>
-                <th className="columnNumber">{J3}</th>
-              </tr>
-            ) : null}
-            {Ł4 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#470b85",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Łucznik IV</th>
-                <th className="columnNumber">{Ł4}</th>
-              </tr>
-            ) : null}
-            {W4 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#470b85",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Włócznik IV</th>
-                <th className="columnNumber">{W4}</th>
-              </tr>
-            ) : null}
-            {R4 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#470b85",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Rycerz IV</th>
-                <th className="columnNumber">{R4}</th>
-              </tr>
-            ) : null}
-            {J2 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#416b00",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Jeździec II</th>
-                <th className="columnNumber">{J2}</th>
-              </tr>
-            ) : null}
-            {Ł3 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#005b8f",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Łucznik III</th>
-                <th className="columnNumber">{Ł3}</th>
-              </tr>
-            ) : null}
-            {W3 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#005b8f",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Włócznik III</th>
-                <th className="columnNumber">{W3}</th>
-              </tr>
-            ) : null}
-            {R3 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#005b8f",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Rycerz III</th>
-                <th className="columnNumber">{R3}</th>
-              </tr>
-            ) : null}
-            {J1 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#d6cbb7",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Jeździec I</th>
-                <th className="columnNumber">{J1}</th>
-              </tr>
-            ) : null}
-            {Ł2 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#416b00",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Łucznik II</th>
-                <th className="columnNumber">{Ł2}</th>
-              </tr>
-            ) : null}
-            {W2 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#416b00",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Włócznik II</th>
-                <th className="columnNumber">{W2}</th>
-              </tr>
-            ) : null}
-            {R2 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#416b00",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Rycerz II</th>
-                <th className="columnNumber">{R2}</th>
-              </tr>
-            ) : null}
-            {Ł1 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#d6cbb7",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Łucznik I</th>
-                <th className="columnNumber">{Ł1}</th>
-              </tr>
-            ) : null}
-            {W1 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#d6cbb7",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Włócznik I</th>
-                <th className="columnNumber">{W1}</th>
-              </tr>
-            ) : null}
-            {R1 !== 0 ? (
-              <tr
-                style={{
-                  backgroundColor: "#d6cbb7",
-                  color: "black",
-                }}
-              >
-                <th className="columnName">Rycerz I</th>
-                <th className="columnNumber">{R1}</th>
-              </tr>
-            ) : null}
+            <ShortTableUnit
+              unitCount={J7}
+              unitName="Jeździec VII"
+              bColor="#cb8700"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={J6}
+              unitName="Jeździec VI"
+              bColor="#d20c0b"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={Ł7}
+              unitName="Łucznik VII"
+              bColor="#cb8700"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={W7}
+              unitName="Włócznik VII"
+              bColor="#cb8700"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={R7}
+              unitName="Rycerz VII"
+              bColor="#cb8700"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={J5}
+              unitName="Jeździec V"
+              bColor="#a43700"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={Ł6}
+              unitName="Łucznik VI"
+              bColor="#d20c0b"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={R6}
+              unitName="Rycerz VI"
+              bColor="#d20c0b"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={J4}
+              unitName="Jeździec IV"
+              bColor="#470b85"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={Ł5}
+              unitName="Łucznik V"
+              bColor="#a43700"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={W5}
+              unitName="Włócznik V"
+              bColor="#a43700"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={R5}
+              unitName="Rycerz V"
+              bColor="#a43700"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={J3}
+              unitName="Jeździec III"
+              bColor="#005b8f"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={Ł4}
+              unitName="Łucznik IV"
+              bColor="#470b85"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={W4}
+              unitName="Włócznik IV"
+              bColor="#470b85"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={R4}
+              unitName="Rycerz IV"
+              bColor="#470b85"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={J2}
+              unitName="Jeździec II"
+              bColor="#416b00"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={Ł3}
+              unitName="Łucznik III"
+              bColor="#005b8f"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={W3}
+              unitName="Włócznik III"
+              bColor="#005b8f"
+              color="black"
+            />
+
+            <ShortTableUnit
+              unitCount={R3}
+              unitName="Rycerz III"
+              bColor="#005b8f"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={J1}
+              unitName="Jeździec I"
+              bColor="#d6cbb7"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={Ł2}
+              unitName="Łucznik II"
+              bColor="#416b00"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={W2}
+              unitName="Włócznik II"
+              bColor="#416b00"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={R2}
+              unitName="Rycerz II"
+              bColor="#416b00"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={Ł1}
+              unitName="Łucznik I"
+              bColor="#d6cbb7"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={W1}
+              unitName="Włócznik I"
+              bColor="#d6cbb7"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={R1}
+              unitName="Rycerz I"
+              bColor="#d6cbb7"
+              color="black"
+            />
           </tbody>
         </table>
       </div>
