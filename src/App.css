@@ -45,10 +45,16 @@ th {
   justify-content: center;
 }
 
-.checkboxMobile{
+.checkboxMobile {
   display: none;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
+}
+
+.fullTable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App {
@@ -68,11 +74,14 @@ th {
   input {
     width: 20vw;
   }
-  .checkboxDesktop{
+  .checkboxDesktop {
     display: none;
   }
-  .checkboxMobile{
+  .checkboxMobile {
     display: flex;
+  }
+  .fullTable {
+    display: none;
   }
 }
 

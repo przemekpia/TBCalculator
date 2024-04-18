@@ -514,7 +514,7 @@ function App() {
                   onChange={handleCheckboxChange}
                 ></input>
               </th>
-              <th style={{ width: "50vw", textAlign: "left"}}>Gwardziści</th>
+              <th style={{ width: "50vw", textAlign: "left" }}>Gwardziści</th>
             </tr>
             <tr>
               <th>
@@ -525,7 +525,9 @@ function App() {
                   onChange={handleCheckboxChange}
                 ></input>
               </th>
-              <th style={{ width: "50vw", textAlign: "left"}}>Gwardziści + Rycerze</th>
+              <th style={{ width: "50vw", textAlign: "left" }}>
+                Gwardziści + Rycerze
+              </th>
             </tr>
             <tr>
               <th>
@@ -536,7 +538,9 @@ function App() {
                   onChange={handleCheckboxChange}
                 ></input>
               </th>
-              <th style={{ width: "50vw", textAlign: "left"}}>Gwardziści + Gryfy</th>
+              <th style={{ width: "50vw", textAlign: "left" }}>
+                Gwardziści + Gryfy
+              </th>
             </tr>
             <tr>
               <th>
@@ -547,7 +551,9 @@ function App() {
                   onChange={handleCheckboxChange}
                 ></input>
               </th>
-              <th style={{ width: "50vw", textAlign: "left"}}>Gwardziści + Rycerze + Gryfy</th>
+              <th style={{ width: "50vw", textAlign: "left" }}>
+                Gwardziści + Rycerze + Gryfy
+              </th>
             </tr>
           </tbody>
         </table>
@@ -556,11 +562,7 @@ function App() {
         <button onClick={calculateArmy}>Oblicz</button>
       </div>
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        className="fullTable"
       >
         <table>
           <thead>
