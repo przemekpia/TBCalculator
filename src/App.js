@@ -300,8 +300,8 @@ function App() {
     let lowR = ZRB - 1;
     let highR = ZRL - 1;
 
-    console.log(lowR);
-    console.log(highR);
+    //console.log(lowR);
+    //console.log(highR);
 
     const ratio = (BG / 100 + 1) / (BR / 100 + 1);
 
@@ -313,16 +313,16 @@ function App() {
           } else {
             if (j === 4) {
               if (lowR <= i && i <= highR) {
-                if (i === 0) {
-                  let min = size[0][0] * HP[0][0];
+                if (i === lowR) {
+                  let min = size[lowR][0] * HP[lowR][0];
                   for (let k = 1; k <= 2; k++) {
-                    if (min > size[0][k] * HP[0][k]) {
-                      min = size[0][k] * HP[0][k];
+                    if (min > size[lowR][k] * HP[lowR][k]) {
+                      min = size[lowR][k] * HP[lowR][k];
                     }
                   }
-                  if (min * ratio > size[0][4] * HP[0][4]) {
-                    size[0][4]++;
-                    iter = iter + command[0][4];
+                  if (min * ratio > size[lowR][4] * HP[lowR][4]) {
+                    size[lowR][4]++;
+                    iter = iter + command[lowR][4];
                     break chunkLoop;
                   }
                 } else {
