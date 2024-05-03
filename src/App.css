@@ -60,7 +60,8 @@ th {
 .shortTable {
   padding-top: 2vh;
   padding-bottom: 2vh;
-  display: none;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }

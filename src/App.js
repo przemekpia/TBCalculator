@@ -48,10 +48,6 @@ function App() {
   const [R6, setR6] = useState(0);
   const [R7, setR7] = useState(0);
 
-  const [N1, setN1] = useState(0);
-  const [N2, setN2] = useState(0);
-  const [N3, setN3] = useState(0);
-  const [N4, setN4] = useState(0);
   const [N5, setN5] = useState(0);
   const [N6, setN6] = useState(0);
   const [N7, setN7] = useState(0);
@@ -188,22 +184,22 @@ function App() {
   };
 
   const HP = [
-    [150, 150, 300, 0, 150],
-    [270, 270, 540, 0, 270],
-    [480, 480, 960, 0, 480],
-    [870, 870, 1740, 0, 870],
-    [1560, 1560, 3150, 30000, 1560],
-    [2820, 2820, 5700, 57000, 2820],
-    [5100, 5100, 10200, 102000, 5100],
+    [150, 150, 300, 0, 150, 0],
+    [270, 270, 540, 0, 270, 0],
+    [480, 480, 960, 0, 480, 0],
+    [870, 870, 1740, 0, 870, 0],
+    [1560, 1560, 3150, 30000, 1560, 3150],
+    [2820, 2820, 5700, 57000, 2820, 6090],
+    [5100, 5100, 10200, 102000, 5100, 11220],
   ];
   const command = [
-    [1, 1, 2, 20, 1],
-    [1, 1, 2, 20, 1],
-    [1, 1, 2, 20, 1],
-    [1, 1, 2, 20, 1],
-    [1, 1, 2, 20, 1],
-    [1, 1, 2, 20, 1],
-    [1, 1, 2, 20, 1],
+    [1, 1, 2, 20, 1, 1],
+    [1, 1, 2, 20, 1, 1],
+    [1, 1, 2, 20, 1, 1],
+    [1, 1, 2, 20, 1, 1],
+    [1, 1, 2, 20, 1, 1],
+    [1, 1, 2, 20, 1, 1],
+    [1, 1, 2, 20, 1, 1],
   ];
 
   const resetArmy = () => {
@@ -248,10 +244,6 @@ function App() {
     setR6(size[5][4]);
     setR7(size[6][4]);
 
-    setN1(size[0][5]);
-    setN2(size[1][5]);
-    setN3(size[2][5]);
-    setN4(size[3][5]);
     setN5(size[4][5]);
     setN6(size[5][5]);
     setN7(size[6][5]);
@@ -267,6 +259,12 @@ function App() {
     } else if (GKG) {
     } else {
     }
+  };
+
+  const calculateMercenary = () => {
+    size[4][5] = Math.floor(size[ZGL-1][2] * HP[ZGL-1][2] / HP[4][5])
+    size[5][5] = Math.floor(size[ZGL-1][2] * HP[ZGL-1][2] / HP[5][5])
+    size[6][5] = Math.floor(size[ZGL-1][2] * HP[ZGL-1][2] / HP[6][5])
   };
 
   const calculateOnlyGuardsmen = () => {
@@ -318,8 +316,7 @@ function App() {
       }
     }
 
-    //console.log(size);
-    //console.log(HPTotal);
+    calculateMercenary();
     setArmy();
   };
 
@@ -414,8 +411,7 @@ function App() {
       }
     }
 
-    //console.log(size);
-    //console.log(HPTotal);
+    calculateMercenary();
     setArmy();
   };
 
@@ -647,7 +643,7 @@ function App() {
               <th>{J1}</th>
               <th></th>
               <th>{R1}</th>
-              <th>{N1}</th>
+              <th></th>
             </tr>
             <tr
               style={{
@@ -661,7 +657,7 @@ function App() {
               <th>{J2}</th>
               <th></th>
               <th>{R2}</th>
-              <th>{N2}</th>
+              <th></th>
             </tr>
             <tr
               style={{
@@ -675,7 +671,7 @@ function App() {
               <th>{J3}</th>
               <th></th>
               <th>{R3}</th>
-              <th>{N3}</th>
+              <th></th>
             </tr>
             <tr
               style={{
@@ -689,7 +685,7 @@ function App() {
               <th>{J4}</th>
               <th></th>
               <th>{R4}</th>
-              <th>{N4}</th>
+              <th></th>
             </tr>
             <tr
               style={{
@@ -737,6 +733,33 @@ function App() {
         </table>
       </div>
       <div className="shortTable">
+        <table style={{paddingBottom: "1vh"}}>
+          <tbody>
+          <ShortTableUnit
+              unitCount={N7}
+              unitName="Łowca Epickich Potworów VII"
+              bColor="#cb8700"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={N6}
+              unitName="Łowca Epickich Potworów VI"
+              bColor="#d20c0b"
+              color="black"
+            />
+            <ShortTableUnit
+              unitCount={N5}
+              unitName="Łowca Epickich Potworów V"
+              bColor="#a43700"
+              color="black"
+            />
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            
+          </tbody>
+        </table>
         <table>
           <tbody>
             <ShortTableUnit
