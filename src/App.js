@@ -60,9 +60,12 @@ function App() {
   const [ZGL, setZGL] = useState();
   const [ZRB, setZRB] = useState();
   const [ZRL, setZRL] = useState();
+  const [ZPB, setZPB] = useState();
+  const [ZPL, setZPL] = useState();
   const [P, setP] = useState();
   const [BG, setBG] = useState();
   const [BR, setBR] = useState();
+  const [BP, setBP] = useState();
 
   const [G, setG] = useState(true);
   const [GK, setGK] = useState(false);
@@ -105,6 +108,24 @@ function App() {
     }
   };
 
+  const handleZPBInputChange = (event) => {
+    let tmp = parseInt(event.target.value);
+    if (!isNaN(tmp)) {
+      setZPB(tmp);
+    } else {
+      setZPB("");
+    }
+  };
+
+  const handleZPLInputChange = (event) => {
+    let tmp = parseInt(event.target.value);
+    if (!isNaN(tmp)) {
+      setZPL(tmp);
+    } else {
+      setZPL("");
+    }
+  };
+
   const handlePInputChange = (event) => {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
@@ -129,6 +150,15 @@ function App() {
       setBR(tmp);
     } else {
       setBR("");
+    }
+  };
+
+  const handleBPInputChange = (event) => {
+    let tmp = parseInt(event.target.value);
+    if (!isNaN(tmp)) {
+      setBP(tmp);
+    } else {
+      setBP("");
     }
   };
 
@@ -384,8 +414,8 @@ function App() {
       }
     }
 
-    console.log(size);
-    console.log(HPTotal);
+    //console.log(size);
+    //console.log(HPTotal);
     setArmy();
   };
 
@@ -418,6 +448,19 @@ function App() {
               <th>Bonus rycerzy:</th>
               <th>
                 <input value={BR} onChange={handleBRInputChange}></input>
+              </th>
+            </tr>
+            <tr>
+              <th>Zakres potworów:</th>
+              <th>
+                <input value={ZPB} onChange={handleZPBInputChange}></input>
+              </th>
+              <th>
+                <input value={ZPL} onChange={handleZPLInputChange}></input>
+              </th>
+              <th>Bonus potworów:</th>
+              <th>
+                <input value={BP} onChange={handleBPInputChange}></input>
               </th>
             </tr>
             <tr>
@@ -461,6 +504,22 @@ function App() {
               <th>Bonus rycerzy:</th>
               <th>
                 <input value={BR} onChange={handleBRInputChange}></input>
+              </th>
+            </tr>
+
+            <tr>
+              <th>Zakres potworów:</th>
+              <th>
+                <input value={ZPB} onChange={handleZPBInputChange}></input>
+              </th>
+              <th>
+                <input value={ZPL} onChange={handleZPLInputChange}></input>
+              </th>
+            </tr>
+            <tr>
+              <th>Bonus potworów:</th>
+              <th>
+                <input value={BP} onChange={handleBPInputChange}></input>
               </th>
             </tr>
 
