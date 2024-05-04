@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 import ShortTableUnit from "./components/ShortTableUnit";
+import MonsterTable from "./components/MonsterTable";
 
 function App() {
   const key = 1.03;
@@ -11,6 +12,8 @@ function App() {
 
   let size = Array.from({ length: rows }, () => Array(columns).fill(0));
   let HPTotal = Array.from({ length: rows }, () => Array(columns).fill(0));
+
+  const [MaxHP, setMaxHP] = useState(0);
 
   const [W1, setW1] = useState(0);
   const [W2, setW2] = useState(0);
@@ -52,16 +55,16 @@ function App() {
   const [N6, setN6] = useState(0);
   const [N7, setN7] = useState(0);
 
-  const [ZGB, setZGB] = useState();
-  const [ZGL, setZGL] = useState();
-  const [ZRB, setZRB] = useState();
-  const [ZRL, setZRL] = useState();
-  const [ZPB, setZPB] = useState();
-  const [ZPL, setZPL] = useState();
-  const [P, setP] = useState();
-  const [BG, setBG] = useState();
-  const [BR, setBR] = useState();
-  const [BP, setBP] = useState();
+  const [ZGB, setZGB] = useState(0);
+  const [ZGL, setZGL] = useState(0);
+  const [ZRB, setZRB] = useState(0);
+  const [ZRL, setZRL] = useState(0);
+  const [ZPB, setZPB] = useState(0);
+  const [ZPL, setZPL] = useState(0);
+  const [P, setP] = useState(0);
+  const [BG, setBG] = useState(0);
+  const [BR, setBR] = useState(0);
+  const [BP, setBP] = useState(0);
 
   const [G, setG] = useState(true);
   const [GK, setGK] = useState(false);
@@ -262,9 +265,15 @@ function App() {
   };
 
   const calculateMercenary = () => {
-    size[4][5] = Math.floor(size[ZGL-1][2] * HP[ZGL-1][2] / HP[4][5])
-    size[5][5] = Math.floor(size[ZGL-1][2] * HP[ZGL-1][2] / HP[5][5])
-    size[6][5] = Math.floor(size[ZGL-1][2] * HP[ZGL-1][2] / HP[6][5])
+    calculateMaxHP();
+    size[4][5] = Math.floor(MaxHP / HP[4][5])
+    size[5][5] = Math.floor(MaxHP / HP[5][5])
+    size[6][5] = Math.floor(MaxHP / HP[6][5])
+  };
+
+  const calculateMaxHP = () => {
+    setMaxHP(size[ZGL-1][2] * HP[ZGL-1][2])
+    console.log(MaxHP)
   };
 
   const calculateOnlyGuardsmen = () => {
@@ -755,11 +764,7 @@ function App() {
             />
           </tbody>
         </table>
-        <table>
-          <tbody>
-            
-          </tbody>
-        </table>
+        <MonsterTable ZPB={ZPB} ZPL={ZPL} BG={BG} BP={BP} MaxHP={MaxHP}></MonsterTable>
         <table>
           <tbody>
             <ShortTableUnit
