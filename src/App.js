@@ -70,6 +70,8 @@ function App() {
   const [GK, setGK] = useState(false);
   const [GG, setGG] = useState(false);
   const [GKG, setGKG] = useState(false);
+  const [Mercenary, setMercenary] = useState(false);
+  const [Monsters, setMonsters] = useState(false);
 
   const handleZGBInputChange = (event) => {
     let tmp = parseInt(event.target.value);
@@ -186,6 +188,14 @@ function App() {
     }
   };
 
+  const handleMercenaryChange = (event) => {
+    setMercenary(!Mercenary);
+  };
+
+  const handleMonstersChange = (event) => {
+    setMonsters(!Monsters);
+  };
+
   const HP = [
     [150, 150, 300, 0, 150, 0],
     [270, 270, 540, 0, 270, 0],
@@ -272,8 +282,7 @@ function App() {
   };
 
   const calculateMaxHP = () => {
-    setMaxHP(prevMaxHP => size[ZGL-1][2] * HP[ZGL-1][2]);
-    console.log(MaxHP);
+    setMaxHP(size[ZGL - 1][2] * HP[ZGL - 1][2]);
   };
 
   const calculateOnlyGuardsmen = () => {
@@ -574,6 +583,30 @@ function App() {
               <th style={{ width: "5vw" }}>
                 <input
                   type="checkbox"
+                  name="Mercenary"
+                  checked={Mercenary}
+                  onChange={handleMercenaryChange}
+                ></input>
+              </th>
+              <th style={{ width: "50vw", textAlign: "left" }}>
+                Czy Najemnicy?
+              </th>
+            </tr>
+            <tr>
+              <th style={{ width: "5vw" }}>
+                <input
+                  type="checkbox"
+                  name="Monsters"
+                  checked={Monsters}
+                  onChange={handleMonstersChange}
+                ></input>
+              </th>
+              <th style={{ width: "50vw", textAlign: "left" }}>Czy Potwory?</th>
+            </tr>
+            <tr>
+              <th style={{ width: "5vw" }}>
+                <input
+                  type="checkbox"
                   name="G"
                   checked={G}
                   onChange={handleCheckboxChange}
@@ -742,35 +775,40 @@ function App() {
         </table>
       </div>
       <div className="shortTable">
-        <table style={{ paddingBottom: "1vh" }}>
-          <tbody>
-            <ShortTableUnit
-              unitCount={N7}
-              unitName="Łowca Epickich Potworów VII"
-              bColor="#cb8700"
-              color="black"
-            />
-            <ShortTableUnit
-              unitCount={N6}
-              unitName="Łowca Epickich Potworów VI"
-              bColor="#d20c0b"
-              color="black"
-            />
-            <ShortTableUnit
-              unitCount={N5}
-              unitName="Łowca Epickich Potworów V"
-              bColor="#a43700"
-              color="black"
-            />
-          </tbody>
-        </table>
-        <MonsterTable
-          ZPB={ZPB}
-          ZPL={ZPL}
-          BG={BG}
-          BP={BP}
-          MaxHP={MaxHP}
-        ></MonsterTable>
+        {Mercenary ? (
+          <table style={{ paddingBottom: "1vh" }}>
+            <tbody>
+              <ShortTableUnit
+                unitCount={N7}
+                unitName="Łowca Epickich Potworów VII"
+                bColor="#cb8700"
+                color="black"
+              />
+              <ShortTableUnit
+                unitCount={N6}
+                unitName="Łowca Epickich Potworów VI"
+                bColor="#d20c0b"
+                color="black"
+              />
+              <ShortTableUnit
+                unitCount={N5}
+                unitName="Łowca Epickich Potworów V"
+                bColor="#a43700"
+                color="black"
+              />
+            </tbody>
+          </table>
+        ) : null}
+        {Monsters ? (
+          <MonsterTable
+            ZPB={ZPB}
+            ZPL={ZPL}
+            BG={BG}
+            BP={BP}
+            MaxHP={MaxHP}
+          ></MonsterTable>
+        ) : null}
+
         <table>
           <tbody>
             <ShortTableUnit
