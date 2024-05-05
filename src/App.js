@@ -520,22 +520,25 @@ function App() {
                 <input value={BR} onChange={handleBRInputChange}></input>
               </th>
             </tr>
-
-            <tr>
-              <th>Zakres potworów:</th>
-              <th>
-                <input value={ZPB} onChange={handleZPBInputChange}></input>
-              </th>
-              <th>
-                <input value={ZPL} onChange={handleZPLInputChange}></input>
-              </th>
-            </tr>
-            <tr>
-              <th>Bonus potworów:</th>
-              <th>
-                <input value={BP} onChange={handleBPInputChange}></input>
-              </th>
-            </tr>
+            {Monsters && (
+              <>
+                <tr>
+                  <th>Zakres potworów:</th>
+                  <th>
+                    <input value={ZPB} onChange={handleZPBInputChange}></input>
+                  </th>
+                  <th>
+                    <input value={ZPL} onChange={handleZPLInputChange}></input>
+                  </th>
+                </tr>
+                <tr>
+                  <th>Bonus potworów:</th>
+                  <th>
+                    <input value={BP} onChange={handleBPInputChange}></input>
+                  </th>
+                </tr>
+              </>
+            )}
 
             <tr>
               <th>Pojemnosc:</th>
