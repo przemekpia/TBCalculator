@@ -3,6 +3,7 @@ import "./App.css";
 import { useState } from "react";
 import ShortTableUnit from "./components/ShortTableUnit";
 import MonsterTable from "./components/MonsterTable";
+import CustomButton from "./components/CustomButton";
 
 function App() {
   const key = 1.03;
@@ -660,7 +661,7 @@ function App() {
         </table>
       </div>
       <div>
-        <button onClick={calculateArmy}>Oblicz</button>
+        <CustomButton onClick={calculateArmy}>Oblicz</CustomButton>
       </div>
       <div className="fullTable">
         <table>
