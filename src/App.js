@@ -13,7 +13,7 @@ function App() {
 
   let size = Array.from({ length: rows }, () => Array(columns).fill(0));
   let HPTotal = Array.from({ length: rows }, () => Array(columns).fill(0));
-
+  
   const [MaxHP, setMaxHP] = useState(0);
 
   const [W1, setW1] = useState(0);
@@ -317,14 +317,16 @@ function App() {
   };
 
   const calculateMercenary = () => {
-    calculateMaxHP();
-    size[4][5] = Math.floor(MaxHP / HP[4][5]);
-    size[5][5] = Math.floor(MaxHP / HP[5][5]);
-    size[6][5] = Math.floor(MaxHP / HP[6][5]);
+    let tmp = calculateMaxHP();
+    //console.log({MaxHP})
+    size[4][5] = Math.floor(tmp / HP[4][5]);
+    size[5][5] = Math.floor(tmp / HP[5][5]);
+    size[6][5] = Math.floor(tmp / HP[6][5]);
   };
 
   const calculateMaxHP = () => {
     setMaxHP(size[ZGL - 1][2] * HP[ZGL - 1][2]);
+    return size[ZGL - 1][2] * HP[ZGL - 1][2]
   };
 
   const calculateOnlyGuardsmen = () => {
