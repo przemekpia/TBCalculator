@@ -9,7 +9,7 @@ const MonsterTierCombo = ({
   MonsterLvl,
   MaxHP,
   MonsterData,
-  bColor
+  bColor,
 }) => {
   const shouldRenderRow = ZPB <= MonsterLvl && MonsterLvl <= ZPL;
 

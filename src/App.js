@@ -266,14 +266,14 @@ function App() {
 
   const calculateMercenary = () => {
     calculateMaxHP();
-    size[4][5] = Math.floor(MaxHP / HP[4][5])
-    size[5][5] = Math.floor(MaxHP / HP[5][5])
-    size[6][5] = Math.floor(MaxHP / HP[6][5])
+    size[4][5] = Math.floor(MaxHP / HP[4][5]);
+    size[5][5] = Math.floor(MaxHP / HP[5][5]);
+    size[6][5] = Math.floor(MaxHP / HP[6][5]);
   };
 
   const calculateMaxHP = () => {
-    setMaxHP(size[ZGL-1][2] * HP[ZGL-1][2])
-    console.log(MaxHP)
+    setMaxHP(prevMaxHP => size[ZGL-1][2] * HP[ZGL-1][2]);
+    console.log(MaxHP);
   };
 
   const calculateOnlyGuardsmen = () => {
@@ -742,9 +742,9 @@ function App() {
         </table>
       </div>
       <div className="shortTable">
-        <table style={{paddingBottom: "1vh"}}>
+        <table style={{ paddingBottom: "1vh" }}>
           <tbody>
-          <ShortTableUnit
+            <ShortTableUnit
               unitCount={N7}
               unitName="Łowca Epickich Potworów VII"
               bColor="#cb8700"
@@ -764,7 +764,13 @@ function App() {
             />
           </tbody>
         </table>
-        <MonsterTable ZPB={ZPB} ZPL={ZPL} BG={BG} BP={BP} MaxHP={MaxHP}></MonsterTable>
+        <MonsterTable
+          ZPB={ZPB}
+          ZPL={ZPL}
+          BG={BG}
+          BP={BP}
+          MaxHP={MaxHP}
+        ></MonsterTable>
         <table>
           <tbody>
             <ShortTableUnit
