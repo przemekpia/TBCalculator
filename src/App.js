@@ -74,7 +74,12 @@ function App() {
   const [Mercenary, setMercenary] = useState(false);
   const [Monsters, setMonsters] = useState(false);
 
+  let ValidateGuards = false
+  let ValidateKnights = false
+  let ValidateMonsters = false
+
   const handleZGBInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZGB(tmp);
@@ -84,6 +89,7 @@ function App() {
   };
 
   const handleZGLInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZGL(tmp);
@@ -93,6 +99,7 @@ function App() {
   };
 
   const handleZRBInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZRB(tmp);
@@ -102,6 +109,7 @@ function App() {
   };
 
   const handleZRLInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZRL(tmp);
@@ -111,6 +119,7 @@ function App() {
   };
 
   const handleZPBInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZPB(tmp);
@@ -120,6 +129,7 @@ function App() {
   };
 
   const handleZPLInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZPL(tmp);
@@ -129,6 +139,7 @@ function App() {
   };
 
   const handlePInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setP(tmp);
@@ -138,6 +149,7 @@ function App() {
   };
 
   const handleBGInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setBG(tmp);
@@ -147,6 +159,7 @@ function App() {
   };
 
   const handleBRInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setBR(tmp);
@@ -156,6 +169,7 @@ function App() {
   };
 
   const handleBPInputChange = (event) => {
+    resetArmy();
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setBP(tmp);
@@ -165,7 +179,7 @@ function App() {
   };
 
   const handleCheckboxChange = (event) => {
-    console.log(event.name);
+    //console.log(event.name);
     if (event.target.name === "G") {
       setG(true);
       setGK(false);
@@ -190,10 +204,12 @@ function App() {
   };
 
   const handleMercenaryChange = (event) => {
+    resetArmy();
     setMercenary(!Mercenary);
   };
 
   const handleMonstersChange = (event) => {
+    resetArmy();
     setMonsters(!Monsters);
   };
 
@@ -219,6 +235,8 @@ function App() {
   const resetArmy = () => {
     size = Array.from({ length: rows }, () => Array(columns).fill(0));
     HPTotal = Array.from({ length: rows }, () => Array(columns).fill(0));
+    setArmy();
+    setMaxHP(0);
   };
 
   const setArmy = () => {
@@ -263,16 +281,39 @@ function App() {
     setN7(size[6][5]);
   };
 
+  const validateAll = () => {
+    if (ZGB<=ZGL && 1<=ZGB && ZGL<=8){
+      ValidateGuards = true
+    }else{
+      ValidateGuards = false
+    }
+
+    if (ZRB<=ZRL && 1<=ZRB && ZRL<=8){
+      ValidateKnights = true
+    }else{
+      ValidateKnights = false
+    }
+
+    if (ZPB<=ZPL && 3<=ZPB && ZPL<=7){
+      ValidateMonsters = true
+    }else{
+      ValidateMonsters = false
+    }
+  };
+
   const calculateArmy = () => {
     resetArmy();
-    if (G) {
+    validateAll();
+
+    if (G && ValidateGuards) {
       calculateOnlyGuardsmen();
-    } else if (GK) {
+    } else if (GK && ValidateGuards && ValidateKnights) {
       calculateGuardsmenAndKnights();
-    } else if (GG) {
-    } else if (GKG) {
+    } else if (GG && ValidateGuards) {
+    } else if (GKG && ValidateGuards && ValidateKnights) {
     } else {
     }
+
   };
 
   const calculateMercenary = () => {
