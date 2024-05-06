@@ -6,6 +6,7 @@ import MonsterTable from "./components/MonsterTable";
 import CustomButton from "./components/CustomButton";
 import DesktopInput from "./components/DesktopInput";
 import MobileInput from "./components/MobileInput";
+import DesktopCheckbox from "./components/DesktopCheckbox";
 
 function App() {
     const key = 1.03;
@@ -537,36 +538,13 @@ function App() {
                 Monsters={Monsters}
             ></MobileInput>
 
-            <div className="checkboxDesktop">
-                <input
-                    type="checkbox"
-                    name="G"
-                    checked={G}
-                    onChange={handleCheckboxChange}
-                ></input>{" "}
-                Gwardziści{" "}
-                <input
-                    type="checkbox"
-                    name="GK"
-                    checked={GK}
-                    onChange={handleCheckboxChange}
-                ></input>{" "}
-                Gwardziści + Rycerze{" "}
-                <input
-                    type="checkbox"
-                    name="GG"
-                    checked={GG}
-                    onChange={handleCheckboxChange}
-                ></input>{" "}
-                Gwardziści + Gryfy{" "}
-                <input
-                    type="checkbox"
-                    name="GKG"
-                    checked={GKG}
-                    onChange={handleCheckboxChange}
-                ></input>{" "}
-                Gwardziści + Rycerze + Gryfy
-            </div>
+            <DesktopCheckbox
+                G={G}
+                GK={GK}
+                GG={GG}
+                GKG={GKG}
+                handleCheckboxChange={handleCheckboxChange}
+            ></DesktopCheckbox>
             <div className="checkboxMobile">
                 <table>
                     <tbody>
