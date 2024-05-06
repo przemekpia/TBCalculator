@@ -5,6 +5,7 @@ import ShortTableUnit from "./components/ShortTableUnit";
 import MonsterTable from "./components/MonsterTable";
 import CustomButton from "./components/CustomButton";
 import DesktopInput from "./components/DesktopInput";
+import MobileInput from "./components/MobileInput";
 
 function App() {
     const key = 1.03;
@@ -511,101 +512,31 @@ function App() {
                 handleBPInputChange={handleBPInputChange}
                 handlePInputChange={handlePInputChange}
             ></DesktopInput>
-            <div className="inputMobile">
-                <table>
-                    <tbody>
-                        <tr>
-                            <th style={{ width: "40vw" }}>
-                                Zakres gwardzistów:
-                            </th>
-                            <th>
-                                <input
-                                    value={ZGB}
-                                    onChange={handleZGBInputChange}
-                                ></input>
-                            </th>
-                            <th>
-                                <input
-                                    value={ZGL}
-                                    onChange={handleZGLInputChange}
-                                ></input>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Bonus gwardzistów:</th>
-                            <th>
-                                <input
-                                    value={BG}
-                                    onChange={handleBGInputChange}
-                                ></input>
-                            </th>
-                        </tr>
 
-                        <tr>
-                            <th>Zakres rycerzy:</th>
-                            <th>
-                                <input
-                                    value={ZRB}
-                                    onChange={handleZRBInputChange}
-                                ></input>
-                            </th>
-                            <th>
-                                <input
-                                    value={ZRL}
-                                    onChange={handleZRLInputChange}
-                                ></input>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Bonus rycerzy:</th>
-                            <th>
-                                <input
-                                    value={BR}
-                                    onChange={handleBRInputChange}
-                                ></input>
-                            </th>
-                        </tr>
-                        {Monsters && (
-                            <>
-                                <tr>
-                                    <th>Zakres potworów:</th>
-                                    <th>
-                                        <input
-                                            value={ZPB}
-                                            onChange={handleZPBInputChange}
-                                        ></input>
-                                    </th>
-                                    <th>
-                                        <input
-                                            value={ZPL}
-                                            onChange={handleZPLInputChange}
-                                        ></input>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>Bonus potworów:</th>
-                                    <th>
-                                        <input
-                                            value={BP}
-                                            onChange={handleBPInputChange}
-                                        ></input>
-                                    </th>
-                                </tr>
-                            </>
-                        )}
+            <MobileInput
+                ZGB={ZGB}
+                ZGL={ZGL}
+                BG={BG}
+                ZRB={ZRB}
+                ZRL={ZRL}
+                BR={BR}
+                ZPB={ZPB}
+                ZPL={ZPL}
+                BP={BP}
+                P={P}
+                handleZGBInputChange={handleZGBInputChange}
+                handleZGLInputChange={handleZGLInputChange}
+                handleBGInputChange={handleBGInputChange}
+                handleZRBInputChange={handleZRBInputChange}
+                handleZRLInputChange={handleZRLInputChange}
+                handleBRInputChange={handleBRInputChange}
+                handleZPBInputChange={handleZPBInputChange}
+                handleZPLInputChange={handleZPLInputChange}
+                handleBPInputChange={handleBPInputChange}
+                handlePInputChange={handlePInputChange}
+                Monsters={Monsters}
+            ></MobileInput>
 
-                        <tr>
-                            <th>Pojemnosc:</th>
-                            <th>
-                                <input
-                                    value={P}
-                                    onChange={handlePInputChange}
-                                ></input>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
             <div className="checkboxDesktop">
                 <input
                     type="checkbox"
