@@ -485,7 +485,11 @@ function App() {
   return (
     <div className="App">
       <InstructionWidget></InstructionWidget>
-
+      <p style={{backgroundColor:"red"}}>
+        Opcje liczenia wykorzystujące gryfy nie jest aktualnie dostępna i
+        zostanie wprowadzona w niedalekiej przyszłości. Za problemy z tym
+        związane przepraszam
+      </p>
       <DesktopInput
         ZGB={ZGB}
         ZGL={ZGL}
@@ -594,7 +598,7 @@ function App() {
 
       <div className="shortTable">
         {Mercenary ? (
-          <table style={{ paddingBottom: "1vh"}}>
+          <table style={{ paddingBottom: "1vh" }}>
             <tbody>
               <ShortTableUnit
                 unitCount={N7}
