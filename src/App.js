@@ -594,7 +594,7 @@ function App() {
 
       <div className="shortTable">
         {Mercenary ? (
-          <table style={{ paddingBottom: "1vh" }}>
+          <table style={{ paddingBottom: "1vh"}}>
             <tbody>
               <ShortTableUnit
                 unitCount={N7}
