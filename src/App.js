@@ -62,16 +62,27 @@ function App() {
   const [N6, setN6] = useState(0);
   const [N7, setN7] = useState(0);
 
-  const [ZGB, setZGB] = useState(0);
-  const [ZGL, setZGL] = useState(0);
-  const [ZRB, setZRB] = useState(0);
-  const [ZRL, setZRL] = useState(0);
-  const [ZPB, setZPB] = useState(0);
-  const [ZPL, setZPL] = useState(0);
-  const [P, setP] = useState(0);
-  const [BG, setBG] = useState(0);
-  const [BR, setBR] = useState(0);
-  const [BP, setBP] = useState(0);
+  const savedZGB = localStorage.getItem('savedZGB');
+  const savedZGL = localStorage.getItem('savedZGL');
+  const savedZRB = localStorage.getItem('savedZRB');
+  const savedZRL = localStorage.getItem('savedZRL');
+  const savedZPB = localStorage.getItem('savedZPB');
+  const savedZPL = localStorage.getItem('savedZPL');
+  const savedP = localStorage.getItem('savedP');
+  const savedBG = localStorage.getItem('savedBG');
+  const savedBR = localStorage.getItem('savedBR');
+  const savedBP = localStorage.getItem('savedBP');
+
+  const [ZGB, setZGB] = useState(savedZGB!=null?savedZGB:0);
+  const [ZGL, setZGL] = useState(savedZGL!=null?savedZGL:0);
+  const [ZRB, setZRB] = useState(savedZRB!=null?savedZRB:0);
+  const [ZRL, setZRL] = useState(savedZRL!=null?savedZRL:0);
+  const [ZPB, setZPB] = useState(savedZPB!=null?savedZPB:0);
+  const [ZPL, setZPL] = useState(savedZPL!=null?savedZPL:0);
+  const [P, setP] = useState(savedP!=null?savedP:0);
+  const [BG, setBG] = useState(savedBG!=null?savedBG:0);
+  const [BR, setBR] = useState(savedBR!=null?savedBR:0);
+  const [BP, setBP] = useState(savedBP!=null?savedBP:0);
 
   const [G, setG] = useState(true);
   const [GK, setGK] = useState(false);
@@ -89,8 +100,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZGB(tmp);
+      localStorage.setItem('savedZGB', tmp)
     } else {
       setZGB("");
+      localStorage.setItem('savedZGB', null)
     }
   };
 
@@ -99,8 +112,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZGL(tmp);
+      localStorage.setItem('savedZGL', tmp)
     } else {
       setZGL("");
+      localStorage.setItem('savedZGL', null)
     }
   };
 
@@ -109,8 +124,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZRB(tmp);
+      localStorage.setItem('savedZRB', tmp)
     } else {
       setZRB("");
+      localStorage.setItem('savedZRB', null)
     }
   };
 
@@ -119,8 +136,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZRL(tmp);
+      localStorage.setItem('savedZRL', tmp)
     } else {
       setZRL("");
+      localStorage.setItem('savedZRL', null)
     }
   };
 
@@ -129,8 +148,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZPB(tmp);
+      localStorage.setItem('savedZPB', tmp)
     } else {
       setZPB("");
+      localStorage.setItem('savedZPB', null)
     }
   };
 
@@ -139,8 +160,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setZPL(tmp);
+      localStorage.setItem('savedZPL', tmp)
     } else {
       setZPL("");
+      localStorage.setItem('savedZPL', null)
     }
   };
 
@@ -149,8 +172,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setP(tmp);
+      localStorage.setItem('savedP', tmp)
     } else {
       setP("");
+      localStorage.setItem('savedP', null)
     }
   };
 
@@ -159,8 +184,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setBG(tmp);
+      localStorage.setItem('savedBG', tmp)
     } else {
       setBG("");
+      localStorage.setItem('savedBG', null)
     }
   };
 
@@ -169,8 +196,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setBR(tmp);
+      localStorage.setItem('savedBR', tmp)
     } else {
       setBR("");
+      localStorage.setItem('savedBR', null)
     }
   };
 
@@ -179,8 +208,10 @@ function App() {
     let tmp = parseInt(event.target.value);
     if (!isNaN(tmp)) {
       setBP(tmp);
+      localStorage.setItem('savedBP', tmp)
     } else {
       setBP("");
+      localStorage.setItem('savedBP', null)
     }
   };
 
