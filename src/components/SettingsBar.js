@@ -8,14 +8,9 @@ import {
   GiGuards,
   GiDragonHead,
 } from "react-icons/gi";
-
 import { IoIosSettings } from "react-icons/io";
 
-const SettingsBar = () => {
-  const handlePress = (label) => {
-    alert(`Pressed: ${label}`);
-  };
-
+const SettingsBar = ({ isOpen, setComponentVisibility }) => {
   const thStyle = {
     textAlign: "center",
     border: "1px solid rgba(255, 255, 255, 0.5)", // Semi-transparent white border
@@ -32,6 +27,8 @@ const SettingsBar = () => {
       style={{
         display: "flex",
         justifyContent: "center",
+        paddingBottom: "50px",
+        display: isOpen ? "block" : "none",
       }}
     >
       <table
@@ -43,35 +40,35 @@ const SettingsBar = () => {
       >
         <thead>
           <tr>
-            <th style={thStyle} onClick={() => handlePress("Ekwipunek")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("army")}>
               <GiGuards style={iconStyle} />
               <div>Armia</div>
             </th>
-            <th style={thStyle} onClick={() => handlePress("Ekwipunek")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("artifacts")}>
               <GiAbdominalArmor style={iconStyle} />
               <div>Bohaterowie i ekwipunek</div>
             </th>
-            <th style={thStyle} onClick={() => handlePress("Badania")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("dragon")}>
               <GiAcid style={iconStyle} />
               <div>Badania</div>
             </th>
-            <th style={thStyle} onClick={() => handlePress("Talenty")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("talents")}>
               <GiWingedShield style={iconStyle} />
               <div>Talenty</div>
             </th>
-            <th style={thStyle} onClick={() => handlePress("Galeria Sław")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("halloffame")}>
               <GiHorseHead style={iconStyle} />
               <div>Galeria Sław</div>
             </th>
-            <th style={thStyle} onClick={() => handlePress("Artefakty")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("artefakty")}>
               <GiGlowingArtifact style={iconStyle} />
               <div>Artefakty</div>
             </th>
-            <th style={thStyle} onClick={() => handlePress("Artefakty")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("dragon")}>
               <GiDragonHead style={iconStyle} />
               <div>Smok</div>
             </th>
-            <th style={thStyle} onClick={() => handlePress("Artefakty")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("settings")}>
               <IoIosSettings style={iconStyle} />
               <div>Ustawienia</div>
             </th>
