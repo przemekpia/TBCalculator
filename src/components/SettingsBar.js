@@ -44,11 +44,11 @@ const SettingsBar = ({ isOpen, setComponentVisibility }) => {
               <GiGuards style={iconStyle} />
               <div>Armia</div>
             </th>
-            <th style={thStyle} onClick={() => setComponentVisibility("artifacts")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("hero")}>
               <GiAbdominalArmor style={iconStyle} />
               <div>Bohaterowie i ekwipunek</div>
             </th>
-            <th style={thStyle} onClick={() => setComponentVisibility("dragon")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("technologies")}>
               <GiAcid style={iconStyle} />
               <div>Badania</div>
             </th>
@@ -60,7 +60,7 @@ const SettingsBar = ({ isOpen, setComponentVisibility }) => {
               <GiHorseHead style={iconStyle} />
               <div>Galeria Sław</div>
             </th>
-            <th style={thStyle} onClick={() => setComponentVisibility("artefakty")}>
+            <th style={thStyle} onClick={() => setComponentVisibility("artifacts")}>
               <GiGlowingArtifact style={iconStyle} />
               <div>Artefakty</div>
             </th>

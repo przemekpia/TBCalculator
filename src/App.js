@@ -5,6 +5,7 @@ import ArmySettings from "./components/ArmySettings";
 import ArtifactsSettings from "./components/ArtifactsSettings";
 import DragonSettings from "./components/DragonSettings";
 import HallofFameSettings from "./components/HallofFameSettings";
+import HeroEquipmentSettings from "./components/HeroEquipmentSettings";
 import Settings from "./components/Settings";
 import TalentsSettings from "./components/TalentsSettings";
 import TechnologiesSettings from "./components/TechnologiesSettings";
@@ -15,6 +16,7 @@ function App() {
   const [artifactsSettingsOpen, setArtifactsSettingsOpen] = useState(false);
   const [dragonSettingsOpen, setDragonSettingsOpen] = useState(false);
   const [hallOfFameSettingsOpen, setHallOfFameSettingsOpen] = useState(false);
+  const [heroOpen, setHeroOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [talentsSettingsOpen, setTalentsSettingsOpen] = useState(false);
   const [technologiesSettingsOpen, setTechnologiesSettingsOpen] = useState(false);
@@ -27,6 +29,7 @@ function App() {
     setArtifactsSettingsOpen(component === "artifacts");
     setDragonSettingsOpen(component === "dragon");
     setHallOfFameSettingsOpen(component === "halloffame");
+    setHeroOpen(component === "hero");
     setSettingsOpen(component === "settings");
     setTalentsSettingsOpen(component === "talents");
     setTechnologiesSettingsOpen(component === "technologies");
@@ -42,6 +45,7 @@ function App() {
       <ArtifactsSettings isOpen={artifactsSettingsOpen} />
       <DragonSettings isOpen={dragonSettingsOpen} />
       <HallofFameSettings isOpen={hallOfFameSettingsOpen} />
+      <HeroEquipmentSettings isOpen={heroOpen}></HeroEquipmentSettings>
       <Settings isOpen={settingsOpen} />
       <TalentsSettings isOpen={talentsSettingsOpen} />
       <TechnologiesSettings isOpen={technologiesSettingsOpen} />
