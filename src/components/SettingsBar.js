@@ -6,6 +6,7 @@ import {
   GiHorseHead,
   GiGlowingArtifact,
   GiGuards,
+  GiDragonHead,
 } from "react-icons/gi";
 
 import { IoIosSettings } from "react-icons/io";
@@ -48,7 +49,7 @@ const SettingsBar = () => {
             </th>
             <th style={thStyle} onClick={() => handlePress("Ekwipunek")}>
               <GiAbdominalArmor style={iconStyle} />
-              <div>Ekwipunek</div>
+              <div>Bohaterowie i ekwipunek</div>
             </th>
             <th style={thStyle} onClick={() => handlePress("Badania")}>
               <GiAcid style={iconStyle} />
@@ -65,6 +66,10 @@ const SettingsBar = () => {
             <th style={thStyle} onClick={() => handlePress("Artefakty")}>
               <GiGlowingArtifact style={iconStyle} />
               <div>Artefakty</div>
+            </th>
+            <th style={thStyle} onClick={() => handlePress("Artefakty")}>
+              <GiDragonHead style={iconStyle} />
+              <div>Smok</div>
             </th>
             <th style={thStyle} onClick={() => handlePress("Artefakty")}>
               <IoIosSettings style={iconStyle} />
