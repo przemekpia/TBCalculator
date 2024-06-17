@@ -16,7 +16,6 @@ const ReturnBar = ({ isOpen, setComponentVisibility }) => {
   return (
     <div
       style={{
-        display: "flex",
         justifyContent: "center",
         paddingBottom: "50px",
         display: isOpen ? "block" : "none",
@@ -32,7 +31,7 @@ const ReturnBar = ({ isOpen, setComponentVisibility }) => {
         <thead>
           <tr>
             <th style={thStyle} onClick={() => setComponentVisibility("settingsBar")}>
-              <FaArrowLeft />
+              <FaArrowLeft style={iconStyle}/>
               <div>Powrót</div>
             </th>
           </tr>

@@ -25,7 +25,6 @@ const SettingsBar = ({ isOpen, setComponentVisibility }) => {
   return (
     <div
       style={{
-        display: "flex",
         justifyContent: "center",
         paddingBottom: "50px",
         display: isOpen ? "block" : "none",

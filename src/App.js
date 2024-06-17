@@ -1,15 +1,15 @@
 import "./App.css";
 import { useState } from "react";
-import SettingsBar from "./components/SettingsBar";
-import ArmySettings from "./components/ArmySettings";
-import ArtifactsSettings from "./components/ArtifactsSettings";
-import DragonSettings from "./components/DragonSettings";
-import HallofFameSettings from "./components/HallofFameSettings";
-import HeroEquipmentSettings from "./components/HeroEquipmentSettings";
-import Settings from "./components/Settings";
-import TalentsSettings from "./components/TalentsSettings";
-import TechnologiesSettings from "./components/TechnologiesSettings";
-import ReturnBar from "./components/ReturnBar";
+import SettingsBar from "./components/MainBar/SettingsBar";
+import ArmySettings from "./components/MainBar/ArmySettings";
+import ArtifactsSettings from "./components/MainBar/ArtifactsSettings";
+import DragonSettings from "./components/MainBar/DragonSettings";
+import HallofFameSettings from "./components/MainBar/HallofFameSettings";
+import HeroEquipmentSettings from "./components/MainBar/HeroEquipmentSettings";
+import Settings from "./components/MainBar/Settings";
+import TalentsSettings from "./components/MainBar/TalentsSettings";
+import TechnologiesSettings from "./components/MainBar/TechnologiesSettings";
+import ReturnBar from "./components/MainBar/ReturnBar";
 
 function App() {
   const [armySettingsOpen, setArmySettingsOpen] = useState(false);
