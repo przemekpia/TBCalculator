@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { colors } from "../../assets/colors";
 
 const ArmySettings = ({ isOpen }) => {
   const columns = [
@@ -21,15 +22,21 @@ const ArmySettings = ({ isOpen }) => {
     ["Tier II", "Egzekutor II", "Czyściciel II", "Destruktor II", "Kruk II"]
   ];
 
+  const [selectedCells, setSelectedCells] = useState([]);
+
   const handleClick = (rowIndex, colIndex, cell) => {
     if (colIndex === 0 || cell === "") {
       return;
     }
-    alert(`Clicked on row ${rowIndex + 1}, column ${colIndex + 1}`);
+    const cellKey = `${rowIndex}-${colIndex}`;
+    setSelectedCells((prevSelectedCells) =>
+      prevSelectedCells.includes(cellKey)
+        ? prevSelectedCells.filter((key) => key !== cellKey)
+        : [...prevSelectedCells, cellKey]
+    );
   };
 
   const tableStyle = {
-    width: "80%",
     margin: "0 auto",
     borderCollapse: "collapse",
     fontFamily: "Arial, sans-serif",
@@ -40,6 +47,8 @@ const ArmySettings = ({ isOpen }) => {
   const thTdStyle = {
     border: "1px solid #ddd",
     padding: "8px",
+    height: "50px",
+    opacity: 0.6, // Set the default opacity to 0.6
   };
 
   const clickableTdStyle = {
@@ -47,12 +56,29 @@ const ArmySettings = ({ isOpen }) => {
     cursor: "pointer",
   };
 
+  const selectedTdStyle = {
+    ...clickableTdStyle,
+    border: "4px solid #fff",
+    opacity: 1, // Set opacity to 1 for selected cells
+  };
+
+  const rowColors = [
+    colors.T1, 
+    colors.T2, 
+    colors.T3, 
+    colors.T4, 
+    colors.T5, 
+    colors.T6, 
+    colors.T7, 
+    colors.T1, 
+    colors.T2, 
+  ];
+
   return (
     <div
       style={{
         fontFamily: "Arial, sans-serif",
         textAlign: "center",
-        marginTop: "50px",
         display: isOpen ? "block" : "none",
       }}
     >
@@ -60,7 +86,7 @@ const ArmySettings = ({ isOpen }) => {
         <thead>
           <tr>
             {columns.map((col, index) => (
-              <th key={index} style={thTdStyle}>
+              <th key={index} style={{ ...thTdStyle, width: index === 0 ? "70px" : "100px", opacity: 1 }}>
                 {col}
               </th>
             ))}
@@ -68,11 +94,22 @@ const ArmySettings = ({ isOpen }) => {
         </thead>
         <tbody>
           {rows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+            <tr key={rowIndex} style={{ backgroundColor: rowColors[rowIndex] }}>
               {row.map((cell, cellIndex) => {
                 const isHeaderCell = cellIndex === 0;
                 const isEmptyCell = cell === "";
-                const cellStyle = isHeaderCell || isEmptyCell ? thTdStyle : clickableTdStyle;
+                const cellKey = `${rowIndex}-${cellIndex}`;
+                const isSelected = selectedCells.includes(cellKey);
+                const cellStyle = isSelected
+                  ? selectedTdStyle
+                  : {
+                      ...thTdStyle,
+                      width: cellIndex === 0 ? "40px" : "100px",
+                      cursor: isHeaderCell || isEmptyCell ? "default" : "pointer",
+                    };
+                if (cellIndex === 0) {
+                  cellStyle.opacity = 1;
+                }
                 return (
                   <td
                     key={cellIndex}
