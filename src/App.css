@@ -68,6 +68,7 @@ th {
 
 .App {
   min-height: 100vh;
+  height: auto;
   width: 100%;
   color: white;
   margin: auto;

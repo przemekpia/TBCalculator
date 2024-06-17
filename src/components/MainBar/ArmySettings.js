@@ -54,8 +54,20 @@ const ArmySettings = ({ isOpen }) => {
       "Jeździec lwów VII",
       "Sęp VII",
     ],
-    ["Tier I", "Pojedynkowicz I", "Legitymista I", "Białogrzywy husarz I", "Królewski lew I"],
-    ["Tier II", "Pojedynkowicz II", "Legitymista II", "Białogrzywy husarz II", "Królewski lew II"],
+    [
+      "Tier I",
+      "Pojedynkowicz I",
+      "Legitymista I",
+      "Białogrzywy husarz I",
+      "Królewski lew I",
+    ],
+    [
+      "Tier II",
+      "Pojedynkowicz II",
+      "Legitymista II",
+      "Białogrzywy husarz II",
+      "Królewski lew II",
+    ],
   ];
 
   const rowsMonsters = [
@@ -82,25 +94,46 @@ const ArmySettings = ({ isOpen }) => {
     ["Tier II", "Egzekutor II", "Czyściciel II", "Destruktor II", "Kruk II"],
   ];
 
-  const [selectedCells, setSelectedCells] = useState([]);
+  const [selectedCellsGuards, setSelectedCellsGuards] = useState([]);
+  const [selectedCellsSpecialists, setSelectedCellsSpecialists] = useState([]);
+  const [selectedCellsMonsters, setSelectedCellsMonsters] = useState([]);
 
-  const handleClick = (rowIndex, colIndex, cell) => {
+  const handleClick = (rowIndex, colIndex, cell, type) => {
     if (colIndex === 0 || cell === "") {
       return;
     }
     const cellKey = `${rowIndex}-${colIndex}`;
-    setSelectedCells((prevSelectedCells) =>
-      prevSelectedCells.includes(cellKey)
-        ? prevSelectedCells.filter((key) => key !== cellKey)
-        : [...prevSelectedCells, cellKey]
-    );
+    switch (type) {
+      case "guards":
+        setSelectedCellsGuards((prevSelectedCells) =>
+          prevSelectedCells.includes(cellKey)
+            ? prevSelectedCells.filter((key) => key !== cellKey)
+            : [...prevSelectedCells, cellKey]
+        );
+        break;
+      case "specialists":
+        setSelectedCellsSpecialists((prevSelectedCells) =>
+          prevSelectedCells.includes(cellKey)
+            ? prevSelectedCells.filter((key) => key !== cellKey)
+            : [...prevSelectedCells, cellKey]
+        );
+        break;
+      case "monsters":
+        setSelectedCellsMonsters((prevSelectedCells) =>
+          prevSelectedCells.includes(cellKey)
+            ? prevSelectedCells.filter((key) => key !== cellKey)
+            : [...prevSelectedCells, cellKey]
+        );
+        break;
+      default:
+        break;
+    }
   };
 
   const tableContainerStyle = {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    marginBottom: "20px",
+    flexDirection: "column",
+    alignItems: "center"
   };
 
   const tableStyle = {
@@ -115,7 +148,7 @@ const ArmySettings = ({ isOpen }) => {
     border: "1px solid #ddd",
     padding: "8px",
     height: "50px",
-    opacity: 0.6, 
+    opacity: 0.6,
   };
 
   const clickableTdStyle = {
@@ -126,7 +159,7 @@ const ArmySettings = ({ isOpen }) => {
   const selectedTdStyle = {
     ...clickableTdStyle,
     border: "4px solid #FF0000",
-    opacity: 1, 
+    opacity: 1,
   };
 
   const rowColors = [
@@ -150,27 +183,107 @@ const ArmySettings = ({ isOpen }) => {
       }}
     >
       <div style={tableContainerStyle}>
-        <div>
-          <h2 style={{ marginBottom: "10px" }}>Gwardziści</h2>
-          <table style={tableStyle}>
-            {/* <thead>
-              <tr>
-                {columns.map((col, index) => (
-                  <th
-                    key={index}
-                    style={{
-                      ...thTdStyle,
-                      width: index === 0 ? "70px" : "100px",
-                      opacity: 1,
-                    }}
+        <div style={{ display: "flex"}}>
+          <div style={{ marginRight: "20px" }}>
+            <h2 style={{ marginBottom: "10px" }}>Gwardziści</h2>
+            <table style={tableStyle}>
+              <tbody>
+                {rowsGuards.map((row, rowIndex) => (
+                  <tr
+                    key={rowIndex}
+                    style={{ backgroundColor: rowColors[rowIndex] }}
                   >
-                    {col}
-                  </th>
+                    {row.map((cell, cellIndex) => {
+                      const isHeaderCell = cellIndex === 0;
+                      const isEmptyCell = cell === "";
+                      const cellKey = `${rowIndex}-${cellIndex}`;
+                      const isSelected = selectedCellsGuards.includes(cellKey);
+                      const cellStyle = isSelected
+                        ? selectedTdStyle
+                        : {
+                            ...thTdStyle,
+                            width: cellIndex === 0 ? "40px" : "100px",
+                            cursor:
+                              isHeaderCell || isEmptyCell
+                                ? "default"
+                                : "pointer",
+                          };
+                      if (cellIndex === 0) {
+                        cellStyle.opacity = 1;
+                      }
+                      return (
+                        <td
+                          key={cellIndex}
+                          style={cellStyle}
+                          onClick={() =>
+                            handleClick(rowIndex, cellIndex, cell, "guards")
+                          }
+                        >
+                          {cell}
+                        </td>
+                      );
+                    })}
+                  </tr>
                 ))}
-              </tr>
-            </thead> */}
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h2 style={{ marginBottom: "10px" }}>Specjaliści</h2>
+            <table style={tableStyle}>
+              <tbody>
+                {rowsSpecialists.map((row, rowIndex) => (
+                  <tr
+                    key={rowIndex}
+                    style={{ backgroundColor: rowColors[rowIndex] }}
+                  >
+                    {row.map((cell, cellIndex) => {
+                      const isHeaderCell = cellIndex === 0;
+                      const isEmptyCell = cell === "";
+                      const cellKey = `${rowIndex}-${cellIndex}`;
+                      const isSelected =
+                        selectedCellsSpecialists.includes(cellKey);
+                      const cellStyle = isSelected
+                        ? selectedTdStyle
+                        : {
+                            ...thTdStyle,
+                            width: cellIndex === 0 ? "40px" : "100px",
+                            cursor:
+                              isHeaderCell || isEmptyCell
+                                ? "default"
+                                : "pointer",
+                          };
+                      if (cellIndex === 0) {
+                        cellStyle.opacity = 1;
+                      }
+                      return (
+                        <td
+                          key={cellIndex}
+                          style={cellStyle}
+                          onClick={() =>
+                            handleClick(
+                              rowIndex,
+                              cellIndex,
+                              cell,
+                              "specialists"
+                            )
+                          }
+                        >
+                          {cell}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h2 style={{ marginBottom: "10px" }}>Potwory</h2>
+          <table style={tableStyle}>
             <tbody>
-              {rowsGuards.map((row, rowIndex) => (
+              {rowsMonsters.map((row, rowIndex) => (
                 <tr
                   key={rowIndex}
                   style={{ backgroundColor: rowColors[rowIndex] }}
@@ -179,7 +292,7 @@ const ArmySettings = ({ isOpen }) => {
                     const isHeaderCell = cellIndex === 0;
                     const isEmptyCell = cell === "";
                     const cellKey = `${rowIndex}-${cellIndex}`;
-                    const isSelected = selectedCells.includes(cellKey);
+                    const isSelected = selectedCellsMonsters.includes(cellKey);
                     const cellStyle = isSelected
                       ? selectedTdStyle
                       : {
@@ -195,113 +308,9 @@ const ArmySettings = ({ isOpen }) => {
                       <td
                         key={cellIndex}
                         style={cellStyle}
-                        onClick={() => handleClick(rowIndex, cellIndex, cell)}
-                      >
-                        {cell}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h2 style={{ marginBottom: "10px" }}>Specjaliści</h2>
-          <table style={tableStyle}>
-            {/* <thead>
-              <tr>
-                {columns.map((col, index) => (
-                  <th
-                    key={index}
-                    style={{
-                      ...thTdStyle,
-                      width: index === 0 ? "70px" : "100px",
-                      opacity: 1,
-                    }}
-                  >
-                    {col}
-                  </th>
-                ))}
-              </tr>
-            </thead> */}
-            <tbody>
-              {rowsSpecialists.map((row, rowIndex) => (
-                <tr key={rowIndex} style={{ backgroundColor: rowColors[rowIndex] }}>
-                  {row.map((cell, cellIndex) => {
-                    const isHeaderCell = cellIndex === 0;
-                    const isEmptyCell = cell === "";
-                    const cellKey = `${rowIndex}-${cellIndex}`;
-                    const isSelected = selectedCells.includes(cellKey);
-                    const cellStyle = isSelected
-                      ? selectedTdStyle
-                      : {
-                          ...thTdStyle,
-                          width: cellIndex === 0 ? "40px" : "100px",
-                          cursor:
-                            isHeaderCell || isEmptyCell ? "default" : "pointer",
-                        };
-                    if (cellIndex === 0) {
-                      cellStyle.opacity = 1;
-                    }
-                    return (
-                      <td
-                        key={cellIndex}
-                        style={cellStyle}
-                        onClick={() => handleClick(rowIndex, cellIndex, cell)}
-                      >
-                        {cell}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h2 style={{ marginBottom: "10px" }}>Potwory</h2>
-          <table style={tableStyle}>
-            {/* <thead>
-              <tr>
-                {columns.map((col, index) => (
-                  <th
-                    key={index}
-                    style={{
-                      ...thTdStyle,
-                      width: index === 0 ? "70px" : "100px",
-                      opacity: 1,
-                    }}
-                  >
-                    {col}
-                  </th>
-                ))}
-              </tr>
-            </thead> */}
-            <tbody>
-              {rowsMonsters.map((row, rowIndex) => (
-                <tr key={rowIndex} style={{ backgroundColor: rowColors[rowIndex] }}>
-                  {row.map((cell, cellIndex) => {
-                    const isHeaderCell = cellIndex === 0;
-                    const isEmptyCell = cell === "";
-                    const cellKey = `${rowIndex}-${cellIndex}`;
-                    const isSelected = selectedCells.includes(cellKey);
-                    const cellStyle = isSelected
-                      ? selectedTdStyle
-                      : {
-                          ...thTdStyle,
-                          width: cellIndex === 0 ? "40px" : "100px",
-                          cursor:
-                            isHeaderCell || isEmptyCell ? "default" : "pointer",
-                        };
-                    if (cellIndex === 0) {
-                      cellStyle.opacity = 1;
-                    }
-                    return (
-                      <td
-                        key={cellIndex}
-                        style={cellStyle}
-                        onClick={() => handleClick(rowIndex, cellIndex, cell)}
+                        onClick={() =>
+                          handleClick(rowIndex, cellIndex, cell, "monsters")
+                        }
                       >
                         {cell}
                       </td>
