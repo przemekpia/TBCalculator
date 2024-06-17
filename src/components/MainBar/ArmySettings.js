@@ -10,16 +10,76 @@ const ArmySettings = ({ isOpen }) => {
     "Jednostka latająca",
   ];
 
-  const rows = [
+  const rowsGuards = [
     ["Tier I", "Włócznik I", "Łucznik I", "Jeździec I", ""],
     ["Tier II", "Włócznik II", "Łucznik II", "Jeździec II", ""],
     ["Tier III", "Włócznik III", "Łucznik III", "Jeździec III", ""],
     ["Tier IV", "Włócznik IV", "Łucznik IV", "Jeździec IV", ""],
     ["Tier V", "Włócznik V", "Łucznik V", "Jeździec V", "Gryf bitewny V"],
-    ["Tier VI", "Ciężki halabardnik VI", "Ciężki kusznik VI", "Konny rycerz VI", "Gryf bitewny VI"],
-    ["Tier VII", "Ciężki halabardnik VII", "Ciężki kusznik VII", "Konny rycerz VII", "Gryf bitewny VII"],
+    [
+      "Tier VI",
+      "Ciężki halabardnik VI",
+      "Ciężki kusznik VI",
+      "Konny rycerz VI",
+      "Gryf bitewny VI",
+    ],
+    [
+      "Tier VII",
+      "Ciężki halabardnik VII",
+      "Ciężki kusznik VII",
+      "Konny rycerz VII",
+      "Gryf bitewny VII",
+    ],
     ["Tier I", "Egzekutor I", "Czyściciel I", "Destruktor I", "Kruk I"],
-    ["Tier II", "Egzekutor II", "Czyściciel II", "Destruktor II", "Kruk II"]
+    ["Tier II", "Egzekutor II", "Czyściciel II", "Destruktor II", "Kruk II"],
+  ];
+
+  const rowsSpecialists = [
+    ["Tier I", "Rycerz I", "", "", ""],
+    ["Tier II", "Rycerz II", "", "", ""],
+    ["Tier III", "Rycerz III", "", "", ""],
+    ["Tier IV", "Rycerz IV", "", "", ""],
+    ["Tier V", "Rycerz V", "Elitarny Kusznik V", "Jeździec lwów V", "Sęp V"],
+    [
+      "Tier VI",
+      "Cięzki Rycerz VI",
+      "Elitarny Kusznik VI",
+      "Jeździec lwów VI",
+      "Sęp VI",
+    ],
+    [
+      "Tier VII",
+      "Cięzki Rycerz VII",
+      "Elitarny Kusznik VII",
+      "Jeździec lwów VII",
+      "Sęp VII",
+    ],
+    ["Tier I", "Pojedynkowicz I", "Legitymista I", "Białogrzywy husarz I", "Królewski lew I"],
+    ["Tier II", "Pojedynkowicz II", "Legitymista II", "Białogrzywy husarz II", "Królewski lew II"],
+  ];
+
+  const rowsMonsters = [
+    ["Tier I", "Włócznik I", "Łucznik I", "Jeździec I", ""],
+    ["Tier II", "Włócznik II", "Łucznik II", "Jeździec II", ""],
+    ["Tier III", "Włócznik III", "Łucznik III", "Jeździec III", ""],
+    ["Tier IV", "Włócznik IV", "Łucznik IV", "Jeździec IV", ""],
+    ["Tier V", "Włócznik V", "Łucznik V", "Jeździec V", "Gryf bitewny V"],
+    [
+      "Tier VI",
+      "Ciężki halabardnik VI",
+      "Ciężki kusznik VI",
+      "Konny rycerz VI",
+      "Gryf bitewny VI",
+    ],
+    [
+      "Tier VII",
+      "Ciężki halabardnik VII",
+      "Ciężki kusznik VII",
+      "Konny rycerz VII",
+      "Gryf bitewny VII",
+    ],
+    ["Tier I", "Egzekutor I", "Czyściciel I", "Destruktor I", "Kruk I"],
+    ["Tier II", "Egzekutor II", "Czyściciel II", "Destruktor II", "Kruk II"],
   ];
 
   const [selectedCells, setSelectedCells] = useState([]);
@@ -36,19 +96,26 @@ const ArmySettings = ({ isOpen }) => {
     );
   };
 
+  const tableContainerStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    marginBottom: "20px",
+  };
+
   const tableStyle = {
-    margin: "0 auto",
+    margin: "0 10px",
     borderCollapse: "collapse",
     fontFamily: "Arial, sans-serif",
     textAlign: "center",
-    marginTop: "50px",
+    marginTop: "20px",
   };
 
   const thTdStyle = {
     border: "1px solid #ddd",
     padding: "8px",
     height: "50px",
-    opacity: 0.6, // Set the default opacity to 0.6
+    opacity: 0.6, 
   };
 
   const clickableTdStyle = {
@@ -58,20 +125,20 @@ const ArmySettings = ({ isOpen }) => {
 
   const selectedTdStyle = {
     ...clickableTdStyle,
-    border: "4px solid #fff",
-    opacity: 1, // Set opacity to 1 for selected cells
+    border: "4px solid #FF0000",
+    opacity: 1, 
   };
 
   const rowColors = [
-    colors.T1, 
-    colors.T2, 
-    colors.T3, 
-    colors.T4, 
-    colors.T5, 
-    colors.T6, 
-    colors.T7, 
-    colors.T1, 
-    colors.T2, 
+    colors.T1,
+    colors.T2,
+    colors.T3,
+    colors.T4,
+    colors.T5,
+    colors.T6,
+    colors.T7,
+    colors.T1,
+    colors.T2,
   ];
 
   return (
@@ -82,48 +149,170 @@ const ArmySettings = ({ isOpen }) => {
         display: isOpen ? "block" : "none",
       }}
     >
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            {columns.map((col, index) => (
-              <th key={index} style={{ ...thTdStyle, width: index === 0 ? "70px" : "100px", opacity: 1 }}>
-                {col}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, rowIndex) => (
-            <tr key={rowIndex} style={{ backgroundColor: rowColors[rowIndex] }}>
-              {row.map((cell, cellIndex) => {
-                const isHeaderCell = cellIndex === 0;
-                const isEmptyCell = cell === "";
-                const cellKey = `${rowIndex}-${cellIndex}`;
-                const isSelected = selectedCells.includes(cellKey);
-                const cellStyle = isSelected
-                  ? selectedTdStyle
-                  : {
+      <div style={tableContainerStyle}>
+        <div>
+          <h2 style={{ marginBottom: "10px" }}>Gwardziści</h2>
+          <table style={tableStyle}>
+            {/* <thead>
+              <tr>
+                {columns.map((col, index) => (
+                  <th
+                    key={index}
+                    style={{
                       ...thTdStyle,
-                      width: cellIndex === 0 ? "40px" : "100px",
-                      cursor: isHeaderCell || isEmptyCell ? "default" : "pointer",
-                    };
-                if (cellIndex === 0) {
-                  cellStyle.opacity = 1;
-                }
-                return (
-                  <td
-                    key={cellIndex}
-                    style={cellStyle}
-                    onClick={() => handleClick(rowIndex, cellIndex, cell)}
+                      width: index === 0 ? "70px" : "100px",
+                      opacity: 1,
+                    }}
                   >
-                    {cell}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead> */}
+            <tbody>
+              {rowsGuards.map((row, rowIndex) => (
+                <tr
+                  key={rowIndex}
+                  style={{ backgroundColor: rowColors[rowIndex] }}
+                >
+                  {row.map((cell, cellIndex) => {
+                    const isHeaderCell = cellIndex === 0;
+                    const isEmptyCell = cell === "";
+                    const cellKey = `${rowIndex}-${cellIndex}`;
+                    const isSelected = selectedCells.includes(cellKey);
+                    const cellStyle = isSelected
+                      ? selectedTdStyle
+                      : {
+                          ...thTdStyle,
+                          width: cellIndex === 0 ? "40px" : "100px",
+                          cursor:
+                            isHeaderCell || isEmptyCell ? "default" : "pointer",
+                        };
+                    if (cellIndex === 0) {
+                      cellStyle.opacity = 1;
+                    }
+                    return (
+                      <td
+                        key={cellIndex}
+                        style={cellStyle}
+                        onClick={() => handleClick(rowIndex, cellIndex, cell)}
+                      >
+                        {cell}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2 style={{ marginBottom: "10px" }}>Specjaliści</h2>
+          <table style={tableStyle}>
+            {/* <thead>
+              <tr>
+                {columns.map((col, index) => (
+                  <th
+                    key={index}
+                    style={{
+                      ...thTdStyle,
+                      width: index === 0 ? "70px" : "100px",
+                      opacity: 1,
+                    }}
+                  >
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead> */}
+            <tbody>
+              {rowsSpecialists.map((row, rowIndex) => (
+                <tr key={rowIndex} style={{ backgroundColor: rowColors[rowIndex] }}>
+                  {row.map((cell, cellIndex) => {
+                    const isHeaderCell = cellIndex === 0;
+                    const isEmptyCell = cell === "";
+                    const cellKey = `${rowIndex}-${cellIndex}`;
+                    const isSelected = selectedCells.includes(cellKey);
+                    const cellStyle = isSelected
+                      ? selectedTdStyle
+                      : {
+                          ...thTdStyle,
+                          width: cellIndex === 0 ? "40px" : "100px",
+                          cursor:
+                            isHeaderCell || isEmptyCell ? "default" : "pointer",
+                        };
+                    if (cellIndex === 0) {
+                      cellStyle.opacity = 1;
+                    }
+                    return (
+                      <td
+                        key={cellIndex}
+                        style={cellStyle}
+                        onClick={() => handleClick(rowIndex, cellIndex, cell)}
+                      >
+                        {cell}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2 style={{ marginBottom: "10px" }}>Potwory</h2>
+          <table style={tableStyle}>
+            {/* <thead>
+              <tr>
+                {columns.map((col, index) => (
+                  <th
+                    key={index}
+                    style={{
+                      ...thTdStyle,
+                      width: index === 0 ? "70px" : "100px",
+                      opacity: 1,
+                    }}
+                  >
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead> */}
+            <tbody>
+              {rowsMonsters.map((row, rowIndex) => (
+                <tr key={rowIndex} style={{ backgroundColor: rowColors[rowIndex] }}>
+                  {row.map((cell, cellIndex) => {
+                    const isHeaderCell = cellIndex === 0;
+                    const isEmptyCell = cell === "";
+                    const cellKey = `${rowIndex}-${cellIndex}`;
+                    const isSelected = selectedCells.includes(cellKey);
+                    const cellStyle = isSelected
+                      ? selectedTdStyle
+                      : {
+                          ...thTdStyle,
+                          width: cellIndex === 0 ? "40px" : "100px",
+                          cursor:
+                            isHeaderCell || isEmptyCell ? "default" : "pointer",
+                        };
+                    if (cellIndex === 0) {
+                      cellStyle.opacity = 1;
+                    }
+                    return (
+                      <td
+                        key={cellIndex}
+                        style={cellStyle}
+                        onClick={() => handleClick(rowIndex, cellIndex, cell)}
+                      >
+                        {cell}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
