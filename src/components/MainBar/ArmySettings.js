@@ -71,27 +71,51 @@ const ArmySettings = ({ isOpen }) => {
   ];
 
   const rowsMonsters = [
-    ["Tier I", "Włócznik I", "Łucznik I", "Jeździec I", ""],
-    ["Tier II", "Włócznik II", "Łucznik II", "Jeździec II", ""],
-    ["Tier III", "Włócznik III", "Łucznik III", "Jeździec III", ""],
-    ["Tier IV", "Włócznik IV", "Łucznik IV", "Jeździec IV", ""],
-    ["Tier V", "Włócznik V", "Łucznik V", "Jeździec V", "Gryf bitewny V"],
+    ["Tier I", "", "", "", ""],
+    ["Tier II", "", "", "", ""],
+    [
+      "Tier III",
+      "Szmaragdowy smok",
+      "Żywiołak wody",
+      "Kamienny gargulec",
+      "Odyniec bojowy",
+    ],
+    [
+      "Tier IV",
+      "Magiczny smok",
+      "Lodowy feniks",
+      "Wieloręki strażnik",
+      "Gorgona meduza",
+    ],
+    [
+      "Tier V",
+      "Pustynny pogromca",
+      "Płonący centaur",
+      "Dwugłowy ogr",
+      "Przerażająca mantykora",
+    ],
     [
       "Tier VI",
-      "Ciężki halabardnik VI",
-      "Ciężki kusznik VI",
-      "Konny rycerz VI",
-      "Gryf bitewny VI",
+      "Kryształowy smok",
+      "Rubinowy golem",
+      "Jeździec trolli",
+      "Niszczyciel dżungli",
     ],
     [
       "Tier VII",
-      "Ciężki halabardnik VII",
-      "Ciężki kusznik VII",
-      "Konny rycerz VII",
-      "Gryf bitewny VII",
+      "Czarny smok",
+      "Pan wiatru",
+      "Niszczycielski kolos",
+      "Prastary potwór",
     ],
-    ["Tier I", "Egzekutor I", "Czyściciel I", "Destruktor I", "Kruk I"],
-    ["Tier II", "Egzekutor II", "Czyściciel II", "Destruktor II", "Kruk II"],
+    ["Tier I", "Burzyciel I", "Ognisty feniks I", "Kraken I", "Szachraj I"],
+    [
+      "Tier II",
+      "Burzyciel II",
+      "Ognisty feniks II",
+      "Kraken II",
+      "Szachraj II",
+    ],
   ];
 
   const [selectedCellsGuards, setSelectedCellsGuards] = useState([]);
@@ -133,7 +157,7 @@ const ArmySettings = ({ isOpen }) => {
   const tableContainerStyle = {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   };
 
   const tableStyle = {
@@ -183,7 +207,7 @@ const ArmySettings = ({ isOpen }) => {
       }}
     >
       <div style={tableContainerStyle}>
-        <div style={{ display: "flex"}}>
+        <div style={{ display: "flex" }}>
           <div style={{ marginRight: "20px" }}>
             <h2 style={{ marginBottom: "10px" }}>Gwardziści</h2>
             <table style={tableStyle}>
