@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { colors } from "../../assets/colors";
+import { colors } from "../../../assets/colors";
 
 const ArmySettings = ({ isOpen }) => {
   const columns = [
