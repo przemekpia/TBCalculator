@@ -5,7 +5,7 @@ const TypeBar = ({ setComponentVisibility }) => {
     color: 'white',
     padding: '10px 20px',
     cursor: 'pointer',
-    display: 'inline-block',
+    display: 'block', // Ustawiamy display na block
     borderRadius: '5px',
     textAlign: 'center',
     minWidth: '100px',
@@ -13,26 +13,29 @@ const TypeBar = ({ setComponentVisibility }) => {
 
   const basicButtonStyle = {
     ...buttonStyle,
-    backgroundColor: 'green'
+    backgroundColor: 'green',
   };
 
   const advancedButtonStyle = {
     ...buttonStyle,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
   };
 
   return (
-    <div style={{paddingBottom: "10px", paddingTop: "10px"}}>
-      <div
-        onClick={() => setComponentVisibility("basic")}
-        style={basicButtonStyle}
-      >
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '10px', // Odstęp między przyciskami
+        justifyContent: 'center',
+        paddingBottom: '10px',
+        paddingTop: '10px',
+      }}
+    >
+      <div onClick={() => setComponentVisibility('basic')} style={basicButtonStyle}>
         Podstawowy
       </div>
-      <div
-        onClick={() => setComponentVisibility("advanced")}
-        style={advancedButtonStyle}
-      >
+      <div onClick={() => setComponentVisibility('advanced')} style={advancedButtonStyle}>
         Zaawansowany
       </div>
     </div>
