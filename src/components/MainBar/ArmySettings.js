@@ -169,10 +169,10 @@ const ArmySettings = ({ isOpen }) => {
   };
 
   const thTdStyle = {
-    border: "1px solid #ddd",
+    border: "0.5px solid #ddd",
     padding: "8px",
     height: "50px",
-    opacity: 0.6,
+    //opacity: 0.8,
   };
 
   const clickableTdStyle = {
@@ -182,7 +182,7 @@ const ArmySettings = ({ isOpen }) => {
 
   const selectedTdStyle = {
     ...clickableTdStyle,
-    border: "4px solid #FF0000",
+    border: "3px solid #000",
     opacity: 1,
   };
 
@@ -204,6 +204,8 @@ const ArmySettings = ({ isOpen }) => {
         fontFamily: "Arial, sans-serif",
         textAlign: "center",
         display: isOpen ? "block" : "none",
+        color:"black",
+        fontWeight:"bold"
       }}
     >
       <div style={tableContainerStyle}>
