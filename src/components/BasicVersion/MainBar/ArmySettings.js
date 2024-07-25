@@ -9,28 +9,19 @@ import {
 
 import { rowsMonsters } from "../../../data/MonsterData";
 import { rowsGuardsmens } from "../../../data/GuardsmenData";
+import { rowsSpecialists } from "../../../data/SpecialistsData";
 
 const ArmySettings = ({ isOpen }) => {
-  
-
-  const rowsSpecialists = [
-    ["Tier I", "Rycerz I", "", "", ""],
-    ["Tier II", "Rycerz II", "", "", ""],
-    ["Tier III", "Rycerz III", "", "", ""],
-    ["Tier IV", "Rycerz IV", "", "", ""],
-    ["Tier V", "Rycerz V", "Elitarny Kusznik V", "Jeździec lwów V", "Sęp V"],
-    ["Tier VI", "Cięzki Rycerz VI", "Elitarny Kusznik VI", "Jeździec lwów VI", "Sęp VI"],
-    ["Tier VII", "Cięzki Rycerz VII", "Elitarny Kusznik VII", "Jeździec lwów VII", "Sęp VII"],
-    ["Tier I", "Pojedynkowicz I", "Legitymista I", "Białogrzywy husarz I", "Królewski lew I"],
-    ["Tier II", "Pojedynkowicz II", "Legitymista II", "Białogrzywy husarz II", "Królewski lew II"],
-  ];
-
-  
-
   const dispatch = useDispatch();
-  const selectedCellsGuards = useSelector((state) => state.guardsmen.selectedCellsGuards);
-  const selectedCellsSpecialists = useSelector((state) => state.specialists.selectedCellsSpecialists);
-  const selectedCellsMonsters = useSelector((state) => state.monsters.selectedCellsMonsters);
+  const selectedCellsGuards = useSelector(
+    (state) => state.guardsmen.selectedCellsGuards
+  );
+  const selectedCellsSpecialists = useSelector(
+    (state) => state.specialists.selectedCellsSpecialists
+  );
+  const selectedCellsMonsters = useSelector(
+    (state) => state.monsters.selectedCellsMonsters
+  );
 
   const setSelectedCellsGuardsHandler = (cells) => {
     dispatch(armyGuardsmenActions.setSelectedCellsGuards(cells));
@@ -176,7 +167,9 @@ const ArmySettings = ({ isOpen }) => {
             </table>
           </div>
           <div>
-            <h2 style={{ marginBottom: "10px", color: "white" }}>Specjaliści</h2>
+            <h2 style={{ marginBottom: "10px", color: "white" }}>
+              Specjaliści
+            </h2>
             <table style={tableStyle}>
               <tbody>
                 {rowsSpecialists.map((row, rowIndex) => (
@@ -188,7 +181,8 @@ const ArmySettings = ({ isOpen }) => {
                       const isHeaderCell = cellIndex === 0;
                       const isEmptyCell = cell === "";
                       const cellKey = `${rowIndex}-${cellIndex}`;
-                      const isSelected = selectedCellsSpecialists.includes(cellKey);
+                      const isSelected =
+                        selectedCellsSpecialists.includes(cellKey);
                       const cellStyle = isSelected
                         ? selectedTdStyle
                         : {
@@ -207,7 +201,12 @@ const ArmySettings = ({ isOpen }) => {
                           key={cellIndex}
                           style={cellStyle}
                           onClick={() =>
-                            handleClick(rowIndex, cellIndex, cell, "specialists")
+                            handleClick(
+                              rowIndex,
+                              cellIndex,
+                              cell,
+                              "specialists"
+                            )
                           }
                         >
                           {cell}
