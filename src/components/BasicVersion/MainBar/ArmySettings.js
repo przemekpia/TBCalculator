@@ -8,19 +8,10 @@ import {
 } from "../../../store/counter";
 
 import { rowsMonsters } from "../../../data/MonsterData";
+import { rowsGuardsmens } from "../../../data/GuardsmenData";
 
 const ArmySettings = ({ isOpen }) => {
-  const rowsGuards = [
-    ["Tier I", "Włócznik I", "Łucznik I", "Jeździec I", ""],
-    ["Tier II", "Włócznik II", "Łucznik II", "Jeździec II", ""],
-    ["Tier III", "Włócznik III", "Łucznik III", "Jeździec III", ""],
-    ["Tier IV", "Włócznik IV", "Łucznik IV", "Jeździec IV", ""],
-    ["Tier V", "Włócznik V", "Łucznik V", "Jeździec V", "Gryf bitewny V"],
-    ["Tier VI", "Ciężki halabardnik VI", "Ciężki kusznik VI", "Konny rycerz VI", "Gryf bitewny VI"],
-    ["Tier VII", "Ciężki halabardnik VII", "Ciężki kusznik VII", "Konny rycerz VII", "Gryf bitewny VII"],
-    ["Tier I", "Egzekutor I", "Czyściciel I", "Destruktor I", "Kruk I"],
-    ["Tier II", "Egzekutor II", "Czyściciel II", "Destruktor II", "Kruk II"],
-  ];
+  
 
   const rowsSpecialists = [
     ["Tier I", "Rycerz I", "", "", ""],
@@ -144,7 +135,7 @@ const ArmySettings = ({ isOpen }) => {
             <h2 style={{ marginBottom: "10px", color: "white" }}>Gwardziści</h2>
             <table style={tableStyle}>
               <tbody>
-                {rowsGuards.map((row, rowIndex) => (
+                {rowsGuardsmens.map((row, rowIndex) => (
                   <tr
                     key={rowIndex}
                     style={{ backgroundColor: rowColors[rowIndex] }}
