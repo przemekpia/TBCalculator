@@ -5,7 +5,8 @@ import {
   armyGuardsmenActions,
   armySpecialistsActions,
   armyMonstersActions,
-} from "../../../store/counter";
+  armyActions,
+} from "../../../store/army";
 
 import { rowsMonsters } from "../../../data/MonsterData";
 import { rowsGuardsmens } from "../../../data/GuardsmenData";
@@ -13,6 +14,7 @@ import { rowsSpecialists } from "../../../data/SpecialistsData";
 
 const ArmySettings = ({ isOpen }) => {
   const dispatch = useDispatch();
+
   const selectedCellsGuards = useSelector(
     (state) => state.guardsmen.selectedCellsGuards
   );
@@ -21,6 +23,13 @@ const ArmySettings = ({ isOpen }) => {
   );
   const selectedCellsMonsters = useSelector(
     (state) => state.monsters.selectedCellsMonsters
+  );
+
+  const selectedUnitsNames = useSelector(
+    (state) => state.army.selectedUnitsNames
+  );
+  const selectedMonstersNames = useSelector(
+    (state) => state.army.selectedMonstersNames
   );
 
   const setSelectedCellsGuardsHandler = (cells) => {
@@ -35,12 +44,21 @@ const ArmySettings = ({ isOpen }) => {
     dispatch(armyMonstersActions.setSelectedCellsMonsters(cells));
   };
 
+  const setSelectedUnitsNamesHandler = (names) => {
+    dispatch(armyActions.setSelectedUnitsNames(names));
+  };
+
+  const setSelectedMonstersNamesHandler = (names) => {
+    dispatch(armyActions.setSelectedMonstersNames(names));
+  };
+
   const handleClick = (rowIndex, colIndex, cell, type) => {
     if (colIndex === 0 || cell === "") {
       return;
     }
     const cellKey = `${rowIndex}-${colIndex}`;
     let updatedCells;
+    let updatedNames;
 
     switch (type) {
       case "guards":
@@ -48,22 +66,41 @@ const ArmySettings = ({ isOpen }) => {
           ? selectedCellsGuards.filter((key) => key !== cellKey)
           : [...selectedCellsGuards, cellKey];
         setSelectedCellsGuardsHandler(updatedCells);
+
+        updatedNames = selectedUnitsNames.includes(cell)
+          ? selectedUnitsNames.filter((name) => name !== cell)
+          : [...selectedUnitsNames, cell];
+        setSelectedUnitsNamesHandler(updatedNames);
         break;
+
       case "specialists":
         updatedCells = selectedCellsSpecialists.includes(cellKey)
           ? selectedCellsSpecialists.filter((key) => key !== cellKey)
           : [...selectedCellsSpecialists, cellKey];
         setSelectedCellsSpecialistsHandler(updatedCells);
+
+        updatedNames = selectedUnitsNames.includes(cell)
+          ? selectedUnitsNames.filter((name) => name !== cell)
+          : [...selectedUnitsNames, cell];
+        setSelectedUnitsNamesHandler(updatedNames);
         break;
+
       case "monsters":
         updatedCells = selectedCellsMonsters.includes(cellKey)
           ? selectedCellsMonsters.filter((key) => key !== cellKey)
           : [...selectedCellsMonsters, cellKey];
         setSelectedCellsMonstersHandler(updatedCells);
+
+        updatedNames = selectedMonstersNames.includes(cell)
+          ? selectedMonstersNames.filter((name) => name !== cell)
+          : [...selectedMonstersNames, cell];
+        setSelectedMonstersNamesHandler(updatedNames);
         break;
+
       default:
         break;
     }
+    console.log(selectedUnitsNames)
   };
 
   const tableContainerStyle = {
@@ -84,7 +121,6 @@ const ArmySettings = ({ isOpen }) => {
     border: "0.5px solid #ddd",
     padding: "8px",
     height: "50px",
-    //opacity: 0.8,
   };
 
   const clickableTdStyle = {
@@ -256,6 +292,32 @@ const ArmySettings = ({ isOpen }) => {
                       </td>
                     );
                   })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style={tableContainerStyle}>
+        <div>
+          <h2 style={{ marginBottom: "10px", color: "white" }}>Armia</h2>
+          <table style={tableStyle}>
+            <tbody>
+              {selectedUnitsNames.map((name, index) => (
+                <tr key={index} style={{ backgroundColor: colors.T3 }}>
+                  <td style={thTdStyle}>{name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2 style={{ marginBottom: "10px", color: "white" }}>Potwory</h2>
+          <table style={tableStyle}>
+            <tbody>
+              {selectedMonstersNames.map((name, index) => (
+                <tr key={index} style={{ backgroundColor: colors.T3 }}>
+                  <td style={thTdStyle}>{name}</td>
                 </tr>
               ))}
             </tbody>

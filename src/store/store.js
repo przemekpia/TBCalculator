@@ -3,13 +3,15 @@ import {
   armyGuardsmenReducer,
   armySpecialistsReducer,
   armyMonstersReducer,
-} from "./counter";
+  armyReducer,
+} from "./army";
 
 const store = configureStore({
   reducer: {
     guardsmen: armyGuardsmenReducer,
     specialists: armySpecialistsReducer,
     monsters: armyMonstersReducer,
+    army: armyReducer,
   },
 });
 
