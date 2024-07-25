@@ -7,6 +7,8 @@ import {
   armyMonstersActions,
 } from "../../../store/counter";
 
+import { rowsMonsters } from "../../../data/MonsterData";
+
 const ArmySettings = ({ isOpen }) => {
   const rowsGuards = [
     ["Tier I", "Włócznik I", "Łucznik I", "Jeździec I", ""],
@@ -32,17 +34,7 @@ const ArmySettings = ({ isOpen }) => {
     ["Tier II", "Pojedynkowicz II", "Legitymista II", "Białogrzywy husarz II", "Królewski lew II"],
   ];
 
-  const rowsMonsters = [
-    ["Tier I", "", "", "", ""],
-    ["Tier II", "", "", "", ""],
-    ["Tier III", "Szmaragdowy smok", "Żywiołak wody", "Kamienny gargulec", "Odyniec bojowy"],
-    ["Tier IV", "Magiczny smok", "Lodowy feniks", "Wieloręki strażnik", "Gorgona meduza"],
-    ["Tier V", "Pustynny pogromca", "Płonący centaur", "Dwugłowy ogr", "Przerażająca mantykora"],
-    ["Tier VI", "Kryształowy smok", "Rubinowy golem", "Jeździec trolli", "Niszczyciel dżungli"],
-    ["Tier VII", "Czarny smok", "Pan wiatru", "Niszczycielski kolos", "Prastary potwór"],
-    ["Tier I", "Burzyciel I", "Ognisty feniks I", "Kraken I", "Szachraj I"],
-    ["Tier II", "Burzyciel II", "Ognisty feniks II", "Kraken II", "Szachraj II"],
-  ];
+  
 
   const dispatch = useDispatch();
   const selectedCellsGuards = useSelector((state) => state.guardsmen.selectedCellsGuards);
