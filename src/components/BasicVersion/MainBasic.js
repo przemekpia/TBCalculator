@@ -4,6 +4,7 @@ import BonusSettings from "./MainBar/BonusSettings";
 import Settings from "./MainBar/Settings";
 import SettingsBar from "./MainBar/SettingsBar";
 import ReturnBar from "./MainBar/ReturnBar";
+import Output from "./Output";
 
 const MainBasic = ({ isOpen }) => {
   const [armySettingsOpen, setArmySettingsOpen] = useState(false);
@@ -33,6 +34,7 @@ const MainBasic = ({ isOpen }) => {
       <ArmySettings isOpen={armySettingsOpen} />
       <BonusSettings isOpen={bonusSettingsOpen} />
       <Settings isOpen={settingsOpen} />
+      <Output/>
     </div>
   );
 };
