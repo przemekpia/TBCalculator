@@ -1,32 +1,32 @@
 const guardsmensDataTier1 = [
-  { name: "Włócznik I", attack: 10, hp: 20, leadership: 30, traits: ["szybki", "silny"] },
-  { name: "Łucznik I", attack: 15, hp: 15, leadership: 25, traits: ["celny", "zwrotny"] },
-  { name: "Jeździec I", attack: 20, hp: 25, leadership: 35, traits: ["mobilny", "silny"] },
+  { name: "Włócznik I", attack: 50, hp: 150, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"] },
+  { name: "Łucznik I", attack: 50, hp: 150, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"] },
+  { name: "Jeździec I", attack: 100, hp: 300, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
 ];
 const guardsmensDataTier2 = [
-  { name: "Włócznik II", attack: 12, hp: 22, leadership: 32, traits: ["szybki", "silny"] },
-  { name: "Łucznik II", attack: 17, hp: 17, leadership: 27, traits: ["celny", "zwrotny"] },
-  { name: "Jeździec II", attack: 22, hp: 27, leadership: 37, traits: ["mobilny", "silny"] },
+  { name: "Włócznik II", attack: 90, hp: 270, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"] },
+  { name: "Łucznik II", attack: 90, hp: 270, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"] },
+  { name: "Jeździec II", attack: 180, hp: 540, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
 ];
 const guardsmensDataTier3 = [
-  { name: "Włócznik III", attack: 14, hp: 24, leadership: 34, traits: ["szybki", "silny"] },
-  { name: "Łucznik III", attack: 19, hp: 19, leadership: 29, traits: ["celny", "zwrotny"] },
-  { name: "Jeździec III", attack: 24, hp: 29, leadership: 39, traits: ["mobilny", "silny"] },
+  { name: "Włócznik III", attack: 160, hp: 480, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"] },
+  { name: "Łucznik III", attack: 160, hp: 480, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"] },
+  { name: "Jeździec III", attack: 320, hp: 960, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
 ];
 const guardsmensDataTier4 = [
-  { name: "Włócznik IV", attack: 16, hp: 26, leadership: 36, traits: ["szybki", "silny"] },
-  { name: "Łucznik IV", attack: 21, hp: 21, leadership: 31, traits: ["celny", "zwrotny"] },
-  { name: "Jeździec IV", attack: 26, hp: 31, leadership: 41, traits: ["mobilny", "silny"] },
+  { name: "Włócznik IV", attack: 290, hp: 870, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"] },
+  { name: "Łucznik IV", attack: 290, hp: 870, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"] },
+  { name: "Jeździec IV", attack: 580, hp: 1740, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
 ];
 const guardsmensDataTier5 = [
-  { name: "Włócznik V", attack: 18, hp: 28, leadership: 38, traits: ["szybki", "silny"] },
-  { name: "Łucznik V", attack: 23, hp: 23, leadership: 33, traits: ["celny", "zwrotny"] },
-  { name: "Jeździec V", attack: 28, hp: 33, leadership: 43, traits: ["mobilny", "silny"] },
-  { name: "Gryf bitewny V", attack: 30, hp: 40, leadership: 50, traits: ["latający", "groźny"] },
+  { name: "Włócznik V", attack: 520, hp: 1560, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"] },
+  { name: "Łucznik V", attack: 520, hp: 1560, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"] },
+  { name: "Jeździec V", attack: 1050, hp: 3150, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"] },
+  { name: "Gryf bitewny V", attack: 10000, hp: 30000, leadership: 20, traits: ["Bestia", "Jednostka latająca", "Gwardzista"] },
 ];
 const guardsmensDataTier6 = [
   { name: "Ciężki halabardnik VI", attack: 20, hp: 30, leadership: 40, traits: ["ciężki", "silny"] },

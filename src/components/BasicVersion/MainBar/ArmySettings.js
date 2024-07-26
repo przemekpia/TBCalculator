@@ -10,7 +10,6 @@ import { monsters } from "../../../data/MonsterData";
 const ArmySettings = ({ isOpen }) => {
   const dispatch = useDispatch();
 
-  // Initialize with empty arrays if undefined
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
   const selectedMonsters = useSelector((state) => state.army.selectedMonsters || []);
 

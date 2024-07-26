@@ -1,33 +1,33 @@
 const specialistsDataTier1 = [
-  { name: "Rycerz I", attack: 100, hp: 300, leadership: 5, traits: ["Wojownik", "Obrońca"] },
+  { name: "Rycerz I", attack: 50, hp: 150, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
 ];
 
 const specialistsDataTier2 = [
-  { name: "Rycerz II", attack: 110, hp: 330, leadership: 6, traits: ["Wojownik", "Obrońca"] },
+  { name: "Rycerz II", attack: 90, hp: 270, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
 ];
 
 const specialistsDataTier3 = [
-  { name: "Rycerz III", attack: 120, hp: 360, leadership: 7, traits: ["Wojownik", "Obrońca"] },
+  { name: "Rycerz III", attack: 160, hp: 480, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
 ];
 
 const specialistsDataTier4 = [
-  { name: "Rycerz IV", attack: 130, hp: 390, leadership: 8, traits: ["Wojownik", "Obrońca"] },
+  { name: "Rycerz IV", attack: 290, hp: 870, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
   { name: "", attack: 0, hp: 0, leadership: 0, traits: [] },
 ];
 
 const specialistsDataTier5 = [
-  { name: "Rycerz V", attack: 140, hp: 420, leadership: 9, traits: ["Wojownik", "Obrońca"] },
+  { name: "Rycerz V", attack: 520, hp: 1560, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"] },
   { name: "Elitarny Kusznik V", attack: 150, hp: 450, leadership: 10, traits: ["Łucznik", "Strzelec"] },
   { name: "Jeździec lwów V", attack: 160, hp: 480, leadership: 11, traits: ["Jeździec", "Szybki"] },
   { name: "Sęp V", attack: 170, hp: 510, leadership: 12, traits: ["Latający", "Groźny"] },
