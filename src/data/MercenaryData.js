@@ -359,8 +359,8 @@ const mercenary = [
   mercenaryDataTier6[15],
   mercenaryDataTier6[16],mercenaryDataTier6[17],],
   ["Tier VII", mercenaryDataTier7[0], mercenaryDataTier7[1]],
-  ["Tier I", mercenaryDataTier8[0], mercenaryDataTier8[1]],
-  ["Tier II", mercenaryDataTier9[0], mercenaryDataTier9[1]],
+  ["Tier VIII", mercenaryDataTier8[0], mercenaryDataTier8[1]],
+  ["Tier IX", mercenaryDataTier9[0], mercenaryDataTier9[1]],
 ];
 
 export { mercenary };

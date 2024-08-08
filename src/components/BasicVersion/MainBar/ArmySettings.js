@@ -16,23 +16,29 @@ const ArmySettings = ({ isOpen }) => {
     dispatch(armyActions.setSelectedUnits(units));
   };
 
-  const handleRowClick = (rowIndex, rows) => {
-    const rowCells = rows[rowIndex];
-    const rowUnits = rowCells.slice(1).filter((cell) => cell && cell.name); // Exclude empty cells and cells without names
-    const rowUnitNames = rowUnits.map((unit) => unit.name);
-    const allSelected = rowUnits.every((unit) =>
+  const getTierRows = (rows, tierName) => {
+    return rows.filter((row) => row[0] === tierName);
+  };
+
+  const handleTierClick = (tierName, rows) => {
+    const tierRows = getTierRows(rows, tierName);
+    const tierUnits = tierRows.flatMap((row) =>
+      row.slice(1).filter((cell) => cell && cell.name)
+    );
+    const tierUnitNames = tierUnits.map((unit) => unit.name);
+    const allSelected = tierUnits.every((unit) =>
       selectedUnits.some((selected) => selected.name === unit.name)
     );
 
     if (allSelected) {
-      // Deselect all units in the row
+      // Deselect all units in the tier
       const updatedUnits = selectedUnits.filter(
-        (unit) => !rowUnitNames.includes(unit.name)
+        (unit) => !tierUnitNames.includes(unit.name)
       );
       setSelectedUnitsHandler(updatedUnits);
     } else {
-      // Select all units in the row
-      const newUnits = rowUnits.filter(
+      // Select all units in the tier
+      const newUnits = tierUnits.filter(
         (unit) => !selectedUnits.some((selected) => selected.name === unit.name)
       );
       const updatedUnits = [...selectedUnits, ...newUnits];
@@ -42,8 +48,8 @@ const ArmySettings = ({ isOpen }) => {
 
   const handleCellClick = (rowIndex, colIndex, cell, rows) => {
     if (colIndex === 0) {
-      // Handle row header click
-      handleRowClick(rowIndex, rows);
+      // Handle tier header click
+      handleTierClick(cell, rows);
     } else if (cell && cell.name) {
       // Handle regular cell click (only if cell has a name)
       const updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
@@ -105,16 +111,7 @@ const ArmySettings = ({ isOpen }) => {
     return newRows;
   };
 
-  const getRowColor = (rowIndex, originalRowIndex, categoryType) => {
-    const tierOffsets = {
-      guards: 0,
-      specialists: 0,
-      monsters: 2, // Zaczyna się od Tier III
-      mercenaries: 4, // Zaczyna się od Tier V
-    };
-
-    const offset = tierOffsets[categoryType] || 0;
-
+  const getRowColor = (tierIndex, categoryType) => {
     const rowColors = [
       colors.T1,
       colors.T2,
@@ -127,30 +124,34 @@ const ArmySettings = ({ isOpen }) => {
       colors.T2,
     ];
 
-    return rowColors[
-      (originalRowIndex + offset) % rowColors.length
-    ];
+    // Offset dla każdego typu jednostki
+    const tierOffsets = {
+      guards: 0,
+      specialists: 0,
+      monsters: 2, // Potwory zaczynają od Tier III
+      mercenaries: 4, // Najemnicy zaczynają od Tier V
+    };
+
+    const offset = tierOffsets[categoryType] || 0;
+
+    return rowColors[(tierIndex + offset) % rowColors.length];
   };
 
   const renderTable = (rows, type) => {
     const splitRowData = splitRows(rows);
-
+    const tierNames = [...new Set(splitRowData.map((row) => row[0]))];
+    
     return (
       <table style={tableStyle}>
         <tbody>
           {splitRowData.map((row, rowIndex) => {
-            const originalRowIndex = Math.floor(
-              rowIndex / Math.ceil((rows[0].length - 1) / (MAX_COLUMNS - 1))
-            );
+            const tierIndex = tierNames.indexOf(row[0]);
+
             return (
               <tr
                 key={rowIndex}
                 style={{
-                  backgroundColor: getRowColor(
-                    rowIndex,
-                    originalRowIndex,
-                    type
-                  ),
+                  backgroundColor: getRowColor(tierIndex, type),
                 }}
               >
                 {row.map((cell, cellIndex) => {
