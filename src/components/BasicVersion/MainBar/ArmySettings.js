@@ -6,12 +6,14 @@ import { armyActions } from "../../../store/army";
 import { guardsmens } from "../../../data/GuardsmenData";
 import { specialists } from "../../../data/SpecialistsData";
 import { monsters } from "../../../data/MonsterData";
+import { mercenary } from "../../../data/MercenaryData"; 
 
 const ArmySettings = ({ isOpen }) => {
   const dispatch = useDispatch();
 
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
   const selectedMonsters = useSelector((state) => state.army.selectedMonsters || []);
+  const selectedMercenaries = useSelector((state) => state.army.selectedMercenaries || []); 
 
   const setSelectedUnitsHandler = (units) => {
     dispatch(armyActions.setSelectedUnits(units));
@@ -19,6 +21,10 @@ const ArmySettings = ({ isOpen }) => {
 
   const setSelectedMonstersHandler = (monsters) => {
     dispatch(armyActions.setSelectedMonsters(monsters));
+  };
+
+  const setSelectedMercenariesHandler = (mercenaries) => {
+    dispatch(armyActions.setSelectedMercenaries(mercenaries));
   };
 
   const handleClick = (rowIndex, colIndex, cell, type) => {
@@ -43,10 +49,16 @@ const ArmySettings = ({ isOpen }) => {
         setSelectedMonstersHandler(updatedUnits);
         break;
 
+      case "mercenaries":
+        updatedUnits = selectedMercenaries.find((merc) => merc.name === cell.name)
+          ? selectedMercenaries.filter((merc) => merc.name !== cell.name)
+          : [...selectedMercenaries, cell];
+        setSelectedMercenariesHandler(updatedUnits);
+        break;
+
       default:
         break;
     }
-    console.log(selectedUnits)
   };
 
   const tableContainerStyle = {
@@ -76,7 +88,7 @@ const ArmySettings = ({ isOpen }) => {
 
   const selectedTdStyle = {
     ...clickableTdStyle,
-    border: "3px solid #000",
+    boxShadow: "0 0 0 3px #000 inset", // Add internal border effect
     opacity: 1,
   };
 
@@ -103,7 +115,9 @@ const ArmySettings = ({ isOpen }) => {
               const isSelected =
                 (type === "guards" || type === "specialists")
                   ? selectedUnits.find((unit) => unit.name === cell.name)
-                  : selectedMonsters.find((monster) => monster.name === cell.name);
+                  : type === "monsters"
+                  ? selectedMonsters.find((monster) => monster.name === cell.name)
+                  : selectedMercenaries.find((merc) => merc.name === cell.name);
               const cellStyle = isSelected
                 ? selectedTdStyle
                 : {
@@ -154,6 +168,10 @@ const ArmySettings = ({ isOpen }) => {
         <div>
           <h2 style={{ marginBottom: "10px", color: "white" }}>Potwory</h2>
           {renderTable(monsters, "monsters")}
+        </div>
+        <div>
+          <h2 style={{ marginBottom: "10px", color: "white" }}>Najemnicy</h2>
+          {renderTable(mercenary, "mercenaries")}
         </div>
       </div>
     </div>

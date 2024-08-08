@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialArmyState = { selectedMonsters: [], selectedUnits: [] };
+const initialArmyState = {
+  selectedMonsters: [],
+  selectedUnits: [],
+  selectedMercenaries: [],
+};
 
 const armySlice = createSlice({
   name: "army",
@@ -11,6 +15,9 @@ const armySlice = createSlice({
     },
     setSelectedUnits(state, action) {
       state.selectedUnits = action.payload;
+    },
+    setSelectedMercenaries(state, action) {
+      state.selectedMercenaries = action.payload;
     },
   },
 });

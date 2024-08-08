@@ -43,8 +43,8 @@ const Output = () => {
           sortedUnitsTemp[j].amount += 1;
           currentLeadership += sortedUnitsTemp[j].leadership;
         } else {
-          if (
-            (sortedUnitsTemp[j].amount + 1) * sortedUnitsTemp[j].hp <
+          if ( // Mozna dodac zabezpieczenie co do hp na porownanie jednostek pomiedzy konkretnymi tierami
+            (sortedUnitsTemp[j].amount + 1) * sortedUnitsTemp[j].hp <=
               sortedUnitsTemp[j + 1].amount * sortedUnitsTemp[j + 1].hp &&
             currentLeadership + sortedUnitsTemp[j].leadership <= leadership
           ) {
