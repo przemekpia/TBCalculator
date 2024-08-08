@@ -39,7 +39,10 @@ const Output = () => {
       for (let j = 0; j < sortedUnitsTemp.length; j++) {
         if (j + 1 === sortedUnitsTemp.length) {
           sortedUnitsTemp[j].amount += 1;
-          currentLeadership += sortedUnitsTemp[j].leadership;
+          if (sortedUnitsTemp[j].category==="army"){
+            currentLeadership += sortedUnitsTemp[j].leadership;
+          }
+          
         } else {
           if ( // Mozna dodac zabezpieczenie co do hp na porownanie jednostek pomiedzy konkretnymi tierami
             (sortedUnitsTemp[j].amount + 1) * sortedUnitsTemp[j].hp <=
@@ -47,7 +50,9 @@ const Output = () => {
             currentLeadership + sortedUnitsTemp[j].leadership <= leadership
           ) {
             sortedUnitsTemp[j].amount += 1;
-            currentLeadership += sortedUnitsTemp[j].leadership;
+            if (sortedUnitsTemp[j].category==="army"){
+              currentLeadership += sortedUnitsTemp[j].leadership;
+            }
             break;
           }
         }
