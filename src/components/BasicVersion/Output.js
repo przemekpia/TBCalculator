@@ -54,7 +54,7 @@ const Output = () => {
       }
     }
     setCountedLeadership(currentLeadership);
-    setSortedUnits(sortedUnitsTemp); // Update the sortedUnits state
+    setSortedUnits(sortedUnitsTemp); 
     alert(
       "Sorted Units: " +
         sortedUnits

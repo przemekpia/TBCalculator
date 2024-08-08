@@ -6,6 +6,7 @@ const mercenaryDataTier5 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Gargulec",
@@ -14,6 +15,7 @@ const mercenaryDataTier5 = [
     leadership: 19,
     traits: ["Nieumarły", "Bestia", "Jednostka latająca"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Ifryt",
@@ -22,6 +24,7 @@ const mercenaryDataTier5 = [
     leadership: 42,
     traits: ["Żywiołak", "Jednostka latająca", "Demon"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Jeździec byków",
@@ -30,6 +33,7 @@ const mercenaryDataTier5 = [
     leadership: 28,
     traits: ["Przeklęty", "Jeździec"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Jeździec jednorożców",
@@ -38,6 +42,7 @@ const mercenaryDataTier5 = [
     leadership: 26,
     traits: ["Elf", "Jeździec"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Jeździec piroinsektów",
@@ -46,46 +51,52 @@ const mercenaryDataTier5 = [
     leadership: 48,
     traits: ["Jeździec", "Demon"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Jeździec skorpionów",
     attack: 37000,
     hp: 111000,
     leadership: 36,
-    traits: ["Barbarzyńca","Jeździec"],
+    traits: ["Barbarzyńca", "Jeździec"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Niedźwiedź",
     attack: 22000,
     hp: 66000,
     leadership: 21,
-    traits: ["Elf","Piechota","Bestia"],
+    traits: ["Elf", "Piechota", "Bestia"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Olbrzymi zombi",
     attack: 33000,
     hp: 99000,
     leadership: 32,
-    traits: ["Przeklęty","Piechota","Olbrzym"],
+    traits: ["Przeklęty", "Piechota", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Skorpion",
     attack: 5250,
     hp: 32000,
     leadership: 10,
-    traits: ["Człowiek","Machina oblężnicza","Korpus inżynierów"],
+    traits: ["Człowiek", "Machina oblężnicza", "Korpus inżynierów"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Szybki strzelec",
     attack: 1050,
     hp: 3150,
     leadership: 1,
-    traits: ["Człowiek","Jednostka strzelecka","Gwardzista"],
+    traits: ["Człowiek", "Jednostka strzelecka", "Gwardzista"],
     tier: 5,
+    category: "mercenary",
   },
 ];
 
@@ -97,6 +108,7 @@ const mercenaryDataTier6 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Cyklop",
@@ -105,6 +117,7 @@ const mercenaryDataTier6 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
 ];
 
@@ -116,6 +129,7 @@ const mercenaryDataTier7 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Cyklop",
@@ -124,6 +138,7 @@ const mercenaryDataTier7 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
 ];
 
@@ -135,6 +150,7 @@ const mercenaryDataTier8 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Cyklop",
@@ -143,6 +159,7 @@ const mercenaryDataTier8 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
 ];
 
@@ -154,6 +171,7 @@ const mercenaryDataTier9 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
   {
     name: "Cyklop",
@@ -162,6 +180,7 @@ const mercenaryDataTier9 = [
     leadership: 43,
     traits: ["Barbarzyńca", "Jednostka strzelecka", "Olbrzym"],
     tier: 5,
+    category: "mercenary",
   },
 ];
 
