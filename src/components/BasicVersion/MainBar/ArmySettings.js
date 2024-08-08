@@ -6,11 +6,11 @@ import { armyActions } from "../../../store/army";
 import { guardsmens } from "../../../data/GuardsmenData";
 import { specialists } from "../../../data/SpecialistsData";
 import { monsters } from "../../../data/MonsterData";
-import { mercenary } from "../../../data/MercenaryData"; 
+import { mercenary } from "../../../data/MercenaryData";
 
 const ArmySettings = ({ isOpen }) => {
   const dispatch = useDispatch();
-  const selectedUnits = useSelector((state) => state.army.selectedUnits || []); 
+  const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
 
   const setSelectedUnitsHandler = (units) => {
     dispatch(armyActions.setSelectedUnits(units));
@@ -18,17 +18,23 @@ const ArmySettings = ({ isOpen }) => {
 
   const handleRowClick = (rowIndex, rows) => {
     const rowCells = rows[rowIndex];
-    const rowUnits = rowCells.slice(1).filter(cell => cell && cell.name); // Exclude empty cells and cells without names
-    const rowUnitNames = rowUnits.map(unit => unit.name);
-    const allSelected = rowUnits.every(unit => selectedUnits.some(selected => selected.name === unit.name));
+    const rowUnits = rowCells.slice(1).filter((cell) => cell && cell.name); // Exclude empty cells and cells without names
+    const rowUnitNames = rowUnits.map((unit) => unit.name);
+    const allSelected = rowUnits.every((unit) =>
+      selectedUnits.some((selected) => selected.name === unit.name)
+    );
 
     if (allSelected) {
       // Deselect all units in the row
-      const updatedUnits = selectedUnits.filter(unit => !rowUnitNames.includes(unit.name));
+      const updatedUnits = selectedUnits.filter(
+        (unit) => !rowUnitNames.includes(unit.name)
+      );
       setSelectedUnitsHandler(updatedUnits);
     } else {
       // Select all units in the row
-      const newUnits = rowUnits.filter(unit => !selectedUnits.some(selected => selected.name === unit.name));
+      const newUnits = rowUnits.filter(
+        (unit) => !selectedUnits.some((selected) => selected.name === unit.name)
+      );
       const updatedUnits = [...selectedUnits, ...newUnits];
       setSelectedUnitsHandler(updatedUnits);
     }
@@ -78,53 +84,111 @@ const ArmySettings = ({ isOpen }) => {
     opacity: 1,
   };
 
-  const rowColors = [
-    colors.T1,
-    colors.T2,
-    colors.T3,
-    colors.T4,
-    colors.T5,
-    colors.T6,
-    colors.T7,
-    colors.T1,
-    colors.T2,
-  ];
+  const MAX_COLUMNS = 9;
 
-  const renderTable = (rows, type) => (
-    <table style={tableStyle}>
-      <tbody>
-        {rows.map((row, rowIndex) => (
-          <tr key={rowIndex} style={{ backgroundColor: rowColors[rowIndex] }}>
-            {row.map((cell, cellIndex) => {
-              const isHeaderCell = cellIndex === 0;
-              const isEmptyCell = !cell || !cell.name;
-              const isSelected =
-                selectedUnits.find((unit) => unit.name === cell?.name);
-              const cellStyle = isSelected
-                ? selectedTdStyle
-                : {
-                    ...thTdStyle,
-                    width: cellIndex === 0 ? "40px" : "100px",
-                    cursor: isHeaderCell || isEmptyCell ? "default" : "pointer",
-                  };
-              if (cellIndex === 0) {
-                cellStyle.opacity = 1;
-              }
-              return (
-                <td
-                  key={cellIndex}
-                  style={cellStyle}
-                  onClick={() => handleCellClick(rowIndex, cellIndex, cell, rows)}
-                >
-                  {cellIndex === 0 ? cell : cell.name}
-                </td>
-              );
-            })}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+  const splitRows = (rows) => {
+    const newRows = [];
+
+    rows.forEach((row) => {
+      const headerCell = row[0]; // Pierwsza kolumna z nazwą tieru
+      const remainingCells = row.slice(1); // Pozostałe kolumny
+
+      for (let i = 0; i < remainingCells.length; i += MAX_COLUMNS - 1) {
+        const newRow = [
+          headerCell,
+          ...remainingCells.slice(i, i + MAX_COLUMNS - 1),
+        ];
+        newRows.push(newRow);
+      }
+    });
+
+    return newRows;
+  };
+
+  const getRowColor = (rowIndex, originalRowIndex, categoryType) => {
+    const tierOffsets = {
+      guards: 0,
+      specialists: 0,
+      monsters: 2, // Zaczyna się od Tier III
+      mercenaries: 4, // Zaczyna się od Tier V
+    };
+
+    const offset = tierOffsets[categoryType] || 0;
+
+    const rowColors = [
+      colors.T1,
+      colors.T2,
+      colors.T3,
+      colors.T4,
+      colors.T5,
+      colors.T6,
+      colors.T7,
+      colors.T1,
+      colors.T2,
+    ];
+
+    return rowColors[
+      (originalRowIndex + offset) % rowColors.length
+    ];
+  };
+
+  const renderTable = (rows, type) => {
+    const splitRowData = splitRows(rows);
+
+    return (
+      <table style={tableStyle}>
+        <tbody>
+          {splitRowData.map((row, rowIndex) => {
+            const originalRowIndex = Math.floor(
+              rowIndex / Math.ceil((rows[0].length - 1) / (MAX_COLUMNS - 1))
+            );
+            return (
+              <tr
+                key={rowIndex}
+                style={{
+                  backgroundColor: getRowColor(
+                    rowIndex,
+                    originalRowIndex,
+                    type
+                  ),
+                }}
+              >
+                {row.map((cell, cellIndex) => {
+                  const isHeaderCell = cellIndex === 0;
+                  const isEmptyCell = !cell || !cell.name;
+                  const isSelected = selectedUnits.find(
+                    (unit) => unit.name === cell?.name
+                  );
+                  const cellStyle = isSelected
+                    ? selectedTdStyle
+                    : {
+                        ...thTdStyle,
+                        width: isHeaderCell ? "40px" : "100px",
+                        cursor:
+                          isHeaderCell || isEmptyCell ? "default" : "pointer",
+                      };
+                  if (cellIndex === 0) {
+                    cellStyle.opacity = 1;
+                  }
+                  return (
+                    <td
+                      key={cellIndex}
+                      style={cellStyle}
+                      onClick={() =>
+                        handleCellClick(rowIndex, cellIndex, cell, splitRowData)
+                      }
+                    >
+                      {cellIndex === 0 ? cell : cell?.name}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  };
 
   return (
     <div
@@ -143,7 +207,9 @@ const ArmySettings = ({ isOpen }) => {
             {renderTable(guardsmens, "guards")}
           </div>
           <div>
-            <h2 style={{ marginBottom: "10px", color: "white" }}>Specjaliści</h2>
+            <h2 style={{ marginBottom: "10px", color: "white" }}>
+              Specjaliści
+            </h2>
             {renderTable(specialists, "specialists")}
           </div>
         </div>

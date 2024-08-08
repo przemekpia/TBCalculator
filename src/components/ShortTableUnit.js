@@ -1,54 +1,55 @@
 import React from "react";
 import { colors } from "../assets/colors";
 
-const ShortTableUnit = ({ unitCount, unitName, unitTier }) => {
-  return unitCount !== 0 ? (
+const ShortTableUnit = ({ unit }) => {
+  return unit.amount !== 0 ? (
     <tr
       style={{
         backgroundColor:
-          unitTier === 1
+          unit.tier === 1
             ? colors.T1
-            : unitTier === 2
+            : unit.tier === 2
             ? colors.T2
-            : unitTier === 3
+            : unit.tier === 3
             ? colors.T3
-            : unitTier === 4
+            : unit.tier === 4
             ? colors.T4
-            : unitTier === 5
+            : unit.tier === 5
             ? colors.T5
-            : unitTier === 6
+            : unit.tier === 6
             ? colors.T6
-            : unitTier === 7
+            : unit.tier === 7
             ? colors.T7
-            : unitTier === 8
+            : unit.tier === 8
             ? colors.T1
-            : unitTier === 9
+            : unit.tier === 9
             ? colors.T2
             : "pink",
         color:
-          unitTier === 1
+          unit.tier === 1
             ? "white"
-            : unitTier === 2
+            : unit.tier === 2
             ? "white"
-            : unitTier === 3
+            : unit.tier === 3
             ? "white"
-            : unitTier === 4
+            : unit.tier === 4
             ? "white"
-            : unitTier === 5
+            : unit.tier === 5
             ? "white"
-            : unitTier === 6
+            : unit.tier === 6
             ? "white"
-            : unitTier === 7
+            : unit.tier === 7
             ? "white"
-            : unitTier === 8
+            : unit.tier === 8
             ? "white"
-            : unitTier === 9
+            : unit.tier === 9
             ? "white"
             : "pink",
       }}
     >
-      <th style={{ width: "45vw" }}>{unitName}</th>
-      <th style={{ width: "45vw" }}>{unitCount}</th>
+      <th style={{ width: "45vw" }}>{unit.name}</th>
+      <th style={{ width: "45vw" }}>{unit.amount}</th>
+      <th style={{ width: "5vw" }}>{unit.amount*unit.hp}</th>
     </tr>
   ) : null;
 };

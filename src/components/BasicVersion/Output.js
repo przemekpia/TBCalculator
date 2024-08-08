@@ -16,7 +16,7 @@ const Output = () => {
 
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
   
-  const leadership = 10000;
+  const leadership = 14000;
   let currentLeadership = 0;
   const [countedLeadership, setCountedLeadership] = useState(0);
   const [sortedUnits, setSortedUnits] = useState([]);
@@ -96,9 +96,7 @@ const Output = () => {
             {sortedUnits.map((unit, index) => (
               <ShortTableUnit
                 key={index}
-                unitName={unit.name}
-                unitCount={unit.amount}
-                unitTier={unit.tier}
+                unit={unit}
               />
             ))}
           </tbody>
