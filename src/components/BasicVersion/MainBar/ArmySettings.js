@@ -10,24 +10,41 @@ import { mercenary } from "../../../data/MercenaryData";
 
 const ArmySettings = ({ isOpen }) => {
   const dispatch = useDispatch();
-
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []); 
 
   const setSelectedUnitsHandler = (units) => {
     dispatch(armyActions.setSelectedUnits(units));
   };
 
-  const handleClick = (rowIndex, colIndex, cell, type) => {
-    if (colIndex === 0 || !cell) {
-      return;
+  const handleRowClick = (rowIndex, rows) => {
+    const rowCells = rows[rowIndex];
+    const rowUnits = rowCells.slice(1).filter(cell => cell && cell.name); // Exclude empty cells and cells without names
+    const rowUnitNames = rowUnits.map(unit => unit.name);
+    const allSelected = rowUnits.every(unit => selectedUnits.some(selected => selected.name === unit.name));
+
+    if (allSelected) {
+      // Deselect all units in the row
+      const updatedUnits = selectedUnits.filter(unit => !rowUnitNames.includes(unit.name));
+      setSelectedUnitsHandler(updatedUnits);
+    } else {
+      // Select all units in the row
+      const newUnits = rowUnits.filter(unit => !selectedUnits.some(selected => selected.name === unit.name));
+      const updatedUnits = [...selectedUnits, ...newUnits];
+      setSelectedUnitsHandler(updatedUnits);
     }
-    let updatedUnits;
+  };
 
-    updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
-      ? selectedUnits.filter((unit) => unit.name !== cell.name)
-      : [...selectedUnits, cell];
-
-    setSelectedUnitsHandler(updatedUnits);
+  const handleCellClick = (rowIndex, colIndex, cell, rows) => {
+    if (colIndex === 0) {
+      // Handle row header click
+      handleRowClick(rowIndex, rows);
+    } else if (cell && cell.name) {
+      // Handle regular cell click (only if cell has a name)
+      const updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
+        ? selectedUnits.filter((unit) => unit.name !== cell.name)
+        : [...selectedUnits, cell];
+      setSelectedUnitsHandler(updatedUnits);
+    }
   };
 
   const tableContainerStyle = {
@@ -80,9 +97,9 @@ const ArmySettings = ({ isOpen }) => {
           <tr key={rowIndex} style={{ backgroundColor: rowColors[rowIndex] }}>
             {row.map((cell, cellIndex) => {
               const isHeaderCell = cellIndex === 0;
-              const isEmptyCell = !cell;
+              const isEmptyCell = !cell || !cell.name;
               const isSelected =
-                selectedUnits.find((unit) => unit.name === cell.name);
+                selectedUnits.find((unit) => unit.name === cell?.name);
               const cellStyle = isSelected
                 ? selectedTdStyle
                 : {
@@ -97,7 +114,7 @@ const ArmySettings = ({ isOpen }) => {
                 <td
                   key={cellIndex}
                   style={cellStyle}
-                  onClick={() => handleClick(rowIndex, cellIndex, cell, type)}
+                  onClick={() => handleCellClick(rowIndex, cellIndex, cell, rows)}
                 >
                   {cellIndex === 0 ? cell : cell.name}
                 </td>
