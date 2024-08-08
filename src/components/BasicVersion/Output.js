@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import ShortTableUnit from "../ShortTableUnit";
 
 const Output = () => {
   const buttonStyle = {
@@ -18,50 +19,52 @@ const Output = () => {
     (state) => state.army.selectedMonsters || []
   );
   const leadership = 10000;
+  let currentLeadership = 0;
+  const [countedLeadership, setCountedLeadership] = useState(0);
+  const [sortedUnits, setSortedUnits] = useState([]);
 
   const handleClick = () => {
-    let sortedUnits = selectedUnits
+    let sortedUnitsTemp = selectedUnits
       .map((unit) => ({
         ...unit,
         ratio: unit.attack / unit.leadership,
         amount: 0,
       }))
-      .sort((a, b) => b.ratio - a.ratio);
+      .sort((a, b) => {
+        if (b.ratio !== a.ratio) {
+          return b.ratio - a.ratio;
+        }
+        return b.leadership - a.leadership;
+      });
 
-    let currentLeadership = 0;
-    while (currentLeadership <= leadership) {
-      for (let j = 0; j < sortedUnits.length; j++) {
-        if (j + 1 === sortedUnits.length) {
-          sortedUnits[j].amount += 1;
-          currentLeadership += sortedUnits[j].leadership;
+    while (currentLeadership < leadership) {
+      for (let j = 0; j < sortedUnitsTemp.length; j++) {
+        if (j + 1 === sortedUnitsTemp.length) {
+          sortedUnitsTemp[j].amount += 1;
+          currentLeadership += sortedUnitsTemp[j].leadership;
         } else {
           if (
-            (sortedUnits[j].amount + 1) * sortedUnits[j].hp <
-              sortedUnits[j + 1].amount * sortedUnits[j + 1].hp &&
-            currentLeadership + sortedUnits[j].leadership <= leadership
+            (sortedUnitsTemp[j].amount + 1) * sortedUnitsTemp[j].hp <
+              sortedUnitsTemp[j + 1].amount * sortedUnitsTemp[j + 1].hp &&
+            currentLeadership + sortedUnitsTemp[j].leadership <= leadership
           ) {
-            sortedUnits[j].amount += 1;
-            currentLeadership += sortedUnits[j].leadership;
+            sortedUnitsTemp[j].amount += 1;
+            currentLeadership += sortedUnitsTemp[j].leadership;
             break;
           }
         }
       }
     }
-
-    alert(
-      "Sorted Units: " +
-        sortedUnits
-          .map((unit) => `${unit.name}: ${unit.amount}`)
-          .join(", ")
-    );
+    setCountedLeadership(currentLeadership);
+    setSortedUnits(sortedUnitsTemp); // Update the sortedUnits state
   };
 
   return (
     <div
       style={{
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
+        flexDirection: "column", // Changed from 'row' to 'column'
+        alignItems: "center", // Align items to the center
         paddingBottom: "5px",
         paddingTop: "5px",
       }}
@@ -69,6 +72,29 @@ const Output = () => {
       <div style={buttonStyle} onClick={handleClick}>
         Oblicz
       </div>
+      <div style={buttonStyle} onClick={handleClick}>
+        {countedLeadership}
+      </div>
+      {sortedUnits.length > 0 && (
+        <table
+          style={{
+            marginTop: "20px",
+            borderCollapse: "collapse",
+            paddingBottom: "1vh",
+          }}
+        >
+          <tbody>
+            {sortedUnits.map((unit, index) => (
+              <ShortTableUnit
+                key={index}
+                unitName={unit.name}
+                unitCount={unit.attack}
+                unitTier={unit.tier}
+              />
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
