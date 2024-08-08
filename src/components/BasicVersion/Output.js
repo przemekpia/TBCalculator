@@ -15,9 +15,7 @@ const Output = () => {
   };
 
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
-  const selectedMonsters = useSelector(
-    (state) => state.army.selectedMonsters || []
-  );
+  
   const leadership = 10000;
   let currentLeadership = 0;
   const [countedLeadership, setCountedLeadership] = useState(0);

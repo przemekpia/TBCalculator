@@ -11,20 +11,10 @@ import { mercenary } from "../../../data/MercenaryData";
 const ArmySettings = ({ isOpen }) => {
   const dispatch = useDispatch();
 
-  const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
-  const selectedMonsters = useSelector((state) => state.army.selectedMonsters || []);
-  const selectedMercenaries = useSelector((state) => state.army.selectedMercenaries || []); 
+  const selectedUnits = useSelector((state) => state.army.selectedUnits || []); 
 
   const setSelectedUnitsHandler = (units) => {
     dispatch(armyActions.setSelectedUnits(units));
-  };
-
-  const setSelectedMonstersHandler = (monsters) => {
-    dispatch(armyActions.setSelectedMonsters(monsters));
-  };
-
-  const setSelectedMercenariesHandler = (mercenaries) => {
-    dispatch(armyActions.setSelectedMercenaries(mercenaries));
   };
 
   const handleClick = (rowIndex, colIndex, cell, type) => {
@@ -33,32 +23,11 @@ const ArmySettings = ({ isOpen }) => {
     }
     let updatedUnits;
 
-    switch (type) {
-      case "guards":
-      case "specialists":
-        updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
-          ? selectedUnits.filter((unit) => unit.name !== cell.name)
-          : [...selectedUnits, cell];
-        setSelectedUnitsHandler(updatedUnits);
-        break;
+    updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
+      ? selectedUnits.filter((unit) => unit.name !== cell.name)
+      : [...selectedUnits, cell];
 
-      case "monsters":
-        updatedUnits = selectedMonsters.find((monster) => monster.name === cell.name)
-          ? selectedMonsters.filter((monster) => monster.name !== cell.name)
-          : [...selectedMonsters, cell];
-        setSelectedMonstersHandler(updatedUnits);
-        break;
-
-      case "mercenaries":
-        updatedUnits = selectedMercenaries.find((merc) => merc.name === cell.name)
-          ? selectedMercenaries.filter((merc) => merc.name !== cell.name)
-          : [...selectedMercenaries, cell];
-        setSelectedMercenariesHandler(updatedUnits);
-        break;
-
-      default:
-        break;
-    }
+    setSelectedUnitsHandler(updatedUnits);
   };
 
   const tableContainerStyle = {
@@ -113,11 +82,7 @@ const ArmySettings = ({ isOpen }) => {
               const isHeaderCell = cellIndex === 0;
               const isEmptyCell = !cell;
               const isSelected =
-                (type === "guards" || type === "specialists")
-                  ? selectedUnits.find((unit) => unit.name === cell.name)
-                  : type === "monsters"
-                  ? selectedMonsters.find((monster) => monster.name === cell.name)
-                  : selectedMercenaries.find((merc) => merc.name === cell.name);
+                selectedUnits.find((unit) => unit.name === cell.name);
               const cellStyle = isSelected
                 ? selectedTdStyle
                 : {
