@@ -34,31 +34,31 @@ const guardsmensDataTier5 = [
 ];
 
 const guardsmensDataTier6 = [
-  { name: "Ciężki halabardnik VI", attack: 20, hp: 30, leadership: 40, traits: ["ciężki", "silny"], tier: 6 },
-  { name: "Ciężki kusznik VI", attack: 25, hp: 25, leadership: 35, traits: ["ciężki", "celny"], tier: 6 },
-  { name: "Konny rycerz VI", attack: 30, hp: 35, leadership: 45, traits: ["ciężki", "mobilny"], tier: 6 },
-  { name: "Gryf bitewny VI", attack: 32, hp: 42, leadership: 52, traits: ["latający", "groźny"], tier: 6 },
+  { name: "Ciężki halabardnik VI", attack: 940, hp: 2820, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"], tier: 6 },
+  { name: "Ciężki kusznik VI", attack: 940, hp: 2820, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"], tier: 6 },
+  { name: "Konny rycerz VI", attack: 1900, hp: 5700, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"], tier: 6 },
+  { name: "Gryf bitewny VI", attack: 19000, hp: 57000, leadership: 20, traits: ["Bestia", "Jednostka latająca", "Gwardzista"], tier: 6 },
 ];
 
 const guardsmensDataTier7 = [
-  { name: "Ciężki halabardnik VII", attack: 22, hp: 32, leadership: 42, traits: ["ciężki", "silny"], tier: 7 },
-  { name: "Ciężki kusznik VII", attack: 27, hp: 27, leadership: 37, traits: ["ciężki", "celny"], tier: 7 },
-  { name: "Konny rycerz VII", attack: 32, hp: 37, leadership: 47, traits: ["ciężki", "mobilny"], tier: 7 },
-  { name: "Gryf bitewny VII", attack: 34, hp: 44, leadership: 54, traits: ["latający", "groźny"], tier: 7 },
+  { name: "Ciężki halabardnik VII", attack: 1700, hp: 5100, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"], tier: 7 },
+  { name: "Ciężki kusznik VII", attack: 1700, hp: 5100, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"], tier: 7 },
+  { name: "Konny rycerz VII", attack: 3400, hp: 10200, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"], tier: 7 },
+  { name: "Gryf bitewny VII", attack: 34000, hp: 102000, leadership: 20, traits: ["Bestia", "Jednostka latająca", "Gwardzista"], tier: 7 },
 ];
 
 const guardsmensDataTier8 = [
-  { name: "Egzekutor I", attack: 24, hp: 34, leadership: 44, traits: ["szybki", "groźny"], tier: 8 },
-  { name: "Czyściciel I", attack: 28, hp: 28, leadership: 38, traits: ["mobilny", "celny"], tier: 8 },
-  { name: "Destruktor I", attack: 32, hp: 42, leadership: 52, traits: ["ciężki", "silny"], tier: 8 },
-  { name: "Kruk I", attack: 36, hp: 46, leadership: 56, traits: ["latający", "groźny"], tier: 8 },
+  { name: "Egzekutor I", attack: 3060, hp: 9180, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"], tier: 8 },
+  { name: "Czyściciel I", attack: 3060, hp: 9180, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"], tier: 8 },
+  { name: "Destruktor I", attack: 6120, hp: 18360, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"], tier: 8 },
+  { name: "Kruk I", attack: 36, hp: 46, leadership: 56, traits: ["Jednostka latająca", "Gwardzista", "Człowiek"], tier: 8 },
 ];
 
 const guardsmensDataTier9 = [
-  { name: "Egzekutor II", attack: 26, hp: 36, leadership: 46, traits: ["szybki", "groźny"], tier: 9 },
-  { name: "Czyściciel II", attack: 30, hp: 30, leadership: 40, traits: ["mobilny", "celny"], tier: 9 },
-  { name: "Destruktor II", attack: 34, hp: 44, leadership: 54, traits: ["ciężki", "silny"], tier: 9 },
-  { name: "Kruk II", attack: 38, hp: 48, leadership: 58, traits: ["latający", "groźny"], tier: 9 },
+  { name: "Egzekutor II", attack: 5510, hp: 16530, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"], tier: 9 },
+  { name: "Czyściciel II", attack: 5510, hp: 16530, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"], tier: 9 },
+  { name: "Destruktor II", attack: 11020, hp: 33060, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"], tier: 9 },
+  { name: "Kruk II", attack: 61200, hp: 183600, leadership: 20, traits: ["Jednostka latająca", "Gwardzista", "Człowiek"], tier: 9 },
 ];
 
 

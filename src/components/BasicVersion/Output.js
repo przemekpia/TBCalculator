@@ -57,6 +57,12 @@ const Output = () => {
     }
     setCountedLeadership(currentLeadership);
     setSortedUnits(sortedUnitsTemp); // Update the sortedUnits state
+    alert(
+      "Sorted Units: " +
+        sortedUnits
+          .map((unit) => `${unit.name}: ${unit.amount}`)
+          .join(", ")
+    );
   };
 
   return (
@@ -88,7 +94,7 @@ const Output = () => {
               <ShortTableUnit
                 key={index}
                 unitName={unit.name}
-                unitCount={unit.attack}
+                unitCount={unit.amount}
                 unitTier={unit.tier}
               />
             ))}
