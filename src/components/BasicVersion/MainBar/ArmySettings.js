@@ -47,42 +47,43 @@ const ArmySettings = ({ isOpen }) => {
   };
 
   const handleCellClick = (rowIndex, colIndex, cell, rows) => {
-    if (colIndex === 0) {
-      // Handle tier header click
-      handleTierClick(cell, rows);
-    } else if (cell && cell.name) {
-      // Handle regular cell click (only if cell has a name)
-      const updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
-        ? selectedUnits.filter((unit) => unit.name !== cell.name)
-        : [...selectedUnits, cell];
-      setSelectedUnitsHandler(updatedUnits);
-    }
-  };
-
-  const tableContainerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  };
-
-  const tableStyle = {
-    margin: "0 10px",
-    borderCollapse: "collapse",
-    fontFamily: "Arial, sans-serif",
-    textAlign: "center",
-    marginTop: "20px",
-  };
-
-  const thTdStyle = {
-    border: "0.5px solid #ddd",
-    padding: "8px",
-    height: "50px",
-  };
-
-  const clickableTdStyle = {
-    ...thTdStyle,
-    cursor: "pointer",
-  };
+      if (colIndex === 0) {
+        // Handle tier header click
+        handleTierClick(cell, rows);
+      } else if (cell && cell.name) {
+        // Handle regular cell click (only if cell has a name)
+        const updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
+          ? selectedUnits.filter((unit) => unit.name !== cell.name)
+          : [...selectedUnits, cell];
+        setSelectedUnitsHandler(updatedUnits);
+      }
+    };
+    
+    const tableContainerStyle = {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    };
+    
+    const tableStyle = {
+      margin: "0 10px",
+      borderCollapse: "collapse",
+      fontFamily: "Arial, sans-serif",
+      textAlign: "center",
+      marginTop: "20px",
+    };
+    
+    const thTdStyle = {
+      border: "0.5px solid #ddd",
+      padding: "8px",
+      height: "50px",
+      width: "100px", // Set a fixed width for table cells
+    };
+    
+    const clickableTdStyle = {
+      ...thTdStyle,
+      cursor: "pointer",
+    };
 
   const selectedTdStyle = {
     ...clickableTdStyle,

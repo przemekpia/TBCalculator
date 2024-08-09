@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ShortTableUnit from "../ShortTableUnit";
 
-const Output = ({isOpen}) => {
+const Output = ({ isOpen }) => {
   const buttonStyle = {
     color: "black",
     padding: "10px 20px",
@@ -15,15 +15,16 @@ const Output = ({isOpen}) => {
   };
 
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
-  const guardsmanBonus = useSelector((state) => state.stats.guardsmanBonus || 0);
-  const specialistsBonus = useSelector((state) => state.stats.specialistsBonus || 0);
+  const guardsmanBonus = useSelector(
+    (state) => state.stats.guardsmanBonus || 0
+  );
+  const specialistsBonus = useSelector(
+    (state) => state.stats.specialistsBonus || 0
+  );
   const armyBonus = useSelector((state) => state.stats.armyBonus || 0);
   const leadership = useSelector((state) => state.stats.leadership || 0);
 
-  //const leadership = 15486;
-  //let guardsmanBonus = 1 + 1.568;
-  //let specialistsBonus = 1 + 2.403;
-  //let armyBonus = 1 + 1.5;
+  
 
   let currentLeadership = 0;
   const [countedLeadership, setCountedLeadership] = useState(0);
@@ -110,25 +111,35 @@ const Output = ({isOpen}) => {
         {countedLeadership}
       </div>
       {sortedUnits.length > 0 && (
-        <table
+        <div
           style={{
-            marginTop: "20px",
-            borderCollapse: "collapse",
-            paddingBottom: "1vh",
+            paddingTop: "2vh",
+            paddingBottom: "2vh",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <tbody>
-            {sortedUnits.map((unit, index) => (
-              <ShortTableUnit
-                key={index}
-                unit={unit}
-                specialistsBonus={specialistsBonus}
-                guardsmanBonus={guardsmanBonus}
-                armyBonus={armyBonus}
-              />
-            ))}
-          </tbody>
-        </table>
+          <table
+            style={{
+              marginTop: "20px",
+              borderCollapse: "separate", 
+              paddingBottom: "1vh",
+            }}
+            cellSpacing="3" 
+          >
+            <tbody>
+              {sortedUnits.map((unit, index) => (
+                <ShortTableUnit
+                  key={index}
+                  unit={unit}
+                  specialistsBonus={specialistsBonus}
+                  guardsmanBonus={guardsmanBonus}
+                  armyBonus={armyBonus}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
