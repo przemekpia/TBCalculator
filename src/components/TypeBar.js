@@ -19,6 +19,7 @@ const TypeBar = ({ setComponentVisibility }) => {
   const advancedButtonStyle = {
     ...buttonStyle,
     backgroundColor: 'red',
+    display: "none" //TU JEST WYLACZONY TRYB ZAAWANSOWANY
   };
 
   return (

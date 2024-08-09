@@ -15,12 +15,15 @@ const Output = ({isOpen}) => {
   };
 
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
+  const guardsmanBonus = useSelector((state) => state.stats.guardsmanBonus || 0);
+  const specialistsBonus = useSelector((state) => state.stats.specialistsBonus || 0);
+  const armyBonus = useSelector((state) => state.stats.armyBonus || 0);
+  const leadership = useSelector((state) => state.stats.leadership || 0);
 
-  const leadership = 15486;
-
-  let guardsmanBonus = 1 + 1.568;
-  let specialistsBonus = 1 + 2.403;
-  let armyBonus = 1 + 1.5;
+  //const leadership = 15486;
+  //let guardsmanBonus = 1 + 1.568;
+  //let specialistsBonus = 1 + 2.403;
+  //let armyBonus = 1 + 1.5;
 
   let currentLeadership = 0;
   const [countedLeadership, setCountedLeadership] = useState(0);
