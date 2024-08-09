@@ -51,14 +51,14 @@ const guardsmensDataTier8 = [
   { name: "Egzekutor I", attack: 3060, hp: 9180, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"], tier: 8, category: "army" },
   { name: "Czyściciel I", attack: 3060, hp: 9180, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"], tier: 8, category: "army" },
   { name: "Destruktor I", attack: 6120, hp: 18360, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"], tier: 8, category: "army" },
-  { name: "Kruk I", attack: 36, hp: 46, leadership: 56, traits: ["Jednostka latająca", "Gwardzista", "Człowiek"], tier: 8, category: "army" },
+  { name: "Kruk I", attack: 61200, hp: 183600, leadership: 20, traits: ["Jednostka latająca", "Gwardzista", "Człowiek"], tier: 8, category: "army" },
 ];
 
 const guardsmensDataTier9 = [
   { name: "Egzekutor II", attack: 5510, hp: 16530, leadership: 1, traits: ["Gwardzista", "Człowiek","Piechota"], tier: 9, category: "army" },
   { name: "Czyściciel II", attack: 5510, hp: 16530, leadership: 1, traits: ["Gwardzista", "Człowiek", "Jednostka strzelecka"], tier: 9, category: "army" },
   { name: "Destruktor II", attack: 11020, hp: 33060, leadership: 2, traits: ["Gwardzista", "Człowiek","Jeździec"], tier: 9, category: "army" },
-  { name: "Kruk II", attack: 61200, hp: 183600, leadership: 20, traits: ["Jednostka latająca", "Gwardzista", "Człowiek"], tier: 9, category: "army" },
+  { name: "Kruk II", attack: 110200, hp: 330600, leadership: 20, traits: ["Jednostka latająca", "Gwardzista", "Człowiek"], tier: 9, category: "army" },
 ];
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { colors } from "../assets/colors";
 
-const ShortTableUnit = ({ unit }) => {
+const ShortTableUnit = ({ unit, specialistsBonus, guardsmanBonus, armyBonus }) => {
   return unit.amount !== 0 ? (
     <tr
       style={{
@@ -49,7 +49,15 @@ const ShortTableUnit = ({ unit }) => {
     >
       <th style={{ width: "45vw" }}>{unit.name}</th>
       <th style={{ width: "45vw" }}>{unit.amount}</th>
-      <th style={{ width: "5vw" }}>{unit.amount*unit.hp}</th>
+      {/*<th style={{ width: "5vw" }}>
+        {unit.amount *
+          unit.hp *
+          (unit.traits.includes("Gwardzista")
+            ? guardsmanBonus
+            : unit.traits.includes("Specjalista")
+            ? specialistsBonus
+            : armyBonus)}
+      </th>*/}
     </tr>
   ) : null;
 };

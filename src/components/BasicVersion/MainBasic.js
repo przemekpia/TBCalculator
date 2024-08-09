@@ -34,7 +34,7 @@ const MainBasic = ({ isOpen }) => {
       <ArmySettings isOpen={armySettingsOpen} />
       <BonusSettings isOpen={bonusSettingsOpen} />
       <Settings isOpen={settingsOpen} />
-      <Output/>
+      <Output isOpen={settingsBarOpen}/>
     </div>
   );
 };
