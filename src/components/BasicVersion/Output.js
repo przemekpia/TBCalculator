@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ShortTableUnit from "../ShortTableUnit";
+import UnitTable from "../UnitTable";
 
 const Output = ({ isOpen }) => {
   const buttonStyle = {
@@ -15,16 +15,14 @@ const Output = ({ isOpen }) => {
   };
 
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
-  const guardsmanBonus = useSelector(
-    (state) => state.stats.guardsmanBonus || 0
+  const guardsmanModifier = useSelector(
+    (state) => state.stats.guardsmanModifier || 0
   );
-  const specialistsBonus = useSelector(
-    (state) => state.stats.specialistsBonus || 0
+  const specialistsModifier = useSelector(
+    (state) => state.stats.specialistsModifier || 0
   );
-  const armyBonus = useSelector((state) => state.stats.armyBonus || 0);
+  const armyModifier = useSelector((state) => state.stats.armyModifier || 0);
   const leadership = useSelector((state) => state.stats.leadership || 0);
-
-  
 
   let currentLeadership = 0;
   const [countedLeadership, setCountedLeadership] = useState(0);
@@ -53,21 +51,20 @@ const Output = ({ isOpen }) => {
           }
         } else {
           if (
-            // Mozna dodac zabezpieczenie co do hp na porownanie jednostek pomiedzy konkretnymi tierami
             (sortedUnitsTemp[j].amount + 1) *
               sortedUnitsTemp[j].hp *
               (sortedUnitsTemp[j].traits.includes("Gwardzista")
-                ? guardsmanBonus
+                ? guardsmanModifier
                 : sortedUnitsTemp[j].traits.includes("Specjalista")
-                ? specialistsBonus
-                : armyBonus) <=
+                ? specialistsModifier
+                : armyModifier) <=
               sortedUnitsTemp[j + 1].amount *
                 sortedUnitsTemp[j + 1].hp *
                 (sortedUnitsTemp[j + 1].traits.includes("Gwardzista")
-                  ? guardsmanBonus
+                  ? guardsmanModifier
                   : sortedUnitsTemp[j + 1].traits.includes("Specjalista")
-                  ? specialistsBonus
-                  : armyBonus) &&
+                  ? specialistsModifier
+                  : armyModifier) &&
             currentLeadership + sortedUnitsTemp[j].leadership <= leadership
           ) {
             sortedUnitsTemp[j].amount += 1;
@@ -86,20 +83,46 @@ const Output = ({ isOpen }) => {
       .sort((a, b) => {
         return b.attack - a.attack;
       });
-    setCountedLeadership(currentLeadership);
-    setSortedUnits(sortedUnitsTemp);
-    alert(
-      "Sorted Units: " +
-        sortedUnits.map((unit) => `${unit.name}: ${unit.amount}`).join(", ")
+
+    // Divide the sortedUnitsTemp into three categories
+    const armyUnits = sortedUnitsTemp.filter(
+      (unit) => unit.category === "army"
     );
+    const monsterUnits = sortedUnitsTemp.filter(
+      (unit) => unit.category === "monsters"
+    );
+    const mercenaryUnits = sortedUnitsTemp.filter(
+      (unit) => unit.category === "mercenary"
+    );
+
+    // alert(
+    //   `Sorted Army Units: ${armyUnits
+    //     .map((unit) => `${unit.name}: ${unit.amount}`)
+    //     .join(", ")}`
+    // );
+
+    // alert(
+    //   `Sorted Monster Units: ${monsterUnits
+    //     .map((unit) => `${unit.name}: ${unit.amount}`)
+    //     .join(", ")}`
+    // );
+
+    // alert(
+    //   `Sorted Mercenary Units: ${mercenaryUnits
+    //     .map((unit) => `${unit.name}: ${unit.amount}`)
+    //     .join(", ")}`
+    // );
+
+    setCountedLeadership(currentLeadership);
+    setSortedUnits({ armyUnits, monsterUnits, mercenaryUnits });
   };
 
   return (
     <div
       style={{
         display: isOpen ? "flex" : "none",
-        flexDirection: "column", // Changed from 'row' to 'column'
-        alignItems: "center", // Align items to the center
+        flexDirection: "column",
+        alignItems: "center",
         paddingBottom: "5px",
         paddingTop: "5px",
       }}
@@ -107,40 +130,33 @@ const Output = ({ isOpen }) => {
       <div style={buttonStyle} onClick={handleClick}>
         Oblicz
       </div>
-      <div style={buttonStyle} onClick={handleClick}>
+      {/* <div style={buttonStyle} onClick={handleClick}>
         {countedLeadership}
-      </div>
-      {sortedUnits.length > 0 && (
-        <div
-          style={{
-            paddingTop: "2vh",
-            paddingBottom: "2vh",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <table
-            style={{
-              marginTop: "20px",
-              borderCollapse: "separate", 
-              paddingBottom: "1vh",
-            }}
-            cellSpacing="3" 
-          >
-            <tbody>
-              {sortedUnits.map((unit, index) => (
-                <ShortTableUnit
-                  key={index}
-                  unit={unit}
-                  specialistsBonus={specialistsBonus}
-                  guardsmanBonus={guardsmanBonus}
-                  armyBonus={armyBonus}
-                />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      </div> */}
+
+      <UnitTable
+        title="Najemnicy"
+        units={sortedUnits.mercenaryUnits}
+        specialistsModifier={specialistsModifier}
+        guardsmanModifier={guardsmanModifier}
+        armyModifier={armyModifier}
+      />
+
+      <UnitTable
+        title="Potwory"
+        units={sortedUnits.monsterUnits}
+        specialistsModifier={specialistsModifier}
+        guardsmanModifier={guardsmanModifier}
+        armyModifier={armyModifier}
+      />
+
+      <UnitTable
+        title="Armia"
+        units={sortedUnits.armyUnits}
+        specialistsModifier={specialistsModifier}
+        guardsmanModifier={guardsmanModifier}
+        armyModifier={armyModifier}
+      />
     </div>
   );
 };

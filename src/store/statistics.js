@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialStatsState = {
-  guardsmanBonus: 1 + 1.568,
-  specialistsBonus: 1 + 2.403,
-  armyBonus: 1 + 1.5,
-  leadership: 15486,
+  guardsmanBonus: 0,
+  guardsmanModifier: 0,
+  specialistsBonus: 0,
+  specialistsModifier: 0,
+  armyBonus: 0,
+  armyModifier: 0,
+  leadership: 0,
 };
 
 const statsSlice = createSlice({
@@ -12,13 +15,16 @@ const statsSlice = createSlice({
   initialState: initialStatsState,
   reducers: {
     setGuardsmanBonus(state, action) {
-      state.guardsmanBonus = 1 + action.payload / 100;
+      state.guardsmanBonus = action.payload ;
+      state.guardsmanModifier = 1 + action.payload / 100;
     },
     setSpecialistsBonus(state, action) {
-      state.specialistsBonus = 1 + action.payload / 100;
+      state.specialistsBonus = action.payload ;
+      state.specialistsModifier = 1 + action.payload / 100;
     },
     setArmyBonus(state, action) {
-      state.armyBonus = 1 + action.payload / 100;
+      state.armyBonus = action.payload ;
+      state.armyModifier = 1 + action.payload / 100;
     },
     setLeadership(state, action) {
       state.leadership = action.payload;
