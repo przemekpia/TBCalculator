@@ -5,13 +5,14 @@ import { statsActions } from "../../../store/statistics";
 const BonusSettings = ({ isOpen }) => {
   const dispatch = useDispatch();
 
-  const armyBonus = useSelector((state) => Math.round(state.stats.armyBonus) || 0);
-  const guardsmanBonus = useSelector((state) => Math.round(state.stats.guardsmanBonus) || 0);
-  const specialistsBonus = useSelector((state) => Math.round(state.stats.specialistsBonus) || 0);
-  const leadership = useSelector((state) => Math.round(state.stats.leadership) || 0);
+  // Remove Math.round to allow decimal values
+  const armyBonus = useSelector((state) => Math.max(0, state.stats.armyBonus || 0));
+  const guardsmanBonus = useSelector((state) => Math.max(0, state.stats.guardsmanBonus || 0));
+  const specialistsBonus = useSelector((state) => Math.max(0, state.stats.specialistsBonus || 0));
+  const leadership = useSelector((state) => Math.max(0, state.stats.leadership || 0));
 
   const handleInput = (action) => (event) => {
-    const value = parseInt(event.target.value, 10);
+    const value = Math.max(0, parseFloat(event.target.value)); // Allow decimal values
     dispatch(action(isNaN(value) ? 0 : value));
   };
 
@@ -27,7 +28,8 @@ const BonusSettings = ({ isOpen }) => {
                   type="number"
                   value={armyBonus}
                   onChange={handleInput(statsActions.setArmyBonus)}
-                  step="1"
+                  step="0.1" // Allow decimal input
+                  min="0" // Set minimum value to 0
                 />
               </th>
 
@@ -37,7 +39,8 @@ const BonusSettings = ({ isOpen }) => {
                   type="number"
                   value={guardsmanBonus}
                   onChange={handleInput(statsActions.setGuardsmanBonus)}
-                  step="1"
+                  step="0.1" // Allow decimal input
+                  min="0" // Set minimum value to 0
                 />
               </th>
             </tr>
@@ -48,7 +51,8 @@ const BonusSettings = ({ isOpen }) => {
                   type="number"
                   value={specialistsBonus}
                   onChange={handleInput(statsActions.setSpecialistsBonus)}
-                  step="1"
+                  step="0.1" // Allow decimal input
+                  min="0" // Set minimum value to 0
                 />
               </th>
               <th>Dowodzenie:</th>
@@ -57,7 +61,8 @@ const BonusSettings = ({ isOpen }) => {
                   type="number"
                   value={leadership}
                   onChange={handleInput(statsActions.setLeadership)}
-                  step="1"
+                  step="0.1" // Allow decimal input
+                  min="0" // Set minimum value to 0
                 />
               </th>
             </tr>

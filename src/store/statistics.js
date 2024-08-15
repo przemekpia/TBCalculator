@@ -29,6 +29,30 @@ const statsSlice = createSlice({
     setLeadership(state, action) {
       state.leadership = action.payload;
     },
+    smallDecreaseGuardsmanBonus(state) {
+      state.guardsmanBonus -= 0.1;
+      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    },
+    mediumDecreaseGuardsmanBonus(state) {
+      state.guardsmanBonus -= 1 ;
+      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    },
+    largeDecreaseGuardsmanBonus(state) {
+      state.guardsmanBonus -= 10 ;
+      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    },
+    smallIncreaseGuardsmanBonus(state) {
+      state.guardsmanBonus += 0.1 ;
+      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    },
+    mediumIncreaseGuardsmanBonus(state) {
+      state.guardsmanBonus += 1 ;
+      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    },
+    largeIncreaseGuardsmanBonus(state) {
+      state.guardsmanBonus += 10 ;
+      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    },
   },
 });
 
