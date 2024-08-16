@@ -76,7 +76,7 @@ const ArmySettings = ({ isOpen }) => {
     const thTdStyle = {
       border: "0.5px solid #ddd",
       padding: "8px",
-      height: "50px",
+      height: "70px",
       width: "100px", // Set a fixed width for table cells
     };
     
