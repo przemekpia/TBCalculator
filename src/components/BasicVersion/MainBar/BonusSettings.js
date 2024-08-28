@@ -1,74 +1,54 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { statsActions } from "../../../store/statistics";
+import CustomInput from "../../CustomInput";
 
 const BonusSettings = ({ isOpen }) => {
   const dispatch = useDispatch();
 
-  // Remove Math.round to allow decimal values
-  const armyBonus = useSelector((state) => Math.max(0, state.stats.armyBonus || 0));
-  const guardsmanBonus = useSelector((state) => Math.max(0, state.stats.guardsmanBonus || 0));
-  const specialistsBonus = useSelector((state) => Math.max(0, state.stats.specialistsBonus || 0));
-  const leadership = useSelector((state) => Math.max(0, state.stats.leadership || 0));
+  const armyBonus = useSelector((state) => state.stats.armyBonus);
+  const guardsmanBonus = useSelector((state) => state.stats.guardsmanBonus);
+  const specialistsBonus = useSelector((state) => state.stats.specialistsBonus);
+  const leadership = useSelector((state) => state.stats.leadership);
 
-  const handleInput = (action) => (event) => {
-    const value = Math.max(0, parseFloat(event.target.value)); // Allow decimal values
-    dispatch(action(isNaN(value) ? 0 : value));
+  const styles = {
+    container: {
+      display: isOpen ? "flex" : "none",
+      flexWrap: "wrap",
+      gap: "20px",
+      justifyContent: "center",
+    },
   };
 
   return (
-    <div style={{ display: isOpen ? "block" : "none" }}>
-      <div className="inputDesktop">
-        <table>
-          <tbody>
-            <tr>
-              <th>Bonus do całej armii:</th>
-              <th>
-                <input
-                  type="number"
-                  value={armyBonus}
-                  onChange={handleInput(statsActions.setArmyBonus)}
-                  step="0.1" // Allow decimal input
-                  min="0" // Set minimum value to 0
-                />
-              </th>
-
-              <th>Bonus gwardzistów:</th>
-              <th>
-                <input
-                  type="number"
-                  value={guardsmanBonus}
-                  onChange={handleInput(statsActions.setGuardsmanBonus)}
-                  step="0.1" // Allow decimal input
-                  min="0" // Set minimum value to 0
-                />
-              </th>
-            </tr>
-            <tr>
-              <th>Zakres specjalistów:</th>
-              <th>
-                <input
-                  type="number"
-                  value={specialistsBonus}
-                  onChange={handleInput(statsActions.setSpecialistsBonus)}
-                  step="0.1" // Allow decimal input
-                  min="0" // Set minimum value to 0
-                />
-              </th>
-              <th>Dowodzenie:</th>
-              <th>
-                <input
-                  type="number"
-                  value={leadership}
-                  onChange={handleInput(statsActions.setLeadership)}
-                  step="0.1" // Allow decimal input
-                  min="0" // Set minimum value to 0
-                />
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div style={styles.container}>
+      <CustomInput
+        name={"Bonus Gwardzistów"}
+        amount={guardsmanBonus}
+        actionModify={statsActions.modifyGuardsmanBonus}
+        actionReset={statsActions.resetGuardsmanBonus}
+        type={"modifier"}
+      />
+      <CustomInput
+        name={"Bonus Specjalistów"}
+        amount={specialistsBonus}
+        actionModify={statsActions.modifySpecialistBonus}
+        actionReset={statsActions.resetSpecialistBonus}
+        type={"modifier"}
+      />
+      <CustomInput
+        name={"Bonus Armii"}
+        amount={armyBonus}
+        actionModify={statsActions.modifyArmyBonus}
+        actionReset={statsActions.resetArmyBonus}
+        type={"modifier"}
+      />
+      <CustomInput
+        name={"Dowodzenie"}
+        amount={leadership}
+        actionModify={statsActions.modifyLeadership}
+        actionReset={statsActions.resetLeadership}
+      />
     </div>
   );
 };

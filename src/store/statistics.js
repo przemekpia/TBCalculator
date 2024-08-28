@@ -14,44 +14,35 @@ const statsSlice = createSlice({
   name: "stats",
   initialState: initialStatsState,
   reducers: {
-    setGuardsmanBonus(state, action) {
-      state.guardsmanBonus = action.payload ;
-      state.guardsmanModifier = 1 + action.payload / 100;
-    },
-    setSpecialistsBonus(state, action) {
-      state.specialistsBonus = action.payload ;
-      state.specialistsModifier = 1 + action.payload / 100;
-    },
-    setArmyBonus(state, action) {
-      state.armyBonus = action.payload ;
-      state.armyModifier = 1 + action.payload / 100;
-    },
-    setLeadership(state, action) {
-      state.leadership = action.payload;
-    },
-    smallDecreaseGuardsmanBonus(state) {
-      state.guardsmanBonus -= 0.1;
+    modifyGuardsmanBonus(state, action) {
+      state.guardsmanBonus = Math.max(parseFloat((state.guardsmanBonus+action.payload).toFixed(3)), 0);
       state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
     },
-    mediumDecreaseGuardsmanBonus(state) {
-      state.guardsmanBonus -= 1 ;
-      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    resetGuardsmanBonus(state) {
+      state.guardsmanBonus = 0;
+      state.guardsmanModifier = 0;
     },
-    largeDecreaseGuardsmanBonus(state) {
-      state.guardsmanBonus -= 10 ;
-      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    modifySpecialistBonus(state, action) {
+      state.specialistsBonus = Math.max(parseFloat((state.specialistsBonus+action.payload).toFixed(3)), 0);
+      state.specialistsModifier = 1 + state.specialistsModifier / 100;
     },
-    smallIncreaseGuardsmanBonus(state) {
-      state.guardsmanBonus += 0.1 ;
-      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    resetSpecialistBonus(state) {
+      state.specialistsBonus = 0;
+      state.specialistsModifier = 0;
     },
-    mediumIncreaseGuardsmanBonus(state) {
-      state.guardsmanBonus += 1 ;
-      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    modifyArmyBonus(state, action) {
+      state.armyBonus = Math.max(parseFloat((state.armyBonus+action.payload).toFixed(3)), 0);
+      state.armyModifier = 1 + state.armyModifier / 100;
     },
-    largeIncreaseGuardsmanBonus(state) {
-      state.guardsmanBonus += 10 ;
-      state.guardsmanModifier = 1 + state.guardsmanBonus / 100;
+    resetArmyBonus(state) {
+      state.armyBonus = 0;
+      state.armyModifier = 0;
+    },
+    modifyLeadership(state, action) {
+      state.leadership = Math.max(parseFloat((state.leadership+action.payload).toFixed(3)), 0);
+    },
+    resetLeadership(state) {
+      state.leadership = 0;
     },
   },
 });

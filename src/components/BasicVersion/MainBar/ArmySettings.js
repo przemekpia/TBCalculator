@@ -47,43 +47,43 @@ const ArmySettings = ({ isOpen }) => {
   };
 
   const handleCellClick = (rowIndex, colIndex, cell, rows) => {
-      if (colIndex === 0) {
-        // Handle tier header click
-        handleTierClick(cell, rows);
-      } else if (cell && cell.name) {
-        // Handle regular cell click (only if cell has a name)
-        const updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
-          ? selectedUnits.filter((unit) => unit.name !== cell.name)
-          : [...selectedUnits, cell];
-        setSelectedUnitsHandler(updatedUnits);
-      }
-    };
-    
-    const tableContainerStyle = {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    };
-    
-    const tableStyle = {
-      margin: "0 10px",
-      borderCollapse: "collapse",
-      fontFamily: "Arial, sans-serif",
-      textAlign: "center",
-      marginTop: "20px",
-    };
-    
-    const thTdStyle = {
-      border: "0.5px solid #ddd",
-      padding: "8px",
-      height: "70px",
-      width: "100px", // Set a fixed width for table cells
-    };
-    
-    const clickableTdStyle = {
-      ...thTdStyle,
-      cursor: "pointer",
-    };
+    if (colIndex === 0) {
+      // Handle tier header click
+      handleTierClick(cell, rows);
+    } else if (cell && cell.name) {
+      // Handle regular cell click (only if cell has a name)
+      const updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
+        ? selectedUnits.filter((unit) => unit.name !== cell.name)
+        : [...selectedUnits, cell];
+      setSelectedUnitsHandler(updatedUnits);
+    }
+  };
+
+  const tableContainerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
+
+  const tableStyle = {
+    margin: "0 10px",
+    borderCollapse: "collapse",
+    fontFamily: "Arial, sans-serif",
+    textAlign: "center",
+    marginTop: "20px",
+  };
+
+  const thTdStyle = {
+    border: "0.5px solid #ddd",
+    padding: "8px",
+    height: "70px",
+    width: "100px", // Set a fixed width for table cells
+  };
+
+  const clickableTdStyle = {
+    ...thTdStyle,
+    cursor: "pointer",
+  };
 
   const selectedTdStyle = {
     ...clickableTdStyle,
@@ -113,7 +113,7 @@ const ArmySettings = ({ isOpen }) => {
   };
 
   const getRowColor = (tierIndex, categoryType) => {
-    const rowColors = [
+    const guardsSpecialistsColors = [
       colors.T1,
       colors.T2,
       colors.T3,
@@ -125,23 +125,31 @@ const ArmySettings = ({ isOpen }) => {
       colors.T2,
     ];
 
-    // Offset dla każdego typu jednostki
-    const tierOffsets = {
-      guards: 0,
-      specialists: 0,
-      monsters: 2, // Potwory zaczynają od Tier III
-      mercenaries: 4, // Najemnicy zaczynają od Tier V
-    };
+    const monstersColors = [
+      colors.T3,
+      colors.T4,
+      colors.T5,
+      colors.T6,
+      colors.T7,
+      colors.T1,
+      colors.T2,
+    ];
 
-    const offset = tierOffsets[categoryType] || 0;
+    const mercenariesColors = [colors.T5, colors.T6, colors.T7, colors.T2];
 
-    return rowColors[(tierIndex + offset) % rowColors.length];
+    if (categoryType === "guards" || categoryType === "specialists") {
+      return guardsSpecialistsColors[tierIndex];
+    } else if (categoryType === "monsters") {
+      return monstersColors[tierIndex];
+    } else if (categoryType === "mercenaries") {
+      return mercenariesColors[tierIndex];
+    }
   };
 
   const renderTable = (rows, type) => {
     const splitRowData = splitRows(rows);
     const tierNames = [...new Set(splitRowData.map((row) => row[0]))];
-    
+
     return (
       <table style={tableStyle}>
         <tbody>
