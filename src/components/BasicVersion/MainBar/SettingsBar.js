@@ -3,8 +3,24 @@ import {
   GiGuards,
 } from "react-icons/gi";
 import { IoIosSettings } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 const SettingsBar = ({ isOpen, setComponentVisibility }) => {
+  const selectedLanguage = useSelector(
+    (state) => state.settings.selectedLanguage
+  );
+  const translations = {
+    PL: {
+      army: "Armia",
+      bonus: "Bonusy",
+      settings: "Ustawienia",
+    },
+    EN: {
+      army: "Army",
+      bonus: "Bonuses",
+      settings: "Settings",
+    },
+  };
   const thStyle = {
     textAlign: "center",
     border: "1px solid rgba(255, 255, 255, 0.5)", // Semi-transparent white border
@@ -20,7 +36,7 @@ const SettingsBar = ({ isOpen, setComponentVisibility }) => {
     <div
       style={{
         justifyContent: "center",
-        paddingBottom: "50px",
+        paddingBottom: "20px",
         display: isOpen ? "block" : "none",
       }}
     >
@@ -35,16 +51,16 @@ const SettingsBar = ({ isOpen, setComponentVisibility }) => {
           <tr>
             <th style={thStyle} onClick={() => setComponentVisibility("army")}>
               <GiGuards style={iconStyle} />
-              <div>Armia</div>
+              <div>{translations[selectedLanguage].army}</div>
             </th>
             <th style={thStyle} onClick={() => setComponentVisibility("bonus")}>
               <GiGuards style={iconStyle} />
-              <div>Bonusy</div>
+              <div>{translations[selectedLanguage].bonus}</div>
             </th>
             
             <th style={thStyle} onClick={() => setComponentVisibility("settings")}>
               <IoIosSettings style={iconStyle} />
-              <div>Ustawienia</div>
+              <div>{translations[selectedLanguage].settings}</div>
             </th>
           </tr>
         </thead>
