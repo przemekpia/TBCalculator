@@ -1,6 +1,6 @@
 const mercenaryDataTier5 = [
   {
-    name: "Cyklop",
+    name: { PL: "Cyklop", EN: "Cyklop" },
     attack: 45000,
     hp: 135000,
     leadership: 43,
@@ -9,7 +9,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Gargulec",
+    name: { PL: "Gargulec", EN: "Gargulec" },
     attack: 19000,
     hp: 57000,
     leadership: 19,
@@ -18,7 +18,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Ifryt",
+    name: { PL: "Ifryt", EN: "Ifryt" },
     attack: 44000,
     hp: 132000,
     leadership: 42,
@@ -27,7 +27,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Jeździec byków",
+    name: { PL: "Jeździec byków", EN: "Jeździec byków" },
     attack: 29000,
     hp: 87000,
     leadership: 28,
@@ -36,7 +36,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Jeździec jednorożców",
+    name: { PL: "Jeździec jednorożców", EN: "Jeździec jednorożców" },
     attack: 27000,
     hp: 81000,
     leadership: 26,
@@ -45,7 +45,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Jeździec piroinsektów",
+    name: { PL: "Jeździec piroinsektów", EN: "Jeździec piroinsektów" },
     attack: 50000,
     hp: 150000,
     leadership: 48,
@@ -54,7 +54,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Jeździec skorpionów",
+    name: { PL: "Jeździec skorpionów", EN: "Jeździec skorpionów" },
     attack: 37000,
     hp: 111000,
     leadership: 36,
@@ -63,7 +63,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Niedźwiedź",
+    name: { PL: "Niedźwiedź", EN: "Niedźwiedź" },
     attack: 22000,
     hp: 66000,
     leadership: 21,
@@ -72,7 +72,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Olbrzymi zombi",
+    name: { PL: "Olbrzymi zombi", EN: "Olbrzymi zombi" },
     attack: 33000,
     hp: 99000,
     leadership: 32,
@@ -81,7 +81,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Skorpion",
+    name: { PL: "Skorpion", EN: "Skorpion" },
     attack: 5250,
     hp: 32000,
     leadership: 10,
@@ -90,7 +90,7 @@ const mercenaryDataTier5 = [
     category: "mercenary",
   },
   {
-    name: "Szybki strzelec",
+    name: { PL: "Szybki strzelec", EN: "Szybki strzelec" },
     attack: 1050,
     hp: 3150,
     leadership: 1,
@@ -102,7 +102,7 @@ const mercenaryDataTier5 = [
 
 const mercenaryDataTier6 = [
   {
-    name: "Arcydemon",
+    name: { PL: "Arcydemon", EN: "Arcydemon" },
     attack: 180000,
     hp: 540000,
     leadership: 95,
@@ -111,7 +111,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Ent",
+    name: { PL: "Ent", EN: "Ent" },
     attack: 73000,
     hp: 219000,
     leadership: 43,
@@ -120,7 +120,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Jeździec nosorożców",
+    name: { PL: "Jeździec nosorożców", EN: "Jeździec nosorożców" },
     attack: 3780,
     hp: 11340,
     leadership: 2,
@@ -129,7 +129,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Kościany golem",
+    name: { PL: "Kościany golem", EN: "Kościany golem" },
     attack: 70000,
     hp: 210000,
     leadership: 37,
@@ -138,7 +138,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Kusznik VI",
+    name: { PL: "Kusznik VI", EN: "Kusznik VI" },
     attack: 1900,
     hp: 5700,
     leadership: 1,
@@ -147,7 +147,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Legionista VI",
+    name: { PL: "Legionista VI", EN: "Legionista VI" },
     attack: 1900,
     hp: 5700,
     leadership: 1,
@@ -156,7 +156,10 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Łowca epickich potworów VI",
+    name: {
+      PL: "Łowca epickich potworów VI",
+      EN: "Łowca epickich potworów VI",
+    },
     attack: 2030,
     hp: 6090,
     leadership: 1,
@@ -165,7 +168,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Łowca wilkołaków VI",
+    name: { PL: "Łowca wilkołaków VI", EN: "Łowca wilkołaków VI" },
     attack: 2030,
     hp: 6090,
     leadership: 1,
@@ -174,7 +177,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Łowczyni",
+    name: { PL: "Łowczyni", EN: "Łowczyni" },
     attack: 1890,
     hp: 5670,
     leadership: 1,
@@ -183,7 +186,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Paskudztwo",
+    name: { PL: "Paskudztwo", EN: "Paskudztwo" },
     attack: 130000,
     hp: 390000,
     leadership: 68,
@@ -192,7 +195,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Pionier",
+    name: { PL: "Pionier", EN: "Pionier" },
     attack: 940,
     hp: 2800,
     leadership: 5,
@@ -201,7 +204,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Przeklęty dendroid",
+    name: { PL: "Przeklęty dendroid", EN: "Przeklęty dendroid" },
     attack: 110000,
     hp: 330000,
     leadership: 57,
@@ -210,7 +213,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Rycerz VI",
+    name: { PL: "Rycerz VI", EN: "Rycerz VI" },
     attack: 1900,
     hp: 5700,
     leadership: 1,
@@ -219,7 +222,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Rydwan śmierci",
+    name: { PL: "Rydwan śmierci", EN: "Rydwan śmierci" },
     attack: 57000,
     hp: 171000,
     leadership: 30,
@@ -228,7 +231,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Rydwan VI",
+    name: { PL: "Rydwan VI", EN: "Rydwan VI" },
     attack: 3800,
     hp: 11400,
     leadership: 2,
@@ -237,7 +240,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Sfinks VI",
+    name: { PL: "Sfinks VI", EN: "Sfinks VI" },
     attack: 18900,
     hp: 56700,
     leadership: 10,
@@ -246,7 +249,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Szedu",
+    name: { PL: "Szedu", EN: "Szedu" },
     attack: 18900,
     hp: 56700,
     leadership: 10,
@@ -255,7 +258,7 @@ const mercenaryDataTier6 = [
     category: "mercenary",
   },
   {
-    name: "Trebusz",
+    name: { PL: "Trebusz", EN: "Trebusz" },
     attack: 9500,
     hp: 57000,
     leadership: 10,
@@ -267,7 +270,7 @@ const mercenaryDataTier6 = [
 
 const mercenaryDataTier7 = [
   {
-    name: "Gromowładny",
+    name: { PL: "Gromowładny", EN: "Gromowładny" },
     attack: 153000,
     hp: 460000,
     leadership: 45,
@@ -276,7 +279,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Król Dżungli",
+    name: { PL: "Król Dżungli", EN: "Król Dżungli" },
     attack: 110000,
     hp: 310000,
     leadership: 33,
@@ -285,7 +288,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Kusznik VII",
+    name: { PL: "Kusznik VII", EN: "Kusznik VII" },
     attack: 3400,
     hp: 10200,
     leadership: 1,
@@ -294,7 +297,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Legionista VII",
+    name: { PL: "Legionista VII", EN: "Legionista VII" },
     attack: 3400,
     hp: 10200,
     leadership: 1,
@@ -303,7 +306,10 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Łowca epickich potworów VII",
+    name: {
+      PL: "Łowca epickich potworów VII",
+      EN: "Łowca epickich potworów VII",
+    },
     attack: 3740,
     hp: 11220,
     leadership: 1,
@@ -312,7 +318,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Łowca wilkołaków VII",
+    name: { PL: "Łowca wilkołaków VII", EN: "Łowca wilkołaków VII" },
     attack: 3740,
     hp: 11220,
     leadership: 1,
@@ -321,7 +327,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Palintona",
+    name: { PL: "Palintona", EN: "Palintona" },
     attack: 17000,
     hp: 102000,
     leadership: 10,
@@ -330,7 +336,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Pan Mórz",
+    name: { PL: "Pan Mórz", EN: "Pan Mórz" },
     attack: 140000,
     hp: 420000,
     leadership: 40,
@@ -339,7 +345,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Przeklęty smok",
+    name: { PL: "Przeklęty smok", EN: "Przeklęty smok" },
     attack: 320000,
     hp: 960000,
     leadership: 93,
@@ -348,7 +354,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Pustynny czerw",
+    name: { PL: "Pustynny czerw", EN: "Pustynny czerw" },
     attack: 430000,
     hp: 1290000,
     leadership: 128,
@@ -357,7 +363,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Rydwan VII",
+    name: { PL: "Rydwan VII", EN: "Rydwan VII" },
     attack: 6800,
     hp: 20400,
     leadership: 2,
@@ -366,7 +372,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Sfinks VII",
+    name: { PL: "Sfinks VII", EN: "Sfinks VII" },
     attack: 136000,
     hp: 408000,
     leadership: 2,
@@ -375,7 +381,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Smok życia",
+    name: { PL: "Smok życia", EN: "Smok życia" },
     attack: 240000,
     hp: 720000,
     leadership: 70,
@@ -384,7 +390,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Suzeren",
+    name: { PL: "Suzeren", EN: "Suzeren" },
     attack: 200000,
     hp: 600000,
     leadership: 60,
@@ -393,7 +399,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Władca ognia",
+    name: { PL: "Władca ognia", EN: "Władca ognia" },
     attack: 560000,
     hp: 1680000,
     leadership: 164,
@@ -402,7 +408,7 @@ const mercenaryDataTier7 = [
     category: "mercenary",
   },
   {
-    name: "Złoty smok",
+    name: { PL: "Złoty smok", EN: "Złoty smok" },
     attack: 170000,
     hp: 510000,
     leadership: 50,
@@ -414,7 +420,7 @@ const mercenaryDataTier7 = [
 
 const mercenaryDataTier9 = [
   {
-    name: "Ariel",
+    name: { PL: "Ariel", EN: "Ariel" },
     attack: 55000,
     hp: 330000,
     leadership: 10,
@@ -423,7 +429,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Beduin",
+    name: { PL: "Beduin", EN: "Beduin" },
     attack: 22000,
     hp: 66000,
     leadership: 2,
@@ -432,7 +438,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Bliznowaty",
+    name: { PL: "Bliznowaty", EN: "Bliznowaty" },
     attack: 11000,
     hp: 33000,
     leadership: 1,
@@ -441,7 +447,10 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Chitynowy przywódca obrońców",
+    name: {
+      PL: "Chitynowy przywódca obrońców",
+      EN: "Chitynowy przywódca obrońców",
+    },
     attack: 11200,
     hp: 33600,
     leadership: 1,
@@ -450,7 +459,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Demoniczna salamandra",
+    name: { PL: "Demoniczna salamandra", EN: "Demoniczna salamandra" },
     attack: 410000,
     hp: 1230000,
     leadership: 38,
@@ -459,7 +468,10 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Doskonały łowca epickich potworów",
+    name: {
+      PL: "Doskonały łowca epickich potworów",
+      EN: "Doskonały łowca epickich potworów",
+    },
     attack: 25000,
     hp: 75000,
     leadership: 1,
@@ -468,7 +480,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Góral",
+    name: { PL: "Góral", EN: "Góral" },
     attack: 11000,
     hp: 33000,
     leadership: 1,
@@ -477,7 +489,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Grejs",
+    name: { PL: "Grejs", EN: "Grejs" },
     attack: 5510,
     hp: 16530,
     leadership: 5,
@@ -486,7 +498,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Jago",
+    name: { PL: "Jago", EN: "Jago" },
     attack: 220000,
     hp: 660000,
     leadership: 20,
@@ -495,7 +507,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Kolos",
+    name: { PL: "Kolos", EN: "Kolos" },
     attack: 11000,
     hp: 33000,
     leadership: 1,
@@ -504,7 +516,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Nieposkromiony",
+    name: { PL: "Nieposkromiony", EN: "Nieposkromiony" },
     attack: 220000,
     hp: 660000,
     leadership: 20,
@@ -513,7 +525,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Przedwieczny kanonier",
+    name: { PL: "Przedwieczny kanonier", EN: "Przedwieczny kanonier" },
     attack: 440000,
     hp: 1320000,
     leadership: 40,
@@ -522,7 +534,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Przywódca mrówkojadów bojowych",
+    name: { PL: "Przywódca mrówkojadów bojowych", EN: "Przywódca mrówkojadów bojowych" },
     attack: 11400,
     hp: 34200,
     leadership: 1,
@@ -531,7 +543,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Przywódca osy-człowieka",
+    name: { PL: "Przywódca osy-człowieka", EN: "Przywódca osy-człowieka" },
     attack: 11800,
     hp: 32400,
     leadership: 1,
@@ -540,7 +552,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Przywódca ponurego prześladowcy",
+    name: { PL: "Przywódca ponurego prześladowcy", EN: "Przywódca ponurego prześladowcy" },
     attack: 10600,
     hp: 31800,
     leadership: 1,
@@ -549,7 +561,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Słowiański wojmistrz",
+    name: { PL: "Słowiański wojmistrz", EN: "Słowiański wojmistrz" },
     attack: 11000,
     hp: 33000,
     leadership: 1,
@@ -558,7 +570,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Starszy Łowca II",
+    name: { PL: "Starszy Łowca II", EN: "Starszy Łowca II" },
     attack: 25000,
     hp: 75000,
     leadership: 1,
@@ -567,7 +579,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Strażnik",
+    name: { PL: "Strażnik", EN: "Strażnik" },
     attack: 470000,
     hp: 1410000,
     leadership: 43,
@@ -576,7 +588,7 @@ const mercenaryDataTier9 = [
     category: "mercenary",
   },
   {
-    name: "Wiwern",
+    name: { PL: "Wiwern", EN: "Wiwern" },
     attack: 470000,
     hp: 1410000,
     leadership: 63,

@@ -1,64 +1,64 @@
 const specialistsDataTier1 = [
-  { name: "Rycerz I", attack: 50, hp: 150, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 1, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 1, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 1, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 1, category: "army" },
+  { name: { PL: "Rycerz I", EN: "Rycerz I" }, attack: 50, hp: 150, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 1, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 1, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 1, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 1, category: "army" },
 ];
 
 const specialistsDataTier2 = [
-  { name: "Rycerz II", attack: 90, hp: 270, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 2, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 2, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 2, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 2, category: "army" },
+  { name: { PL: "Rycerz II", EN: "Rycerz II" }, attack: 90, hp: 270, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 2, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 2, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 2, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 2, category: "army" },
 ];
 
 const specialistsDataTier3 = [
-  { name: "Rycerz III", attack: 160, hp: 480, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 3, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 3, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 3, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 3, category: "army" },
+  { name: { PL: "Rycerz III", EN: "Rycerz III" }, attack: 160, hp: 480, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 3, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 3, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 3, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 3, category: "army" },
 ];
 
 const specialistsDataTier4 = [
-  { name: "Rycerz IV", attack: 290, hp: 870, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 4, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 4, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 4, category: "army" },
-  { name: "", attack: 0, hp: 0, leadership: 0, traits: [], tier: 4, category: "army" },
+  { name: { PL: "Rycerz IV", EN: "Rycerz IV" }, attack: 290, hp: 870, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 4, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 4, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 4, category: "army" },
+  { name: { PL: "", EN: "" }, attack: 0, hp: 0, leadership: 0, traits: [], tier: 4, category: "army" },
 ];
 
 const specialistsDataTier5 = [
-  { name: "Rycerz V", attack: 520, hp: 1560, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 5, category: "army" },
-  { name: "Elitarny Kusznik V", attack: 520, hp: 1560, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 5, category: "army" },
-  { name: "Jeździec lwów V", attack: 1050, hp: 3150, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 5, category: "army" },
-  { name: "Sęp V", attack: 520, hp: 1560, leadership: 1, traits: ["Jednostka latająca", "Człowiek", "Specjalista"], tier: 5, category: "army" },
+  { name: { PL: "Rycerz V", EN: "Rycerz V" }, attack: 520, hp: 1560, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 5, category: "army" },
+  { name: { PL: "Elitarny Kusznik V", EN: "Elitarny Kusznik V" }, attack: 520, hp: 1560, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 5, category: "army" },
+  { name: { PL: "Jeździec lwów V", EN: "Jeździec lwów V" }, attack: 1050, hp: 3150, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 5, category: "army" },
+  { name: { PL: "Sęp V", EN: "Sęp V" }, attack: 520, hp: 1560, leadership: 1, traits: ["Jednostka latająca", "Człowiek", "Specjalista"], tier: 5, category: "army" },
 ];
 
 const specialistsDataTier6 = [
-  { name: "Ciężki Rycerz VI", attack: 940, hp: 2820, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 6, category: "army" },
-  { name: "Elitarny Kusznik VI", attack: 940, hp: 2820, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 6, category: "army" },
-  { name: "Jeździec lwów VI", attack: 1900, hp: 5700, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 6, category: "army" },
-  { name: "Sęp VI", attack: 940, hp: 2820, leadership: 1, traits: ["Jednostka latająca", "Człowiek", "Specjalista"], tier: 6, category: "army" },
+  { name: { PL: "Ciężki Rycerz VI", EN: "Ciężki Rycerz VI" }, attack: 940, hp: 2820, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 6, category: "army" },
+  { name: { PL: "Elitarny Kusznik VI", EN: "Elitarny Kusznik VI" }, attack: 940, hp: 2820, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 6, category: "army" },
+  { name: { PL: "Jeździec lwów VI", EN: "Jeździec lwów VI" }, attack: 1900, hp: 5700, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 6, category: "army" },
+  { name: { PL: "Sęp VI", EN: "Sęp VI" }, attack: 940, hp: 2820, leadership: 1, traits: ["Jednostka latająca", "Człowiek", "Specjalista"], tier: 6, category: "army" },
 ];
 
 const specialistsDataTier7 = [
-  { name: "Ciężki Rycerz VII", attack: 1700, hp: 5100, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 7, category: "army" },
-  { name: "Elitarny Kusznik VII", attack: 1700, hp: 5100, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 7, category: "army" },
-  { name: "Jeździec lwów VII", attack: 3400, hp: 10200, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 7, category: "army" },
-  { name: "Sęp VII", attack: 1700, hp: 5100, leadership: 1, traits: ["Jednostka latająca", "Człowiek", "Specjalista"], tier: 7, category: "army" },
+  { name: { PL: "Ciężki Rycerz VII", EN: "Ciężki Rycerz VII" }, attack: 1700, hp: 5100, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 7, category: "army" },
+  { name: { PL: "Elitarny Kusznik VII", EN: "Elitarny Kusznik VII" }, attack: 1700, hp: 5100, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 7, category: "army" },
+  { name: { PL: "Jeździec lwów VII", EN: "Jeździec lwów VII" }, attack: 3400, hp: 10200, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 7, category: "army" },
+  { name: { PL: "Sęp VII", EN: "Sęp VII" }, attack: 1700, hp: 5100, leadership: 1, traits: ["Jednostka latająca", "Człowiek", "Specjalista"], tier: 7, category: "army" },
 ];
 
 const specialistsDataTier8 = [
-  { name: "Pojedynkowicz I", attack: 3060, hp: 9180, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 8, category: "army" },
-  { name: "Legitymista I", attack: 3060, hp: 9180, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 8, category: "army" },
-  { name: "Białogrzywy husarz I", attack: 6120, hp: 18360, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 8, category: "army" },
-  { name: "Królewski lew I", attack: 61200, hp: 183600, leadership: 20, traits: ["Bestia", "Jednostka latająca", "Specjalista"], tier: 8, category: "army" },
+  { name: { PL: "Pojedynkowicz I", EN: "Pojedynkowicz I" }, attack: 3060, hp: 9180, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 8, category: "army" },
+  { name: { PL: "Legitymista I", EN: "Legitymista I" }, attack: 3060, hp: 9180, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 8, category: "army" },
+  { name: { PL: "Białogrzywy husarz I", EN: "Białogrzywy husarz I" }, attack: 6120, hp: 18360, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 8, category: "army" },
+  { name: { PL: "Królewski lew I", EN: "Królewski lew I" }, attack: 61200, hp: 183600, leadership: 20, traits: ["Bestia", "Jednostka latająca", "Specjalista"], tier: 8, category: "army" },
 ];
 
 const specialistsDataTier9 = [
-  { name: "Pojedynkowicz II", attack: 5510, hp: 16530, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 9, category: "army" },
-  { name: "Legitymista II", attack: 5510, hp: 16530, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 9, category: "army" },
-  { name: "Białogrzywy husarz II", attack: 11020, hp: 33060, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 9, category: "army" },
-  { name: "Królewski lew II", attack: 110200, hp: 330600, leadership: 20, traits: ["Bestia", "Jednostka latająca", "Specjalista"], tier: 9, category: "army" },
+  { name: { PL: "Pojedynkowicz II", EN: "Pojedynkowicz II" }, attack: 5510, hp: 16530, leadership: 1, traits: ["Człowiek", "Piechota", "Specjalista"], tier: 9, category: "army" },
+  { name: { PL: "Legitymista II", EN: "Legitymista II" }, attack: 5510, hp: 16530, leadership: 1, traits: ["Człowiek", "Jednostka strzelecka", "Specjalista"], tier: 9, category: "army" },
+  { name: { PL: "Białogrzywy husarz II", EN: "Białogrzywy husarz II" }, attack: 11020, hp: 33060, leadership: 2, traits: ["Człowiek", "Jeździec", "Specjalista"], tier: 9, category: "army" },
+  { name: { PL: "Królewski lew II", EN: "Królewski lew II" }, attack: 110200, hp: 330600, leadership: 20, traits: ["Bestia", "Jednostka latająca", "Specjalista"], tier: 9, category: "army" },
 ];
 
 

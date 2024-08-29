@@ -1,7 +1,11 @@
 import React from "react";
 import { colors } from "../assets/colors";
+import { useSelector } from "react-redux";
 
 const ShortTableUnit = ({ unit, specialistsBonus, guardsmanBonus, armyBonus }) => {
+  const selectedLanguage = useSelector(
+    (state) => state.settings.selectedLanguage
+  );
   return unit.amount !== 0 ? (
     <tr
       style={{
@@ -47,7 +51,7 @@ const ShortTableUnit = ({ unit, specialistsBonus, guardsmanBonus, armyBonus }) =
             : "pink",
       }}
     >
-      <th style={{ width: "45vw" }}>{unit.name}</th>
+      <th style={{ width: "45vw" }}>{unit.name[selectedLanguage]}</th>
       <th style={{ width: "45vw" }}>{unit.amount}</th>
       {/*<th style={{ width: "5vw" }}>
         {unit.amount *

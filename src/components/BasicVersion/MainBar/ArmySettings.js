@@ -11,7 +11,9 @@ import { mercenary } from "../../../data/MercenaryData";
 const ArmySettings = ({ isOpen }) => {
   const dispatch = useDispatch();
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
-
+  const selectedLanguage = useSelector(
+    (state) => state.settings.selectedLanguage
+  );
   const setSelectedUnitsHandler = (units) => {
     dispatch(armyActions.setSelectedUnits(units));
   };
@@ -25,21 +27,21 @@ const ArmySettings = ({ isOpen }) => {
     const tierUnits = tierRows.flatMap((row) =>
       row.slice(1).filter((cell) => cell && cell.name)
     );
-    const tierUnitNames = tierUnits.map((unit) => unit.name);
+    const tierUnitNames = tierUnits.map((unit) => unit.name[selectedLanguage]);
     const allSelected = tierUnits.every((unit) =>
-      selectedUnits.some((selected) => selected.name === unit.name)
+      selectedUnits.some((selected) => selected.name[selectedLanguage] === unit.name[selectedLanguage])
     );
 
     if (allSelected) {
       // Deselect all units in the tier
       const updatedUnits = selectedUnits.filter(
-        (unit) => !tierUnitNames.includes(unit.name)
+        (unit) => !tierUnitNames.includes(unit.name[selectedLanguage])
       );
       setSelectedUnitsHandler(updatedUnits);
     } else {
       // Select all units in the tier
       const newUnits = tierUnits.filter(
-        (unit) => !selectedUnits.some((selected) => selected.name === unit.name)
+        (unit) => !selectedUnits.some((selected) => selected.name[selectedLanguage] === unit.name[selectedLanguage])
       );
       const updatedUnits = [...selectedUnits, ...newUnits];
       setSelectedUnitsHandler(updatedUnits);
@@ -50,10 +52,10 @@ const ArmySettings = ({ isOpen }) => {
     if (colIndex === 0) {
       // Handle tier header click
       handleTierClick(cell, rows);
-    } else if (cell && cell.name) {
+    } else if (cell && cell.name[selectedLanguage]) {
       // Handle regular cell click (only if cell has a name)
-      const updatedUnits = selectedUnits.find((unit) => unit.name === cell.name)
-        ? selectedUnits.filter((unit) => unit.name !== cell.name)
+      const updatedUnits = selectedUnits.find((unit) => unit.name[selectedLanguage] === cell.name[selectedLanguage])
+        ? selectedUnits.filter((unit) => unit.name[selectedLanguage] !== cell.name[selectedLanguage])
         : [...selectedUnits, cell];
       setSelectedUnitsHandler(updatedUnits);
     }
@@ -77,7 +79,7 @@ const ArmySettings = ({ isOpen }) => {
     border: "0.5px solid #ddd",
     padding: "8px",
     height: "70px",
-    width: "100px", // Set a fixed width for table cells
+    width: "130px", // Set a fixed width for table cells
   };
 
   const clickableTdStyle = {
@@ -149,13 +151,13 @@ const ArmySettings = ({ isOpen }) => {
   const renderTable = (rows, type) => {
     const splitRowData = splitRows(rows);
     const tierNames = [...new Set(splitRowData.map((row) => row[0]))];
-
+  
     return (
       <table style={tableStyle}>
         <tbody>
           {splitRowData.map((row, rowIndex) => {
             const tierIndex = tierNames.indexOf(row[0]);
-
+  
             return (
               <tr
                 key={rowIndex}
@@ -165,21 +167,23 @@ const ArmySettings = ({ isOpen }) => {
               >
                 {row.map((cell, cellIndex) => {
                   const isHeaderCell = cellIndex === 0;
-                  const isEmptyCell = !cell || !cell.name;
-                  const isSelected = selectedUnits.find(
-                    (unit) => unit.name === cell?.name
+                  const isEmptyCell = !cell || !cell.name || !cell.name[selectedLanguage];
+                  const isSelected = !isEmptyCell && selectedUnits.find(
+                    (unit) => unit.name[selectedLanguage] === cell.name[selectedLanguage]
                   );
+  
                   const cellStyle = isSelected
                     ? selectedTdStyle
                     : {
                         ...thTdStyle,
                         width: isHeaderCell ? "40px" : "100px",
-                        cursor:
-                          isHeaderCell || isEmptyCell ? "default" : "pointer",
+                        cursor: isHeaderCell || isEmptyCell ? "default" : "pointer",
                       };
+  
                   if (cellIndex === 0) {
                     cellStyle.opacity = 1;
                   }
+  
                   return (
                     <td
                       key={cellIndex}
@@ -188,7 +192,7 @@ const ArmySettings = ({ isOpen }) => {
                         handleCellClick(rowIndex, cellIndex, cell, splitRowData)
                       }
                     >
-                      {cellIndex === 0 ? cell : cell?.name}
+                      {cellIndex === 0 ? cell : isEmptyCell ? '' : cell.name[selectedLanguage]}
                     </td>
                   );
                 })}
@@ -199,6 +203,7 @@ const ArmySettings = ({ isOpen }) => {
       </table>
     );
   };
+  
 
   return (
     <div
