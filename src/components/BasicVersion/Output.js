@@ -13,7 +13,17 @@ const Output = ({ isOpen }) => {
     minWidth: "100px",
     backgroundColor: "white",
   };
-
+  const selectedLanguage = useSelector(
+    (state) => state.settings.selectedLanguage
+  );
+  const translations = {
+    PL: {
+      calculate: "Oblicz",
+    },
+    EN: {
+      calculate: "Calculate",
+    },
+  };
   const selectedUnits = useSelector((state) => state.army.selectedUnits || []);
   const guardsmanModifier = useSelector(
     (state) => state.stats.guardsmanModifier || 0
@@ -128,7 +138,7 @@ const Output = ({ isOpen }) => {
       }}
     >
       <div style={buttonStyle} onClick={handleClick}>
-        Oblicz
+      {translations[selectedLanguage].calculate}
       </div>
       {/* <div style={buttonStyle} onClick={handleClick}>
         {countedLeadership}

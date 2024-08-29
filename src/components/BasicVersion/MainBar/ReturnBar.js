@@ -1,7 +1,18 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
-
+import { useSelector } from "react-redux";
 const ReturnBar = ({ isOpen, setComponentVisibility }) => {
+  const selectedLanguage = useSelector(
+    (state) => state.settings.selectedLanguage
+  );
+  const translations = {
+    PL: {
+      return: "Powrót",
+    },
+    EN: {
+      return: "Return",
+    },
+  };
   const thStyle = {
     textAlign: "center",
     border: "1px solid rgba(255, 255, 255, 0.5)", 
@@ -32,7 +43,7 @@ const ReturnBar = ({ isOpen, setComponentVisibility }) => {
           <tr>
             <th style={thStyle} onClick={() => setComponentVisibility("settingsBar")}>
               <FaArrowLeft style={iconStyle}/>
-              <div>Powrót</div>
+              <div>{translations[selectedLanguage].return}</div>
             </th>
           </tr>
         </thead>
