@@ -78,8 +78,8 @@ const ArmySettings = ({ isOpen }) => {
   const thTdStyle = {
     border: "0.5px solid #ddd",
     padding: "8px",
-    height: "70px",
-    width: "130px", // Set a fixed width for table cells
+    height: "80px",
+    width: "110px", // Set a fixed width for table cells
   };
 
   const clickableTdStyle = {
@@ -176,7 +176,7 @@ const ArmySettings = ({ isOpen }) => {
                     ? selectedTdStyle
                     : {
                         ...thTdStyle,
-                        width: isHeaderCell ? "40px" : "100px",
+                        width: isHeaderCell ? "40px" : "110px",
                         cursor: isHeaderCell || isEmptyCell ? "default" : "pointer",
                       };
   
