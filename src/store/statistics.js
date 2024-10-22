@@ -24,7 +24,7 @@ const statsSlice = createSlice({
     },
     modifySpecialistBonus(state, action) {
       state.specialistsBonus = Math.max(parseFloat((state.specialistsBonus+action.payload).toFixed(3)), 0);
-      state.specialistsModifier = 1 + state.specialistsModifier / 100;
+      state.specialistsModifier = 1 + state.specialistsBonus / 100;
     },
     resetSpecialistBonus(state) {
       state.specialistsBonus = 0;
@@ -32,7 +32,7 @@ const statsSlice = createSlice({
     },
     modifyArmyBonus(state, action) {
       state.armyBonus = Math.max(parseFloat((state.armyBonus+action.payload).toFixed(3)), 0);
-      state.armyModifier = 1 + state.armyModifier / 100;
+      state.armyModifier = 1 + state.armyBonus / 100;
     },
     resetArmyBonus(state) {
       state.armyBonus = 0;

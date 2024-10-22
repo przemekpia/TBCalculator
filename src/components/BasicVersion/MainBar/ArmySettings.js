@@ -25,7 +25,7 @@ const ArmySettings = ({ isOpen }) => {
   const handleTierClick = (tierName, rows) => {
     const tierRows = getTierRows(rows, tierName);
     const tierUnits = tierRows.flatMap((row) =>
-      row.slice(1).filter((cell) => cell && cell.name)
+      row.slice(1).filter((cell) => cell && cell.name[selectedLanguage])
     );
     const tierUnitNames = tierUnits.map((unit) => unit.name[selectedLanguage]);
     const allSelected = tierUnits.every((unit) =>
@@ -59,6 +59,7 @@ const ArmySettings = ({ isOpen }) => {
         : [...selectedUnits, cell];
       setSelectedUnitsHandler(updatedUnits);
     }
+    console.log(selectedUnits);
   };
 
   const tableContainerStyle = {
