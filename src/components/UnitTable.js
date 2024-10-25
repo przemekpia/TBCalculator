@@ -2,7 +2,7 @@ import React from "react";
 import ShortTableUnit from "./ShortTableUnit";
 
 const UnitTable = ({ title, units, specialistsBonus, guardsmanBonus, armyBonus }) => {
-  if (!units || units.length === 0) return null;
+  if (units == null || units.length === 0) return null;
 
   return (
     <div

@@ -59,76 +59,78 @@ const Output = ({ isOpen }) => {
     let mercenaryUnits = sortedUnitsTemp.filter(
       (unit) => unit.category === "mercenary"
     );
-
-    while (currentLeadership < leadership) {
-      for (let j = 0; j < armyUnits.length; j++) {
-        if (j + 1 === armyUnits.length) {
-          armyUnits[j].amount += 1;
-          if (armyUnits[j].category === "army") {
-            currentLeadership += armyUnits[j].leadership;
-          }
-        } else {
-          if (
-            (armyUnits[j].amount + 1) *
-              armyUnits[j].hp *
-              (armyUnits[j].traits.includes("Gwardzista")
-                ? guardsmanModifier
-                : armyUnits[j].traits.includes("Specjalista")
-                ? specialistsModifier
-                : armyModifier) <=
-              armyUnits[j + 1].amount *
-                armyUnits[j + 1].hp *
-                (armyUnits[j + 1].traits.includes("Gwardzista")
-                  ? guardsmanModifier
-                  : armyUnits[j + 1].traits.includes("Specjalista")
-                  ? specialistsModifier
-                  : armyModifier) &&
-            currentLeadership + armyUnits[j].leadership <= leadership
-          ) {
+    if(armyUnits.length>0){
+      while (currentLeadership < leadership) {
+        for (let j = 0; j < armyUnits.length; j++) {
+          if (j + 1 === armyUnits.length) {
             armyUnits[j].amount += 1;
             if (armyUnits[j].category === "army") {
               currentLeadership += armyUnits[j].leadership;
             }
-            break;
+          } else {
+            if (
+              (armyUnits[j].amount + 1) *
+                armyUnits[j].hp *
+                (armyUnits[j].traits.includes("Gwardzista")
+                  ? guardsmanModifier
+                  : armyUnits[j].traits.includes("Specjalista")
+                  ? specialistsModifier
+                  : armyModifier) <=
+                armyUnits[j + 1].amount *
+                  armyUnits[j + 1].hp *
+                  (armyUnits[j + 1].traits.includes("Gwardzista")
+                    ? guardsmanModifier
+                    : armyUnits[j + 1].traits.includes("Specjalista")
+                    ? specialistsModifier
+                    : armyModifier) &&
+              currentLeadership + armyUnits[j].leadership <= leadership
+            ) {
+              armyUnits[j].amount += 1;
+              if (armyUnits[j].category === "army") {
+                currentLeadership += armyUnits[j].leadership;
+              }
+              break;
+            }
           }
         }
       }
+  
+      const minTotalHP =
+        armyUnits[0].amount *
+        armyUnits[0].hp *
+        (armyUnits[0].traits.includes("Gwardzista")
+          ? guardsmanModifier
+          : armyUnits[0].traits.includes("Specjalista")
+          ? specialistsModifier
+          : armyModifier);
+  
+      for (let i = 0; i < monsterUnits.length; i++) {
+        let monster = monsterUnits[i];
+        monster.amount = Math.ceil(
+          minTotalHP /
+            (monster.hp *
+              (monster.traits.includes("Gwardzista")
+                ? guardsmanModifier
+                : monster.traits.includes("Specjalista")
+                ? specialistsModifier
+                : armyModifier))
+        );
+      }
+  
+      for (let i = 0; i < mercenaryUnits.length; i++) {
+        let mercenary = mercenaryUnits[i];
+        mercenary.amount = Math.ceil(
+          minTotalHP /
+            (mercenary.hp *
+              (mercenary.traits.includes("Gwardzista")
+                ? guardsmanModifier
+                : mercenary.traits.includes("Specjalista")
+                ? specialistsModifier
+                : armyModifier))
+        );
+      }
     }
-
-    const minTotalHP =
-      armyUnits[0].amount *
-      armyUnits[0].hp *
-      (armyUnits[0].traits.includes("Gwardzista")
-        ? guardsmanModifier
-        : armyUnits[0].traits.includes("Specjalista")
-        ? specialistsModifier
-        : armyModifier);
-
-    for (let i = 0; i < monsterUnits.length; i++) {
-      let monster = monsterUnits[i];
-      monster.amount = Math.ceil(
-        minTotalHP /
-          (monster.hp *
-            (monster.traits.includes("Gwardzista")
-              ? guardsmanModifier
-              : monster.traits.includes("Specjalista")
-              ? specialistsModifier
-              : armyModifier))
-      );
-    }
-
-    for (let i = 0; i < mercenaryUnits.length; i++) {
-      let mercenary = mercenaryUnits[i];
-      mercenary.amount = Math.ceil(
-        minTotalHP /
-          (mercenary.hp *
-            (mercenary.traits.includes("Gwardzista")
-              ? guardsmanModifier
-              : mercenary.traits.includes("Specjalista")
-              ? specialistsModifier
-              : armyModifier))
-      );
-    }
+    
 
     armyUnits = armyUnits
       .map((unit) => ({ ...unit }))
